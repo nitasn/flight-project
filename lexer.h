@@ -11,6 +11,7 @@ using namespace std;
 #define UNTITLED7_LEXER_H
 class lexer{
 public:lexer(string fileName);
+    queue<string> *commandQueue;
 };
 
 #endif //UNTITLED7_LEXER_H
