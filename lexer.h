@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <queue>
+#include "Expression.h"
 
 using namespace std;
 #ifndef UNTITLED7_LEXER_H

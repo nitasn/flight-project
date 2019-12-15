@@ -7,19 +7,37 @@
 #include <fstream>
 #include <queue>
 
-class lexer:: lexer(string fileName){
+lexer::lexer(string fileName){
     this->commandQueue = new queue<string>();
     ifstream insertFile(fileName, ios::in);
     if (insertFile.fail() || insertFile.bad()){
         throw "error. not have this page";
     }
     string line{};
-    while(!insertFile.eof){
+    while(!insertFile.eof()){
         getline(insertFile, line);
-        char runCharOnLine;
         string currentStringInLop;
-        while(runCharOnLine != '/n'){
-            if(runCharOnLine!= ' ' && runCharOnLine != '(' && runCharOnLine != '')
+        for(int i = 0; line[i] != '/n'; i++) {
+            if (line[i] == '('){
+
+            } else if(line[i] == '='){
+
+            } else if(line[i] == ' '){
+                // לבדוק מילים שמורות
+                // לבדוק משתנים קיימים
+                // אם לא זה ולא זה - להמשיך הלאה
+            } else if (line[i] == '-' && line[i+1] == '>'){
+
+            } else if (line[i] == '<' && line[i+1] == '-'){
+
+            }else if(line[i]){
+                currentStringInLop = currentStringInLop + "" + line[i];
+            }
+
+        // ביטוייים שמתחילים במילים שמורות
+        // ביטויים שמתחילים בפונקציה
+        // השמה של משתנים
         }
+
     }
 };
