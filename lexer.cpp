@@ -36,7 +36,7 @@ void lexer::splitFile(){
                 this->commandQueue->push("=");
                 splitAcurddingSign(line, i+1, ' ');
                 break;
-            } else if(line[i] == ' '){
+            } else if(line[i] == ' ' || (line[i] == '\t')){
                 if(!currentStringInLop.empty()){
                     this->commandQueue->push(currentStringInLop);
                     currentStringInLop.clear();
@@ -67,7 +67,9 @@ void lexer:: splitAcurddingSign(string line, int i, char sign){
                 break;
             }
         }
-        inputCommand = inputCommand + "" + line[i];
+        if (line[i] != ' ' && line[i] != '\t'){
+            inputCommand = inputCommand + "" + line[i];
+        }
         i++;
     }
     if(!inputCommand.empty()){
