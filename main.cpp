@@ -9,5 +9,14 @@ using namespace std;
 
 int main()
 {
-    cout << "hello" << endl;
+    {// בדיקה והדגמה איך הלאקסר מפרק את הקובץ
+        lexer a("/home/hodyah/CLionProjects/flight-project/fly.txt");
+        a.splitFile();
+        queue<string> *b = a.commandQueue;
+        while (!b->empty()) {
+            cout << b->front() << endl;
+            b->pop();
+        }
+    }// סוף בדיקת לאקסר
+
 }
