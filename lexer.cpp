@@ -4,9 +4,14 @@
 
 #include "lexer.h"
 #include "iostream"
-#include <fstream>
 #include <queue>
-
+/**.
+ * lexer - split file string to short string.
+ * lexer split accurding (), =, ->, <-,command space and tab.
+ * lexer save the split string in queue on heap.
+ * lexer puse =, ->, <- on the queue and not () for function (yes for mat' action),command space and tab.
+ * @param fileName the file to read and split.
+ */
 lexer::lexer(string fileName){
     this->commandQueue = new queue<string>();
     this->insertFile.open(fileName, ios::in);
@@ -14,7 +19,9 @@ lexer::lexer(string fileName){
         throw "error. not have this page";
     }
 };
-
+/**.
+ * splitFile methot split the file.
+ */
 void lexer::splitFile(){
     string line{};
     while(!insertFile.eof()){
@@ -58,16 +65,25 @@ void lexer::splitFile(){
         }
     }
 }
-
+/**
+ * splitAcurddingSign helping method. she put all the residue string
+ * to one string and put him to the queue. if have , she split string ther.
+ * @param line the string of line
+ * @param i index beginning residue string
+ * @param sign if need to  stop befor end line.
+ */
 void lexer:: splitAcurddingSign(string line, int i, char sign){
     string inputCommand;
-    while(line[i] != '/n'){
+    while(true){
         if((line.size() == i + 1) || line.size() == i){
             if (sign == ')' || (line.size() == i)){
                 break;
             }
         }
-        if (line[i] != ' ' && line[i] != '\t'){
+        if(line[i] == ','){
+            this->commandQueue->push(inputCommand);
+            inputCommand.clear();
+        } else if (line[i] != ' ' && line[i] != '\t'){
             inputCommand = inputCommand + "" + line[i];
         }
         i++;
@@ -77,7 +93,10 @@ void lexer:: splitAcurddingSign(string line, int i, char sign){
         inputCommand.clear();
     }
 }
-
+/**.
+ * return queue split lexer.
+ * @return
+ */
 queue<string>* lexer:: returnSplitFileQueue(){
     return this->commandQueue;
 }
