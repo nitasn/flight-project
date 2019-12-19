@@ -84,6 +84,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/OpenServerCommand.cpp">
+			<Option target="flight-project"/>
+		</Unit>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/OpenServerCommand.h">
+			<Option target="flight-project"/>
+		</Unit>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/command.h">
+			<Option target="flight-project"/>
+		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/lexer.cpp">
 			<Option target="flight-project"/>
 		</Unit>

@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o"
   "CMakeFiles/flight-project.dir/lexer.cpp.o"
   "CMakeFiles/flight-project.dir/main.cpp.o"
   "CMakeFiles/flight-project.dir/server.cpp.o"

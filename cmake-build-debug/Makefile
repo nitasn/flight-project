@@ -123,6 +123,33 @@ flight-project/fast:
 	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/build
 .PHONY : flight-project/fast
 
+OpenServerCommand.o: OpenServerCommand.cpp.o
+
+.PHONY : OpenServerCommand.o
+
+# target to build an object file
+OpenServerCommand.cpp.o:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o
+.PHONY : OpenServerCommand.cpp.o
+
+OpenServerCommand.i: OpenServerCommand.cpp.i
+
+.PHONY : OpenServerCommand.i
+
+# target to preprocess a source file
+OpenServerCommand.cpp.i:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/OpenServerCommand.cpp.i
+.PHONY : OpenServerCommand.cpp.i
+
+OpenServerCommand.s: OpenServerCommand.cpp.s
+
+.PHONY : OpenServerCommand.s
+
+# target to generate assembly for a file
+OpenServerCommand.cpp.s:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/OpenServerCommand.cpp.s
+.PHONY : OpenServerCommand.cpp.s
+
 lexer.o: lexer.cpp.o
 
 .PHONY : lexer.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... flight-project"
 	@echo "... edit_cache"
+	@echo "... OpenServerCommand.o"
+	@echo "... OpenServerCommand.i"
+	@echo "... OpenServerCommand.s"
 	@echo "... lexer.o"
 	@echo "... lexer.i"
 	@echo "... lexer.s"

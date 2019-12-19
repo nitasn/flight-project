@@ -3,4 +3,4 @@ project(flight-project)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(flight-project lexer.cpp lexer.h main.cpp server.cpp server.h)
+add_executable(flight-project lexer.cpp lexer.h main.cpp server.cpp server.h command.h OpenServerCommand.cpp OpenServerCommand.h)

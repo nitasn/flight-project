@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/flight-project.dir/lexer.cpp.o CMakeFiles/flight-project.dir/main.cpp.o CMakeFiles/flight-project.dir/server.cpp.o  -o flight-project 
+/usr/bin/c++  -g   CMakeFiles/flight-project.dir/lexer.cpp.o CMakeFiles/flight-project.dir/main.cpp.o CMakeFiles/flight-project.dir/server.cpp.o CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o  -o flight-project 

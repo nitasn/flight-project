@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/hodyah/CLionProjects/flight-project/OpenServerCommand.cpp" "/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o"
   "/home/hodyah/CLionProjects/flight-project/lexer.cpp" "/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles/flight-project.dir/lexer.cpp.o"
   "/home/hodyah/CLionProjects/flight-project/main.cpp" "/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles/flight-project.dir/main.cpp.o"
   "/home/hodyah/CLionProjects/flight-project/server.cpp" "/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles/flight-project.dir/server.cpp.o"

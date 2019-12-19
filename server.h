@@ -18,7 +18,6 @@ class server{
     char buffer[1024];
 public:server();
     int OpenServerCommand(int portNum);
-
     void restartAddres(int portNum);
 };
 #endif //FLIGHT_PROJECT_SERVER_H
