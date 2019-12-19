@@ -3,8 +3,6 @@
 //
 
 #include "lexer.h"
-#include "iostream"
-#include <queue>
 /**.
  * lexer - split file string to short string.
  * lexer split accurding (), =, ->, <-,command space and tab.
@@ -74,6 +72,7 @@ void lexer::splitFile(){
  */
 void lexer:: splitAcurddingSign(string line, int i, char sign){
     string inputCommand;
+    bool flagThisIsInString = false;
     while(true){
         if((line.size() == i + 1) || line.size() == i){
             if (sign == ')' || (line.size() == i)){
@@ -83,8 +82,11 @@ void lexer:: splitAcurddingSign(string line, int i, char sign){
         if(line[i] == ','){
             this->commandQueue->push(inputCommand);
             inputCommand.clear();
-        } else if (line[i] != ' ' && line[i] != '\t'){
+        } else if (((flagThisIsInString) && line[i] == ' ')|| (line[i] != ' ' && line[i] != '\t')){
             inputCommand = inputCommand + "" + line[i];
+            if(line[i] == '"'){
+                flagThisIsInString = !flagThisIsInString;
+            }
         }
         i++;
     }

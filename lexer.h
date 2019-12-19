@@ -2,12 +2,9 @@
 // Created by hodyah on 15/12/2019.
 //
 #include <string>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include <queue>
 #include <fstream>
-#include "Expression.h"
+#include "iostream"
 
 using namespace std;
 #ifndef UNTITLED7_LEXER_H
@@ -20,15 +17,13 @@ using namespace std;
  * @param fileName the file to read and split.
  */
 class lexer{
-public:lexer(string fileName);
     queue<string> *commandQueue;
     ifstream insertFile;
-public:
+public:lexer(string fileName);
     void splitFile();
-
+    queue<string>* returnSplitFileQueue();
 private:
     void splitAcurddingSign(string line, int i, char sign);
-    queue<string>* returnSplitFileQueue();
 };
 
 #endif //UNTITLED7_LEXER_H
