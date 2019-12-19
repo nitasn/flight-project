@@ -150,6 +150,33 @@ OpenServerCommand.cpp.s:
 	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/OpenServerCommand.cpp.s
 .PHONY : OpenServerCommand.cpp.s
 
+connectControlClient.o: connectControlClient.cpp.o
+
+.PHONY : connectControlClient.o
+
+# target to build an object file
+connectControlClient.cpp.o:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/connectControlClient.cpp.o
+.PHONY : connectControlClient.cpp.o
+
+connectControlClient.i: connectControlClient.cpp.i
+
+.PHONY : connectControlClient.i
+
+# target to preprocess a source file
+connectControlClient.cpp.i:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/connectControlClient.cpp.i
+.PHONY : connectControlClient.cpp.i
+
+connectControlClient.s: connectControlClient.cpp.s
+
+.PHONY : connectControlClient.s
+
+# target to generate assembly for a file
+connectControlClient.cpp.s:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/connectControlClient.cpp.s
+.PHONY : connectControlClient.cpp.s
+
 lexer.o: lexer.cpp.o
 
 .PHONY : lexer.o
@@ -243,6 +270,9 @@ help:
 	@echo "... OpenServerCommand.o"
 	@echo "... OpenServerCommand.i"
 	@echo "... OpenServerCommand.s"
+	@echo "... connectControlClient.o"
+	@echo "... connectControlClient.i"
+	@echo "... connectControlClient.s"
 	@echo "... lexer.o"
 	@echo "... lexer.i"
 	@echo "... lexer.s"

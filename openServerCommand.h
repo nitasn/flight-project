@@ -9,9 +9,9 @@
  * create server with the current input
  * and update thr queue
  */
-class OpenServerCommand: public command{
+class openServerCommand: public command{
 public:
-    OpenServerCommand();
+    openServerCommand();
     void execut(queue<string>* inputQueue);
 };
 #endif //FLIGHT_PROJECT_OPENSERVERCOMMAND_H
