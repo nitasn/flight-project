@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hodyah/CLionProjects/flight-project/server.cpp
+server.h
+/home/hodyah/CLionProjects/flight-project/server.h
+
+/home/hodyah/CLionProjects/flight-project/server.h
+sys/socket.h
+-
+string
+-
+iostream
+-
+unistd.h
+-
+netinet/in.h
+-
+thread
+/home/hodyah/CLionProjects/flight-project/thread
+
