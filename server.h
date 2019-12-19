@@ -11,13 +11,16 @@ using namespace std;
 #include <unistd.h>
 #include <netinet/in.h>
 #include "thread"
+/**.
+ * server create server to contact the fly.
+ * @param portNum the port num to clint
+ */
 void  informationFromServer(int socketfd, sockaddr_in address,char* buffer);
 class server{
     int socketfd;
     sockaddr_in address;
     char buffer[1024];
-public:server();
-    int OpenServerCommand(int portNum);
+public:server(int portNum);
     void restartAddres(int portNum);
 };
 #endif //FLIGHT_PROJECT_SERVER_H

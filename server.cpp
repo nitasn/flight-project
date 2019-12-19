@@ -1,26 +1,35 @@
 //
 // Created by hodyah on 19/12/2019.
+//יש כאן טיפול לא נכון בשגיאות - צריך לחזור לזה**
+// יש בעיה עם הTREHD
 //
-
 #include "server.h"
-
-server::server() {
-}
-int server:: OpenServerCommand(int portNum){
+/**.
+ * server create server to contact the fly.
+ * @param portNum the port num to clint
+ */
+server::server(int portNum) {
     restartAddres(portNum);
     if (bind(socketfd, (struct sockaddr *) &address, sizeof(address)) == -1) {
         std::cerr<<"Could not bind the socket to an IP"<<std::endl;
-        return -3;
+        return;
     }
     if (listen(socketfd, 5) == -1) {
         std::cerr<<"Error during listening command"<<std::endl;
-        return -4;
+        return;
     } else{
         std::cout<<"Server is now listening ..."<<std::endl;
-    }
+    }informationFromServer
     std::thread readingCilion(informationFromServer, this->socketfd, this->address, this->buffer);
     readingCilion.join();
 }
+/**.
+ *informationFromServer update all time with thread the information
+ * that clion send
+ * @param socketfd
+ * @param address
+ * @param buffer
+ */
 void informationFromServer(int socketfd, sockaddr_in address,char* buffer){
     while (true){
         int client_socket = accept(socketfd, (struct sockaddr *)&address,
@@ -33,7 +42,10 @@ void informationFromServer(int socketfd, sockaddr_in address,char* buffer){
         std::cout<<buffer<<std::endl;
     }
 }
-
+/**informationFromServer
+ * reset the adrees and socket of clion
+ * @param portNum clion port num
+ */
 void server:: restartAddres(int portNum){
     this->socketfd = socket(AF_INET, SOCK_STREAM, 0);
     if (socketfd == -1) {
