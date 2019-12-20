@@ -84,13 +84,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/client.cpp">
+			<Option target="flight-project"/>
+		</Unit>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/client.h">
+			<Option target="flight-project"/>
+		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/command.h">
 			<Option target="flight-project"/>
 		</Unit>
-		<Unit filename="/home/hodyah/CLionProjects/flight-project/connectControlClient.cpp">
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/commandFromFileToMap.cpp">
 			<Option target="flight-project"/>
 		</Unit>
-		<Unit filename="/home/hodyah/CLionProjects/flight-project/connectControlClient.h">
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/commandFromFileToMap.h">
 			<Option target="flight-project"/>
 		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/controlFly.cpp">
@@ -106,12 +112,6 @@
 			<Option target="flight-project"/>
 		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/main.cpp">
-			<Option target="flight-project"/>
-		</Unit>
-		<Unit filename="/home/hodyah/CLionProjects/flight-project/openServerCommand.cpp">
-			<Option target="flight-project"/>
-		</Unit>
-		<Unit filename="/home/hodyah/CLionProjects/flight-project/openServerCommand.h">
 			<Option target="flight-project"/>
 		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/server.cpp">

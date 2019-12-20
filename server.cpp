@@ -3,6 +3,7 @@
 //יש כאן טיפול לא נכון בשגיאות - צריך לחזור לזה**
 // יש בעיה עם הTREHD
 //
+//TODO check work.
 #include "server.h"
 /**.
  * server create server to contact the fly.
@@ -23,7 +24,7 @@ void server:: openTheServer(int portNum){
         return;
     } else{
         std::cout<<"Server is now listening ..."<<std::endl;
-    }informationFromServer
+    }
     std::thread readingCilion(informationFromServer, this->socketfd, this->address, this->buffer);
     readingCilion.join();
 }

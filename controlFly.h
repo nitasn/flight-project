@@ -9,6 +9,7 @@ using namespace std;
 #include <unordered_map>
 #include "command.h"
 #include "server.h"
+#include "Expression.h"
 //#include "client.h"
 #ifndef FLIGHT_PROJECT_CONTROLFLY_H
 #define FLIGHT_PROJECT_CONTROLFLY_H
@@ -20,14 +21,15 @@ using namespace std;
 class controlFly{
     queue<string>* commandQueue;
     unordered_map<string, command> commandMap;
-//    unordered_map<> varMapUpdateServer;
-//    unordered_map<> varMapSendClient;
-    server *serverObject = new server();
+    unordered_map<string, Expression> *varMapUpdateServer;
+    unordered_map<string, Expression> *varMapSendClient;
+    server *serverObject;
 //    client clientObject;
 public:
 //    controlFly();
     void playControlFly(string fileCommandName);
 private:
     void parser‬‬();
+    void mapOfCommmand();
 };
 #endif //FLIGHT_PROJECT_CONTROLFLY_H

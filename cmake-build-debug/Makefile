@@ -123,32 +123,59 @@ flight-project/fast:
 	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/build
 .PHONY : flight-project/fast
 
-connectControlClient.o: connectControlClient.cpp.o
+client.o: client.cpp.o
 
-.PHONY : connectControlClient.o
+.PHONY : client.o
 
 # target to build an object file
-connectControlClient.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/connectControlClient.cpp.o
-.PHONY : connectControlClient.cpp.o
+client.cpp.o:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/client.cpp.o
+.PHONY : client.cpp.o
 
-connectControlClient.i: connectControlClient.cpp.i
+client.i: client.cpp.i
 
-.PHONY : connectControlClient.i
+.PHONY : client.i
 
 # target to preprocess a source file
-connectControlClient.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/connectControlClient.cpp.i
-.PHONY : connectControlClient.cpp.i
+client.cpp.i:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/client.cpp.i
+.PHONY : client.cpp.i
 
-connectControlClient.s: connectControlClient.cpp.s
+client.s: client.cpp.s
 
-.PHONY : connectControlClient.s
+.PHONY : client.s
 
 # target to generate assembly for a file
-connectControlClient.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/connectControlClient.cpp.s
-.PHONY : connectControlClient.cpp.s
+client.cpp.s:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/client.cpp.s
+.PHONY : client.cpp.s
+
+commandFromFileToMap.o: commandFromFileToMap.cpp.o
+
+.PHONY : commandFromFileToMap.o
+
+# target to build an object file
+commandFromFileToMap.cpp.o:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.o
+.PHONY : commandFromFileToMap.cpp.o
+
+commandFromFileToMap.i: commandFromFileToMap.cpp.i
+
+.PHONY : commandFromFileToMap.i
+
+# target to preprocess a source file
+commandFromFileToMap.cpp.i:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.i
+.PHONY : commandFromFileToMap.cpp.i
+
+commandFromFileToMap.s: commandFromFileToMap.cpp.s
+
+.PHONY : commandFromFileToMap.s
+
+# target to generate assembly for a file
+commandFromFileToMap.cpp.s:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.s
+.PHONY : commandFromFileToMap.cpp.s
 
 controlFly.o: controlFly.cpp.o
 
@@ -231,33 +258,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-openServerCommand.o: openServerCommand.cpp.o
-
-.PHONY : openServerCommand.o
-
-# target to build an object file
-openServerCommand.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/openServerCommand.cpp.o
-.PHONY : openServerCommand.cpp.o
-
-openServerCommand.i: openServerCommand.cpp.i
-
-.PHONY : openServerCommand.i
-
-# target to preprocess a source file
-openServerCommand.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/openServerCommand.cpp.i
-.PHONY : openServerCommand.cpp.i
-
-openServerCommand.s: openServerCommand.cpp.s
-
-.PHONY : openServerCommand.s
-
-# target to generate assembly for a file
-openServerCommand.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/openServerCommand.cpp.s
-.PHONY : openServerCommand.cpp.s
-
 server.o: server.cpp.o
 
 .PHONY : server.o
@@ -294,9 +294,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... flight-project"
 	@echo "... edit_cache"
-	@echo "... connectControlClient.o"
-	@echo "... connectControlClient.i"
-	@echo "... connectControlClient.s"
+	@echo "... client.o"
+	@echo "... client.i"
+	@echo "... client.s"
+	@echo "... commandFromFileToMap.o"
+	@echo "... commandFromFileToMap.i"
+	@echo "... commandFromFileToMap.s"
 	@echo "... controlFly.o"
 	@echo "... controlFly.i"
 	@echo "... controlFly.s"
@@ -306,9 +309,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... openServerCommand.o"
-	@echo "... openServerCommand.i"
-	@echo "... openServerCommand.s"
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"
