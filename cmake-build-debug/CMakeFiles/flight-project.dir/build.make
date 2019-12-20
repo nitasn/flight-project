@@ -96,18 +96,18 @@ CMakeFiles/flight-project.dir/server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/server.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/server.cpp -o CMakeFiles/flight-project.dir/server.cpp.s
 
-CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o: CMakeFiles/flight-project.dir/flags.make
-CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o: ../OpenServerCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o -c /home/hodyah/CLionProjects/flight-project/OpenServerCommand.cpp
+CMakeFiles/flight-project.dir/openServerCommand.cpp.o: CMakeFiles/flight-project.dir/flags.make
+CMakeFiles/flight-project.dir/openServerCommand.cpp.o: ../openServerCommand.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/flight-project.dir/openServerCommand.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/openServerCommand.cpp.o -c /home/hodyah/CLionProjects/flight-project/openServerCommand.cpp
 
-CMakeFiles/flight-project.dir/OpenServerCommand.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/OpenServerCommand.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/OpenServerCommand.cpp > CMakeFiles/flight-project.dir/OpenServerCommand.cpp.i
+CMakeFiles/flight-project.dir/openServerCommand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/openServerCommand.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/openServerCommand.cpp > CMakeFiles/flight-project.dir/openServerCommand.cpp.i
 
-CMakeFiles/flight-project.dir/OpenServerCommand.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/OpenServerCommand.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/OpenServerCommand.cpp -o CMakeFiles/flight-project.dir/OpenServerCommand.cpp.s
+CMakeFiles/flight-project.dir/openServerCommand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/openServerCommand.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/openServerCommand.cpp -o CMakeFiles/flight-project.dir/openServerCommand.cpp.s
 
 CMakeFiles/flight-project.dir/connectControlClient.cpp.o: CMakeFiles/flight-project.dir/flags.make
 CMakeFiles/flight-project.dir/connectControlClient.cpp.o: ../connectControlClient.cpp
@@ -122,13 +122,27 @@ CMakeFiles/flight-project.dir/connectControlClient.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/connectControlClient.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/connectControlClient.cpp -o CMakeFiles/flight-project.dir/connectControlClient.cpp.s
 
+CMakeFiles/flight-project.dir/controlFly.cpp.o: CMakeFiles/flight-project.dir/flags.make
+CMakeFiles/flight-project.dir/controlFly.cpp.o: ../controlFly.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/flight-project.dir/controlFly.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/controlFly.cpp.o -c /home/hodyah/CLionProjects/flight-project/controlFly.cpp
+
+CMakeFiles/flight-project.dir/controlFly.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/controlFly.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/controlFly.cpp > CMakeFiles/flight-project.dir/controlFly.cpp.i
+
+CMakeFiles/flight-project.dir/controlFly.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/controlFly.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/controlFly.cpp -o CMakeFiles/flight-project.dir/controlFly.cpp.s
+
 # Object files for target flight-project
 flight__project_OBJECTS = \
 "CMakeFiles/flight-project.dir/lexer.cpp.o" \
 "CMakeFiles/flight-project.dir/main.cpp.o" \
 "CMakeFiles/flight-project.dir/server.cpp.o" \
-"CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o" \
-"CMakeFiles/flight-project.dir/connectControlClient.cpp.o"
+"CMakeFiles/flight-project.dir/openServerCommand.cpp.o" \
+"CMakeFiles/flight-project.dir/connectControlClient.cpp.o" \
+"CMakeFiles/flight-project.dir/controlFly.cpp.o"
 
 # External object files for target flight-project
 flight__project_EXTERNAL_OBJECTS =
@@ -136,11 +150,12 @@ flight__project_EXTERNAL_OBJECTS =
 flight-project: CMakeFiles/flight-project.dir/lexer.cpp.o
 flight-project: CMakeFiles/flight-project.dir/main.cpp.o
 flight-project: CMakeFiles/flight-project.dir/server.cpp.o
-flight-project: CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o
+flight-project: CMakeFiles/flight-project.dir/openServerCommand.cpp.o
 flight-project: CMakeFiles/flight-project.dir/connectControlClient.cpp.o
+flight-project: CMakeFiles/flight-project.dir/controlFly.cpp.o
 flight-project: CMakeFiles/flight-project.dir/build.make
 flight-project: CMakeFiles/flight-project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable flight-project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable flight-project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/flight-project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

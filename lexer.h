@@ -20,8 +20,7 @@ class lexer{
     queue<string> *commandQueue;
     ifstream insertFile;
 public:lexer(string fileName);
-    void splitFile();
-    queue<string>* returnSplitFileQueue();
+    queue<string>* splitFile();
 private:
     void splitAcurddingSign(string line, int i, char sign);
 };

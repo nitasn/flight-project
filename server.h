@@ -20,7 +20,8 @@ class server{
     int socketfd;
     sockaddr_in address;
     char buffer[1024];
-public:server(int portNum);
+public:server();
+    void openTheServer(int portNum);
     void restartAddres(int portNum);
 };
 #endif //FLIGHT_PROJECT_SERVER_H

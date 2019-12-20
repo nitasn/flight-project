@@ -123,33 +123,6 @@ flight-project/fast:
 	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/build
 .PHONY : flight-project/fast
 
-OpenServerCommand.o: OpenServerCommand.cpp.o
-
-.PHONY : OpenServerCommand.o
-
-# target to build an object file
-OpenServerCommand.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/OpenServerCommand.cpp.o
-.PHONY : OpenServerCommand.cpp.o
-
-OpenServerCommand.i: OpenServerCommand.cpp.i
-
-.PHONY : OpenServerCommand.i
-
-# target to preprocess a source file
-OpenServerCommand.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/OpenServerCommand.cpp.i
-.PHONY : OpenServerCommand.cpp.i
-
-OpenServerCommand.s: OpenServerCommand.cpp.s
-
-.PHONY : OpenServerCommand.s
-
-# target to generate assembly for a file
-OpenServerCommand.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/OpenServerCommand.cpp.s
-.PHONY : OpenServerCommand.cpp.s
-
 connectControlClient.o: connectControlClient.cpp.o
 
 .PHONY : connectControlClient.o
@@ -176,6 +149,33 @@ connectControlClient.s: connectControlClient.cpp.s
 connectControlClient.cpp.s:
 	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/connectControlClient.cpp.s
 .PHONY : connectControlClient.cpp.s
+
+controlFly.o: controlFly.cpp.o
+
+.PHONY : controlFly.o
+
+# target to build an object file
+controlFly.cpp.o:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/controlFly.cpp.o
+.PHONY : controlFly.cpp.o
+
+controlFly.i: controlFly.cpp.i
+
+.PHONY : controlFly.i
+
+# target to preprocess a source file
+controlFly.cpp.i:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/controlFly.cpp.i
+.PHONY : controlFly.cpp.i
+
+controlFly.s: controlFly.cpp.s
+
+.PHONY : controlFly.s
+
+# target to generate assembly for a file
+controlFly.cpp.s:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/controlFly.cpp.s
+.PHONY : controlFly.cpp.s
 
 lexer.o: lexer.cpp.o
 
@@ -231,6 +231,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+openServerCommand.o: openServerCommand.cpp.o
+
+.PHONY : openServerCommand.o
+
+# target to build an object file
+openServerCommand.cpp.o:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/openServerCommand.cpp.o
+.PHONY : openServerCommand.cpp.o
+
+openServerCommand.i: openServerCommand.cpp.i
+
+.PHONY : openServerCommand.i
+
+# target to preprocess a source file
+openServerCommand.cpp.i:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/openServerCommand.cpp.i
+.PHONY : openServerCommand.cpp.i
+
+openServerCommand.s: openServerCommand.cpp.s
+
+.PHONY : openServerCommand.s
+
+# target to generate assembly for a file
+openServerCommand.cpp.s:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/openServerCommand.cpp.s
+.PHONY : openServerCommand.cpp.s
+
 server.o: server.cpp.o
 
 .PHONY : server.o
@@ -267,18 +294,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... flight-project"
 	@echo "... edit_cache"
-	@echo "... OpenServerCommand.o"
-	@echo "... OpenServerCommand.i"
-	@echo "... OpenServerCommand.s"
 	@echo "... connectControlClient.o"
 	@echo "... connectControlClient.i"
 	@echo "... connectControlClient.s"
+	@echo "... controlFly.o"
+	@echo "... controlFly.i"
+	@echo "... controlFly.s"
 	@echo "... lexer.o"
 	@echo "... lexer.i"
 	@echo "... lexer.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... openServerCommand.o"
+	@echo "... openServerCommand.i"
+	@echo "... openServerCommand.s"
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"

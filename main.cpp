@@ -2,13 +2,12 @@
 // Created by Nitsan BenHanoch on 15/12/2019.
 //
 
-#include <iostream>
 #include "lexer.h"
-#include "server.h"
+#include "controlFly.h"
 
 using namespace std;
 
-int main()
+int main(int a, char *arg[])
 {
 //    {// בדיקה והדגמה איך הלאקסר מפרק את הקובץ
 //        lexer a("/home/hodyah/CLionProjects/flight-project/fly.txt");
@@ -19,6 +18,6 @@ int main()
 //            b->pop();
 //        }
 //    }// סוף בדיקת לאקסר
-    server s;
-    s.OpenServerCommand(5400);
+    controlFly control;
+    control.playControlFly(arg[1]);
 }

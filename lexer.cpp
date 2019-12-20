@@ -20,7 +20,7 @@ lexer::lexer(string fileName){
 /**.
  * splitFile methot split the file.
  */
-void lexer::splitFile(){
+queue<string>* lexer::splitFile(){
     string line{};
     while(!insertFile.eof()){
         getline(insertFile, line);
@@ -62,6 +62,8 @@ void lexer::splitFile(){
             }
         }
     }
+    this->insertFile.close();
+    return this->commandQueue;
 }
 /**
  * splitAcurddingSign helping method. she put all the residue string
@@ -94,11 +96,4 @@ void lexer:: splitAcurddingSign(string line, int i, char sign){
         this->commandQueue->push(inputCommand);
         inputCommand.clear();
     }
-}
-/**.
- * return queue split lexer.
- * @return
- */
-queue<string>* lexer:: returnSplitFileQueue(){
-    return this->commandQueue;
 }

@@ -8,7 +8,11 @@
  * server create server to contact the fly.
  * @param portNum the port num to clint
  */
-server::server(int portNum) {
+server::server() {
+
+}
+
+void server:: openTheServer(int portNum){
     restartAddres(portNum);
     if (bind(socketfd, (struct sockaddr *) &address, sizeof(address)) == -1) {
         std::cerr<<"Could not bind the socket to an IP"<<std::endl;
