@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/nitsan/CLionProjects/flight-project
+CMAKE_SOURCE_DIR = /home/hodyah/CLionProjects/flight-project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/nitsan/CLionProjects/flight-project/cmake-build-debug
+CMAKE_BINARY_DIR = /home/hodyah/CLionProjects/flight-project/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/flight-project.dir/depend.make
@@ -59,107 +59,107 @@ include CMakeFiles/flight-project.dir/flags.make
 
 CMakeFiles/flight-project.dir/lexer.cpp.o: CMakeFiles/flight-project.dir/flags.make
 CMakeFiles/flight-project.dir/lexer.cpp.o: ../lexer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/flight-project.dir/lexer.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/lexer.cpp.o -c /Users/nitsan/CLionProjects/flight-project/lexer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/flight-project.dir/lexer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/lexer.cpp.o -c /home/hodyah/CLionProjects/flight-project/lexer.cpp
 
 CMakeFiles/flight-project.dir/lexer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/lexer.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/CLionProjects/flight-project/lexer.cpp > CMakeFiles/flight-project.dir/lexer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/lexer.cpp > CMakeFiles/flight-project.dir/lexer.cpp.i
 
 CMakeFiles/flight-project.dir/lexer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/lexer.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/CLionProjects/flight-project/lexer.cpp -o CMakeFiles/flight-project.dir/lexer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/lexer.cpp -o CMakeFiles/flight-project.dir/lexer.cpp.s
 
 CMakeFiles/flight-project.dir/main.cpp.o: CMakeFiles/flight-project.dir/flags.make
 CMakeFiles/flight-project.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/flight-project.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/main.cpp.o -c /Users/nitsan/CLionProjects/flight-project/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/flight-project.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/main.cpp.o -c /home/hodyah/CLionProjects/flight-project/main.cpp
 
 CMakeFiles/flight-project.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/CLionProjects/flight-project/main.cpp > CMakeFiles/flight-project.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/main.cpp > CMakeFiles/flight-project.dir/main.cpp.i
 
 CMakeFiles/flight-project.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/CLionProjects/flight-project/main.cpp -o CMakeFiles/flight-project.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/main.cpp -o CMakeFiles/flight-project.dir/main.cpp.s
 
 CMakeFiles/flight-project.dir/server.cpp.o: CMakeFiles/flight-project.dir/flags.make
 CMakeFiles/flight-project.dir/server.cpp.o: ../server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/flight-project.dir/server.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/server.cpp.o -c /Users/nitsan/CLionProjects/flight-project/server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/flight-project.dir/server.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/server.cpp.o -c /home/hodyah/CLionProjects/flight-project/server.cpp
 
 CMakeFiles/flight-project.dir/server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/server.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/CLionProjects/flight-project/server.cpp > CMakeFiles/flight-project.dir/server.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/server.cpp > CMakeFiles/flight-project.dir/server.cpp.i
 
 CMakeFiles/flight-project.dir/server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/server.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/CLionProjects/flight-project/server.cpp -o CMakeFiles/flight-project.dir/server.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/server.cpp -o CMakeFiles/flight-project.dir/server.cpp.s
 
 CMakeFiles/flight-project.dir/controlFly.cpp.o: CMakeFiles/flight-project.dir/flags.make
 CMakeFiles/flight-project.dir/controlFly.cpp.o: ../controlFly.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/flight-project.dir/controlFly.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/controlFly.cpp.o -c /Users/nitsan/CLionProjects/flight-project/controlFly.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/flight-project.dir/controlFly.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/controlFly.cpp.o -c /home/hodyah/CLionProjects/flight-project/controlFly.cpp
 
 CMakeFiles/flight-project.dir/controlFly.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/controlFly.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/CLionProjects/flight-project/controlFly.cpp > CMakeFiles/flight-project.dir/controlFly.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/controlFly.cpp > CMakeFiles/flight-project.dir/controlFly.cpp.i
 
 CMakeFiles/flight-project.dir/controlFly.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/controlFly.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/CLionProjects/flight-project/controlFly.cpp -o CMakeFiles/flight-project.dir/controlFly.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/controlFly.cpp -o CMakeFiles/flight-project.dir/controlFly.cpp.s
 
 CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.o: CMakeFiles/flight-project.dir/flags.make
 CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.o: ../commandFromFileToMap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.o -c /Users/nitsan/CLionProjects/flight-project/commandFromFileToMap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.o -c /home/hodyah/CLionProjects/flight-project/commandFromFileToMap.cpp
 
 CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/CLionProjects/flight-project/commandFromFileToMap.cpp > CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/commandFromFileToMap.cpp > CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.i
 
 CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/CLionProjects/flight-project/commandFromFileToMap.cpp -o CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/commandFromFileToMap.cpp -o CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.s
 
 CMakeFiles/flight-project.dir/client.cpp.o: CMakeFiles/flight-project.dir/flags.make
 CMakeFiles/flight-project.dir/client.cpp.o: ../client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/flight-project.dir/client.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/client.cpp.o -c /Users/nitsan/CLionProjects/flight-project/client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/flight-project.dir/client.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/client.cpp.o -c /home/hodyah/CLionProjects/flight-project/client.cpp
 
 CMakeFiles/flight-project.dir/client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/client.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/CLionProjects/flight-project/client.cpp > CMakeFiles/flight-project.dir/client.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/client.cpp > CMakeFiles/flight-project.dir/client.cpp.i
 
 CMakeFiles/flight-project.dir/client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/client.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/CLionProjects/flight-project/client.cpp -o CMakeFiles/flight-project.dir/client.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/client.cpp -o CMakeFiles/flight-project.dir/client.cpp.s
 
 CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o: CMakeFiles/flight-project.dir/flags.make
 CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o: ../xmlChunksIndices.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o -c /Users/nitsan/CLionProjects/flight-project/xmlChunksIndices.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o -c /home/hodyah/CLionProjects/flight-project/xmlChunksIndices.cpp
 
 CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/CLionProjects/flight-project/xmlChunksIndices.cpp > CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/xmlChunksIndices.cpp > CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.i
 
 CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/CLionProjects/flight-project/xmlChunksIndices.cpp -o CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/xmlChunksIndices.cpp -o CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.s
 
 CMakeFiles/flight-project.dir/stringsplit.cpp.o: CMakeFiles/flight-project.dir/flags.make
 CMakeFiles/flight-project.dir/stringsplit.cpp.o: ../stringsplit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/flight-project.dir/stringsplit.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/stringsplit.cpp.o -c /Users/nitsan/CLionProjects/flight-project/stringsplit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/flight-project.dir/stringsplit.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flight-project.dir/stringsplit.cpp.o -c /home/hodyah/CLionProjects/flight-project/stringsplit.cpp
 
 CMakeFiles/flight-project.dir/stringsplit.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flight-project.dir/stringsplit.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/CLionProjects/flight-project/stringsplit.cpp > CMakeFiles/flight-project.dir/stringsplit.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/flight-project/stringsplit.cpp > CMakeFiles/flight-project.dir/stringsplit.cpp.i
 
 CMakeFiles/flight-project.dir/stringsplit.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flight-project.dir/stringsplit.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/CLionProjects/flight-project/stringsplit.cpp -o CMakeFiles/flight-project.dir/stringsplit.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/flight-project/stringsplit.cpp -o CMakeFiles/flight-project.dir/stringsplit.cpp.s
 
 # Object files for target flight-project
 flight__project_OBJECTS = \
@@ -185,7 +185,7 @@ flight-project: CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o
 flight-project: CMakeFiles/flight-project.dir/stringsplit.cpp.o
 flight-project: CMakeFiles/flight-project.dir/build.make
 flight-project: CMakeFiles/flight-project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable flight-project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable flight-project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/flight-project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -198,6 +198,6 @@ CMakeFiles/flight-project.dir/clean:
 .PHONY : CMakeFiles/flight-project.dir/clean
 
 CMakeFiles/flight-project.dir/depend:
-	cd /Users/nitsan/CLionProjects/flight-project/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/nitsan/CLionProjects/flight-project /Users/nitsan/CLionProjects/flight-project /Users/nitsan/CLionProjects/flight-project/cmake-build-debug /Users/nitsan/CLionProjects/flight-project/cmake-build-debug /Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles/flight-project.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hodyah/CLionProjects/flight-project/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hodyah/CLionProjects/flight-project /home/hodyah/CLionProjects/flight-project /home/hodyah/CLionProjects/flight-project/cmake-build-debug /home/hodyah/CLionProjects/flight-project/cmake-build-debug /home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles/flight-project.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/flight-project.dir/depend
 

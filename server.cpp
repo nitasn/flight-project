@@ -4,6 +4,7 @@
 //TODO ש כאן טיפול לא נכון בשגיאות - צריך לחזור לזה
 #include <unordered_map>
 #include "server.h"
+#include "stringsplit.cpp"
 /**.
  * server create server to contact the fly.
  * @param portNum the port num to clint
@@ -68,7 +69,9 @@ void server:: restartAddres(int portNum){
 
 void upDateDictenaryVariable(char* buffer, unordered_map<string, string> a, unordered_map<string, double>* v){
     auto itRunOnMap = v->begin();
+    strings_array *strings = split(buffer, ',');
     for(; itRunOnMap!= v->end(); itRunOnMap++){
         v->at(itRunOnMap, *buffer[]);
     }
+    delete strings;
 }
