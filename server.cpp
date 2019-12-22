@@ -13,29 +13,33 @@ server::server() {
 
 }
 
+void f() {
+    cout << "hey gf" << endl;
+}
+
 void server:: openTheServer(int portNum){
     restartAddres(portNum);
     if (bind(socketfd, (struct sockaddr *) &address, sizeof(address)) == -1) {
         std::cerr<<"Could not bind the socket to an IP"<<std::endl;
         return;
     }
-    if (listen(socketfd, 5) == -1) {
+    if (listen(socketfd, MAX_CONNECTIONS) == -1) {
         std::cerr<<"Error during listening command"<<std::endl;
         return;
     } else{
         std::cout<<"Server is now listening ..."<<std::endl;
     }
-    std::thread readingCilion(informationFromServer, this->socketfd, this->address, this->buffer);
-    readingCilion.join();
+    thread readingClient(informationFromServer, this->socketfd, this->address, this->buffer);
+    readingClient.join();
 }
-/**.
+/**.td::
  *informationFromServer update all time with thread the information
  * that clion send
  * @param socketfd
  * @param address
  * @param buffer
  */
-void informationFromServer(int socketfd, sockaddr_in address,char* buffer){
+void informationFromServer(int socketfd, sockaddr_in address, char buffer[1024]){
     while (true){
         int client_socket = accept(socketfd, (struct sockaddr *)&address,
                                    (socklen_t*)&address);
@@ -45,6 +49,8 @@ void informationFromServer(int socketfd, sockaddr_in address,char* buffer){
         }
         int valread = read( client_socket , buffer, 1024);
         std::cout<<buffer<<std::endl;
+
+        cout << "server just read " << buffer << endl;
     }
 }
 /**informationFromServer
@@ -55,7 +61,7 @@ void server:: restartAddres(int portNum){
     this->socketfd = socket(AF_INET, SOCK_STREAM, 0);
     if (socketfd == -1) {
         std::cerr << "problem with open socket. semothing not work"<< endl;
-        throw (new exception());
+        throw (exception());
     }
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;

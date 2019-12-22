@@ -4,6 +4,7 @@
 
 #include "lexer.h"
 #include "controlFly.h"
+#include "server.h"
 
 using namespace std;
 
@@ -18,6 +19,8 @@ int main(int a, char *arg[])
 //            b->pop();
 //        }
 //    }// סוף בדיקת לאקסר
-    controlFly control;
-    control.playControlFly(arg[1]);
+//    controlFly control;
+//    control.playControlFly(arg[1]);
+    server s;
+    s.openTheServer(5400);
 }

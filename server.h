@@ -15,11 +15,12 @@ using namespace std;
  * server create server to contact the fly.
  * @param portNum the port num to clint
  */
-void  informationFromServer(int socketfd, sockaddr_in address,char* buffer);
+void informationFromServer(int socketfd, sockaddr_in address, char buffer[1024]);
 class server{
     int socketfd;
     sockaddr_in address;
     char buffer[1024];
+    const int MAX_CONNECTIONS = 5;
 public:server();
     void openTheServer(int portNum);
     void restartAddres(int portNum);
