@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int main(int a, char *arg[])
+int main(int argc, char *argv[])
 {
 //    {// בדיקה והדגמה איך הלאקסר מפרק את הקובץ
 //        lexer a("/home/hodyah/CLionProjects/flight-project/fly.txt");

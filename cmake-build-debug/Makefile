@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hodyah/CLionProjects/flight-project
+CMAKE_SOURCE_DIR = /Users/nitsan/CLionProjects/flight-project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hodyah/CLionProjects/flight-project/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/nitsan/CLionProjects/flight-project/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/hodyah/CLionProjects/flight-project/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles /home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles /Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -285,6 +285,60 @@ server.cpp.s:
 	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/server.cpp.s
 .PHONY : server.cpp.s
 
+stringsplit.o: stringsplit.cpp.o
+
+.PHONY : stringsplit.o
+
+# target to build an object file
+stringsplit.cpp.o:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/stringsplit.cpp.o
+.PHONY : stringsplit.cpp.o
+
+stringsplit.i: stringsplit.cpp.i
+
+.PHONY : stringsplit.i
+
+# target to preprocess a source file
+stringsplit.cpp.i:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/stringsplit.cpp.i
+.PHONY : stringsplit.cpp.i
+
+stringsplit.s: stringsplit.cpp.s
+
+.PHONY : stringsplit.s
+
+# target to generate assembly for a file
+stringsplit.cpp.s:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/stringsplit.cpp.s
+.PHONY : stringsplit.cpp.s
+
+xmlChunksIndices.o: xmlChunksIndices.cpp.o
+
+.PHONY : xmlChunksIndices.o
+
+# target to build an object file
+xmlChunksIndices.cpp.o:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o
+.PHONY : xmlChunksIndices.cpp.o
+
+xmlChunksIndices.i: xmlChunksIndices.cpp.i
+
+.PHONY : xmlChunksIndices.i
+
+# target to preprocess a source file
+xmlChunksIndices.cpp.i:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.i
+.PHONY : xmlChunksIndices.cpp.i
+
+xmlChunksIndices.s: xmlChunksIndices.cpp.s
+
+.PHONY : xmlChunksIndices.s
+
+# target to generate assembly for a file
+xmlChunksIndices.cpp.s:
+	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.s
+.PHONY : xmlChunksIndices.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -292,8 +346,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... flight-project"
 	@echo "... edit_cache"
+	@echo "... flight-project"
 	@echo "... client.o"
 	@echo "... client.i"
 	@echo "... client.s"
@@ -312,6 +366,12 @@ help:
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"
+	@echo "... stringsplit.o"
+	@echo "... stringsplit.i"
+	@echo "... stringsplit.s"
+	@echo "... xmlChunksIndices.o"
+	@echo "... xmlChunksIndices.i"
+	@echo "... xmlChunksIndices.s"
 .PHONY : help
 
 

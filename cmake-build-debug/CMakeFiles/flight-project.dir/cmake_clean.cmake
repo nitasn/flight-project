@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/flight-project.dir/lexer.cpp.o"
   "CMakeFiles/flight-project.dir/main.cpp.o"
   "CMakeFiles/flight-project.dir/server.cpp.o"
+  "CMakeFiles/flight-project.dir/stringsplit.cpp.o"
+  "CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o"
   "flight-project"
   "flight-project.pdb"
 )
