@@ -16,6 +16,7 @@ using namespace std;
  * @param portNum the port num to clint
  */
 void informationFromServer(int socketfd, sockaddr_in address, char buffer[1024]);
+void upDateDictenaryVariable(char* buffer);
 class server{
     int socketfd;
     sockaddr_in address;

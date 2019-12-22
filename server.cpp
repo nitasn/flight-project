@@ -1,9 +1,8 @@
 //
 // Created by hodyah on 19/12/2019.
-//יש כאן טיפול לא נכון בשגיאות - צריך לחזור לזה**
-// יש בעיה עם הTREHD
 //
-//TODO check work.
+//TODO ש כאן טיפול לא נכון בשגיאות - צריך לחזור לזה
+#include <unordered_map>
 #include "server.h"
 /**.
  * server create server to contact the fly.
@@ -49,7 +48,6 @@ void informationFromServer(int socketfd, sockaddr_in address, char buffer[1024])
         }
         int valread = read( client_socket , buffer, 1024);
         std::cout<<buffer<<std::endl;
-
         cout << "server just read " << buffer << endl;
     }
 }
@@ -66,4 +64,11 @@ void server:: restartAddres(int portNum){
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
     address.sin_port = htons(portNum);
+}
+
+void upDateDictenaryVariable(char* buffer, unordered_map<string, string> a, unordered_map<string, double>* v){
+    auto itRunOnMap = v->begin();
+    for(; itRunOnMap!= v->end(); itRunOnMap++){
+        v->at(itRunOnMap, *buffer[]);
+    }
 }
