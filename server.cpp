@@ -29,7 +29,7 @@ void server:: openTheServer(int portNum){
     } else{
         std::cout<<"Server is now listening ..."<<std::endl;
     }
-    thread readingClient(informationFromServer, this->socketfd, this->address, this->buffer);
+    thread readingClient(informationFromServer, this->socketfd, this->address);
     readingClient.join();
 }
 /**.td::
@@ -39,8 +39,10 @@ void server:: openTheServer(int portNum){
  * @param address
  * @param buffer
  */
-void informationFromServer(int socketfd, sockaddr_in address, char buffer[1024]){
+void informationFromServer(int socketfd, sockaddr_in address){//                           unordered_map<string, pair<string, double>>* variableStringAndValue,
+//                           unordered_map<string, int> aPlaceMap){
     while (true){
+        char buffer[1024];
         int client_socket = accept(socketfd, (struct sockaddr *)&address,
                                    (socklen_t*)&address);
         if (client_socket == -1) {
@@ -48,11 +50,13 @@ void informationFromServer(int socketfd, sockaddr_in address, char buffer[1024])
             return;
         }
         int valread = read( client_socket , buffer, 1024);
-        std::cout<<buffer<<std::endl;
+        cout<<buffer<<endl;
         cout << "server just read " << buffer << endl;
+//        upDateDictenaryVariable(buffer,variableStringAndValue,aPlaceMap);
     }
 }
-/**informationFromServer
+/**
+ * informationFromServer
  * reset the adrees and socket of clion
  * @param portNum clion port num
  */
@@ -66,12 +70,21 @@ void server:: restartAddres(int portNum){
     address.sin_addr.s_addr = INADDR_ANY;
     address.sin_port = htons(portNum);
 }
-
-void upDateDictenaryVariable(char* buffer, unordered_map<string, string> a, unordered_map<string, double>* v){
-    auto itRunOnMap = v->begin();
-    strings_array *strings = split(buffer, ',');
-    for(; itRunOnMap!= v->end(); itRunOnMap++){
-        v->at(itRunOnMap, *buffer[]);
+/**
+ * update all the variable in map variables accurding string value from fly
+ * @param buffer the string that send from the fly
+ * @param variableStringAndValue map of all the variables that the plan need
+ * @param aPlaceMap map of place in string buffer
+ */
+void upDateDictenaryVariable(char* buffer,unordered_map<string, pair<string, double>>* variableStringAndValue,
+        unordered_map<string, int> aPlaceMap){
+    auto itRunOnMap = variableStringAndValue->begin();
+    strings_array *stringsBuffer = split(buffer, ',');
+    for(; itRunOnMap!= variableStringAndValue->end(); itRunOnMap++){
+        pair<string, double> pairNewObject(itRunOnMap->second.first,
+                atof(stringsBuffer->arr[aPlaceMap[itRunOnMap->second.first]].c_str()));
+        auto newPair = make_pair(itRunOnMap->first, pairNewObject);
+        (variableStringAndValue)->insert(newPair);
     }
-    delete strings;
+delete stringsBuffer;
 }

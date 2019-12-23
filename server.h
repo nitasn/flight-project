@@ -11,16 +11,18 @@ using namespace std;
 #include <unistd.h>
 #include <netinet/in.h>
 #include "thread"
+#include "stringsplit.cpp"
 /**.
  * server create server to contact the fly.
  * @param portNum the port num to clint
  */
-void informationFromServer(int socketfd, sockaddr_in address, char buffer[1024]);
-void upDateDictenaryVariable(char* buffer);
+void informationFromServer(int socketfd, sockaddr_in address);
+void upDateDictenaryVariable(char* buffer,
+        unordered_map<string, pair<string, double>>* variableStringAndValue,
+                             unordered_map<string, int> aPlaceMap);
 class server{
     int socketfd;
     sockaddr_in address;
-    char buffer[1024];
     const int MAX_CONNECTIONS = 5;
 public:server();
     void openTheServer(int portNum);
