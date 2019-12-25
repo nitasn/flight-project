@@ -24,39 +24,36 @@ queue<string>* lexer::splitFile(){
     string line{};
     while(!insertFile.eof()){
         getline(insertFile, line);
-        string currentStringInLop;
         for(int i = 0; i != line.size(); i++) {
             if (line[i] == '('){
-                if(!currentStringInLop.empty()){
-                    this->commandQueue->push(currentStringInLop);
-                    currentStringInLop.clear();
-                }
+                addCurrentStringToQueue();
                 splitAcurddingSign(line, i+1, ')');
                 break;
             } else if(line[i] == '='){
-                if(!currentStringInLop.empty()){
-                    this->commandQueue->push(currentStringInLop);
-                    currentStringInLop.clear();
+                addCurrentStringToQueue();
+                if (line[i+1] != '='){
+                    this->commandQueue->push("=");
+                    splitAcurddingSign(line, i+1, ' ');
+                    break;
                 }
-                this->commandQueue->push("=");
-                splitAcurddingSign(line, i+1, ' ');
-                break;
-            } else if(line[i] == ' ' || (line[i] == '\t')){
-                if(!currentStringInLop.empty()){
-                    this->commandQueue->push(currentStringInLop);
-                    currentStringInLop.clear();
-                }
-            } else if ((line[i] == '-' && line[i+1] == '>')||(line[i] == '<' && line[i+1] == '-')){
-                if (!currentStringInLop.empty()){
-                    this->commandQueue->push(currentStringInLop);
-                    currentStringInLop.clear();
-                }
-                if (line[i] == '-'){
-                    this->commandQueue->push("->");
-                }else{
-                    this->commandQueue->push("<-");
-                }
+                this->commandQueue->push("==");
                 i++;
+            } else if(line[i] == ' ' || (line[i] == '\t')){
+                addCurrentStringToQueue();
+            } else if(line[i] == '{' || line[i] == '}'){
+                addCurrentStringToQueue();
+                string s;
+                this->commandQueue->push(s + line[i]);
+            } else if ((line[i] == '-' && line[i+1] == '>')||(line[i] == '<' && line[i+1] == '-')
+                ||line[i]=='>' || line[i] == '<' || line[i] == '!'){
+                addCurrentStringToQueue();
+                string s;
+                if (line[i + 1] == '-' || line[i+1] == '>' || line[i+1] == '=' ){
+                    this->commandQueue->push(s + line[i] + line[i+1]);
+                    i++;
+                }else{
+                    this->commandQueue->push(s + line[i]);
+                }
             }else {
                 currentStringInLop = currentStringInLop + "" + line[i];
             }
@@ -73,7 +70,6 @@ queue<string>* lexer::splitFile(){
  * @param sign if need to  stop befor end line.
  */
 void lexer:: splitAcurddingSign(string line, int i, char sign){
-    string inputCommand;
     bool flagThisIsInString = false;
     while(true){
         if((line.size() == i + 1) || line.size() == i){
@@ -82,18 +78,24 @@ void lexer:: splitAcurddingSign(string line, int i, char sign){
             }
         }
         if(line[i] == ','){
-            this->commandQueue->push(inputCommand);
-            inputCommand.clear();
+            this->commandQueue->push(this->currentStringInLop);
+            this->currentStringInLop.clear();
         } else if (((flagThisIsInString) && line[i] == ' ')|| (line[i] != ' ' && line[i] != '\t')){
-            inputCommand = inputCommand + "" + line[i];
+            this->currentStringInLop = this->currentStringInLop + "" + line[i];
             if(line[i] == '"'){
                 flagThisIsInString = !flagThisIsInString;
             }
         }
         i++;
     }
-    if(!inputCommand.empty()){
-        this->commandQueue->push(inputCommand);
-        inputCommand.clear();
+    addCurrentStringToQueue();
+}
+/**
+ * add the string to queue if he not empty
+ */
+void lexer:: addCurrentStringToQueue(){
+    if(!currentStringInLop.empty()){
+        this->commandQueue->push(currentStringInLop);
+        currentStringInLop.clear();
     }
 }

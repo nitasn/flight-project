@@ -19,10 +19,12 @@ using namespace std;
 class lexer{
     queue<string> *commandQueue;
     ifstream insertFile;
+    string currentStringInLop;
 public:lexer(string fileName);
     queue<string>* splitFile();
 private:
     void splitAcurddingSign(string line, int i, char sign);
+    void addCurrentStringToQueue();
 };
 
 #endif //UNTITLED7_LEXER_H

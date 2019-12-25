@@ -12,7 +12,8 @@ using namespace std;
  */
 class command{
 public:
-    virtual void execut(queue<string>* inputQueue);
+    virtual void execut(queue<string>* inputQueue) = 0;
+    virtual ~command(){};
 };
 #endif //FLIGHT_PROJECT_COMMAND_H
 

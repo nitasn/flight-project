@@ -111,17 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named flight-project
+# Target rules for targets named flight_project
 
 # Build rule for target.
-flight-project: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 flight-project
-.PHONY : flight-project
+flight_project: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 flight_project
+.PHONY : flight_project
 
 # fast build rule for target.
-flight-project/fast:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/build
-.PHONY : flight-project/fast
+flight_project/fast:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/build
+.PHONY : flight_project/fast
+
+Expression.o: Expression.cpp.o
+
+.PHONY : Expression.o
+
+# target to build an object file
+Expression.cpp.o:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/Expression.cpp.o
+.PHONY : Expression.cpp.o
+
+Expression.i: Expression.cpp.i
+
+.PHONY : Expression.i
+
+# target to preprocess a source file
+Expression.cpp.i:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/Expression.cpp.i
+.PHONY : Expression.cpp.i
+
+Expression.s: Expression.cpp.s
+
+.PHONY : Expression.s
+
+# target to generate assembly for a file
+Expression.cpp.s:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/Expression.cpp.s
+.PHONY : Expression.cpp.s
 
 client.o: client.cpp.o
 
@@ -129,7 +156,7 @@ client.o: client.cpp.o
 
 # target to build an object file
 client.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/client.cpp.o
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/client.cpp.o
 .PHONY : client.cpp.o
 
 client.i: client.cpp.i
@@ -138,7 +165,7 @@ client.i: client.cpp.i
 
 # target to preprocess a source file
 client.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/client.cpp.i
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/client.cpp.i
 .PHONY : client.cpp.i
 
 client.s: client.cpp.s
@@ -147,35 +174,8 @@ client.s: client.cpp.s
 
 # target to generate assembly for a file
 client.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/client.cpp.s
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/client.cpp.s
 .PHONY : client.cpp.s
-
-commandFromFileToMap.o: commandFromFileToMap.cpp.o
-
-.PHONY : commandFromFileToMap.o
-
-# target to build an object file
-commandFromFileToMap.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.o
-.PHONY : commandFromFileToMap.cpp.o
-
-commandFromFileToMap.i: commandFromFileToMap.cpp.i
-
-.PHONY : commandFromFileToMap.i
-
-# target to preprocess a source file
-commandFromFileToMap.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.i
-.PHONY : commandFromFileToMap.cpp.i
-
-commandFromFileToMap.s: commandFromFileToMap.cpp.s
-
-.PHONY : commandFromFileToMap.s
-
-# target to generate assembly for a file
-commandFromFileToMap.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/commandFromFileToMap.cpp.s
-.PHONY : commandFromFileToMap.cpp.s
 
 controlFly.o: controlFly.cpp.o
 
@@ -183,7 +183,7 @@ controlFly.o: controlFly.cpp.o
 
 # target to build an object file
 controlFly.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/controlFly.cpp.o
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/controlFly.cpp.o
 .PHONY : controlFly.cpp.o
 
 controlFly.i: controlFly.cpp.i
@@ -192,7 +192,7 @@ controlFly.i: controlFly.cpp.i
 
 # target to preprocess a source file
 controlFly.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/controlFly.cpp.i
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/controlFly.cpp.i
 .PHONY : controlFly.cpp.i
 
 controlFly.s: controlFly.cpp.s
@@ -201,8 +201,35 @@ controlFly.s: controlFly.cpp.s
 
 # target to generate assembly for a file
 controlFly.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/controlFly.cpp.s
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/controlFly.cpp.s
 .PHONY : controlFly.cpp.s
+
+ifWhileCommandFromFileToMap.o: ifWhileCommandFromFileToMap.cpp.o
+
+.PHONY : ifWhileCommandFromFileToMap.o
+
+# target to build an object file
+ifWhileCommandFromFileToMap.cpp.o:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/ifWhileCommandFromFileToMap.cpp.o
+.PHONY : ifWhileCommandFromFileToMap.cpp.o
+
+ifWhileCommandFromFileToMap.i: ifWhileCommandFromFileToMap.cpp.i
+
+.PHONY : ifWhileCommandFromFileToMap.i
+
+# target to preprocess a source file
+ifWhileCommandFromFileToMap.cpp.i:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/ifWhileCommandFromFileToMap.cpp.i
+.PHONY : ifWhileCommandFromFileToMap.cpp.i
+
+ifWhileCommandFromFileToMap.s: ifWhileCommandFromFileToMap.cpp.s
+
+.PHONY : ifWhileCommandFromFileToMap.s
+
+# target to generate assembly for a file
+ifWhileCommandFromFileToMap.cpp.s:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/ifWhileCommandFromFileToMap.cpp.s
+.PHONY : ifWhileCommandFromFileToMap.cpp.s
 
 lexer.o: lexer.cpp.o
 
@@ -210,7 +237,7 @@ lexer.o: lexer.cpp.o
 
 # target to build an object file
 lexer.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/lexer.cpp.o
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/lexer.cpp.o
 .PHONY : lexer.cpp.o
 
 lexer.i: lexer.cpp.i
@@ -219,7 +246,7 @@ lexer.i: lexer.cpp.i
 
 # target to preprocess a source file
 lexer.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/lexer.cpp.i
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/lexer.cpp.i
 .PHONY : lexer.cpp.i
 
 lexer.s: lexer.cpp.s
@@ -228,7 +255,7 @@ lexer.s: lexer.cpp.s
 
 # target to generate assembly for a file
 lexer.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/lexer.cpp.s
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/lexer.cpp.s
 .PHONY : lexer.cpp.s
 
 main.o: main.cpp.o
@@ -237,7 +264,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -246,7 +273,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -255,7 +282,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 server.o: server.cpp.o
@@ -264,7 +291,7 @@ server.o: server.cpp.o
 
 # target to build an object file
 server.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/server.cpp.o
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/server.cpp.o
 .PHONY : server.cpp.o
 
 server.i: server.cpp.i
@@ -273,7 +300,7 @@ server.i: server.cpp.i
 
 # target to preprocess a source file
 server.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/server.cpp.i
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/server.cpp.i
 .PHONY : server.cpp.i
 
 server.s: server.cpp.s
@@ -282,8 +309,35 @@ server.s: server.cpp.s
 
 # target to generate assembly for a file
 server.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/server.cpp.s
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/server.cpp.s
 .PHONY : server.cpp.s
+
+simpleCommandFromFileToMap.o: simpleCommandFromFileToMap.cpp.o
+
+.PHONY : simpleCommandFromFileToMap.o
+
+# target to build an object file
+simpleCommandFromFileToMap.cpp.o:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/simpleCommandFromFileToMap.cpp.o
+.PHONY : simpleCommandFromFileToMap.cpp.o
+
+simpleCommandFromFileToMap.i: simpleCommandFromFileToMap.cpp.i
+
+.PHONY : simpleCommandFromFileToMap.i
+
+# target to preprocess a source file
+simpleCommandFromFileToMap.cpp.i:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/simpleCommandFromFileToMap.cpp.i
+.PHONY : simpleCommandFromFileToMap.cpp.i
+
+simpleCommandFromFileToMap.s: simpleCommandFromFileToMap.cpp.s
+
+.PHONY : simpleCommandFromFileToMap.s
+
+# target to generate assembly for a file
+simpleCommandFromFileToMap.cpp.s:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/simpleCommandFromFileToMap.cpp.s
+.PHONY : simpleCommandFromFileToMap.cpp.s
 
 stringsplit.o: stringsplit.cpp.o
 
@@ -291,7 +345,7 @@ stringsplit.o: stringsplit.cpp.o
 
 # target to build an object file
 stringsplit.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/stringsplit.cpp.o
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/stringsplit.cpp.o
 .PHONY : stringsplit.cpp.o
 
 stringsplit.i: stringsplit.cpp.i
@@ -300,7 +354,7 @@ stringsplit.i: stringsplit.cpp.i
 
 # target to preprocess a source file
 stringsplit.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/stringsplit.cpp.i
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/stringsplit.cpp.i
 .PHONY : stringsplit.cpp.i
 
 stringsplit.s: stringsplit.cpp.s
@@ -309,7 +363,7 @@ stringsplit.s: stringsplit.cpp.s
 
 # target to generate assembly for a file
 stringsplit.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/stringsplit.cpp.s
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/stringsplit.cpp.s
 .PHONY : stringsplit.cpp.s
 
 xmlChunksIndices.o: xmlChunksIndices.cpp.o
@@ -318,7 +372,7 @@ xmlChunksIndices.o: xmlChunksIndices.cpp.o
 
 # target to build an object file
 xmlChunksIndices.cpp.o:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.o
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/xmlChunksIndices.cpp.o
 .PHONY : xmlChunksIndices.cpp.o
 
 xmlChunksIndices.i: xmlChunksIndices.cpp.i
@@ -327,7 +381,7 @@ xmlChunksIndices.i: xmlChunksIndices.cpp.i
 
 # target to preprocess a source file
 xmlChunksIndices.cpp.i:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.i
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/xmlChunksIndices.cpp.i
 .PHONY : xmlChunksIndices.cpp.i
 
 xmlChunksIndices.s: xmlChunksIndices.cpp.s
@@ -336,7 +390,7 @@ xmlChunksIndices.s: xmlChunksIndices.cpp.s
 
 # target to generate assembly for a file
 xmlChunksIndices.cpp.s:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/xmlChunksIndices.cpp.s
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/xmlChunksIndices.cpp.s
 .PHONY : xmlChunksIndices.cpp.s
 
 # Help Target
@@ -346,17 +400,20 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... flight-project"
+	@echo "... flight_project"
 	@echo "... edit_cache"
+	@echo "... Expression.o"
+	@echo "... Expression.i"
+	@echo "... Expression.s"
 	@echo "... client.o"
 	@echo "... client.i"
 	@echo "... client.s"
-	@echo "... commandFromFileToMap.o"
-	@echo "... commandFromFileToMap.i"
-	@echo "... commandFromFileToMap.s"
 	@echo "... controlFly.o"
 	@echo "... controlFly.i"
 	@echo "... controlFly.s"
+	@echo "... ifWhileCommandFromFileToMap.o"
+	@echo "... ifWhileCommandFromFileToMap.i"
+	@echo "... ifWhileCommandFromFileToMap.s"
 	@echo "... lexer.o"
 	@echo "... lexer.i"
 	@echo "... lexer.s"
@@ -366,6 +423,9 @@ help:
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"
+	@echo "... simpleCommandFromFileToMap.o"
+	@echo "... simpleCommandFromFileToMap.i"
+	@echo "... simpleCommandFromFileToMap.s"
 	@echo "... stringsplit.o"
 	@echo "... stringsplit.i"
 	@echo "... stringsplit.s"

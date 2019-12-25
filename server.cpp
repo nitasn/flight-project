@@ -39,8 +39,9 @@ void server:: openTheServer(int portNum){
  * @param address
  * @param buffer
  */
-void informationFromServer(int socketfd, sockaddr_in address){//                           unordered_map<string, pair<string, double>>* variableStringAndValue,
-//                           unordered_map<string, int> aPlaceMap){
+void informationFromServer(int socketfd, sockaddr_in address,
+        unordered_map<string, pair<string, double>>* variableStringAndValue,
+                           unordered_map<string, int> aPlaceMap){
     while (true){
         char buffer[1024];
         int client_socket = accept(socketfd, (struct sockaddr *)&address,
@@ -52,7 +53,7 @@ void informationFromServer(int socketfd, sockaddr_in address){//                
         int valread = read( client_socket , buffer, 1024);
         cout<<buffer<<endl;
         cout << "server just read " << buffer << endl;
-//        upDateDictenaryVariable(buffer,variableStringAndValue,aPlaceMap);
+        upDateDictenaryVariable(buffer,variableStringAndValue,aPlaceMap);
     }
 }
 /**
@@ -78,13 +79,13 @@ void server:: restartAddres(int portNum){
  */
 void upDateDictenaryVariable(char* buffer,unordered_map<string, pair<string, double>>* variableStringAndValue,
         unordered_map<string, int> aPlaceMap){
-    auto itRunOnMap = variableStringAndValue->begin();
-    strings_array *stringsBuffer = split(buffer, ',');
-    for(; itRunOnMap!= variableStringAndValue->end(); itRunOnMap++){
-        pair<string, double> pairNewObject(itRunOnMap->second.first,
-                atof(stringsBuffer->arr[aPlaceMap[itRunOnMap->second.first]].c_str()));
-        auto newPair = make_pair(itRunOnMap->first, pairNewObject);
-        (variableStringAndValue)->insert(newPair);
-    }
-delete stringsBuffer;
+//    auto itRunOnMap = variableStringAndValue->begin();
+//    strings_array *stringsBuffer = split(buffer, ',');
+//    for(; itRunOnMap!= variableStringAndValue->end(); itRunOnMap++){
+//        pair<string, double> pairNewObject(itRunOnMap->second.first,
+//                atof(stringsBuffer->arr[aPlaceMap[itRunOnMap->second.first]].c_str()));
+//        auto newPair = make_pair(itRunOnMap->first, pairNewObject);
+//        (variableStringAndValue)->insert(newPair);
+//    }
+//    delete stringsBuffer;
 }

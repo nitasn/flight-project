@@ -1,8 +1,27 @@
 cmake_minimum_required(VERSION 3.15)
-project(flight-project)
+project(flight_project)
 
-#set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS -pthread)
-#set(CMAKE_C_FLAGS -pthread)
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(flight-project lexer.cpp lexer.h main.cpp server.cpp server.h command.h controlFly.cpp controlFly.h commandFromFileToMap.cpp commandFromFileToMap.h client.cpp client.h xmlChunksIndices.cpp xmlChunksIndices.h stringsplit.cpp)
+include_directories(.)
+
+add_executable(flight_project
+        client.cpp
+        client.h
+        command.h
+        controlFly.cpp
+        controlFly.h
+        Expression.cpp
+        Expression.h
+        ifWhileCommandFromFileToMap.cpp
+        ifWhileCommandFromFileToMap.h
+        lexer.cpp
+        lexer.h
+        main.cpp
+        server.cpp
+        server.h
+        simpleCommandFromFileToMap.cpp
+        simpleCommandFromFileToMap.h
+        stringsplit.cpp
+        xmlChunksIndices.cpp
+        xmlChunksIndices.h)

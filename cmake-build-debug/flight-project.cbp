@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/Expression.cpp">
+			<Option target="flight-project"/>
+		</Unit>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/Expression.h">
+			<Option target="flight-project"/>
+		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/client.cpp">
 			<Option target="flight-project"/>
 		</Unit>
@@ -93,16 +99,16 @@
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/command.h">
 			<Option target="flight-project"/>
 		</Unit>
-		<Unit filename="/home/hodyah/CLionProjects/flight-project/commandFromFileToMap.cpp">
-			<Option target="flight-project"/>
-		</Unit>
-		<Unit filename="/home/hodyah/CLionProjects/flight-project/commandFromFileToMap.h">
-			<Option target="flight-project"/>
-		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/controlFly.cpp">
 			<Option target="flight-project"/>
 		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/controlFly.h">
+			<Option target="flight-project"/>
+		</Unit>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/ifWhileCommandFromFileToMap.cpp">
+			<Option target="flight-project"/>
+		</Unit>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/ifWhileCommandFromFileToMap.h">
 			<Option target="flight-project"/>
 		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/lexer.cpp">
@@ -118,6 +124,12 @@
 			<Option target="flight-project"/>
 		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/server.h">
+			<Option target="flight-project"/>
+		</Unit>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/simpleCommandFromFileToMap.cpp">
+			<Option target="flight-project"/>
+		</Unit>
+		<Unit filename="/home/hodyah/CLionProjects/flight-project/simpleCommandFromFileToMap.h">
 			<Option target="flight-project"/>
 		</Unit>
 		<Unit filename="/home/hodyah/CLionProjects/flight-project/stringsplit.cpp">

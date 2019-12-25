@@ -53,12 +53,12 @@ CMAKE_BINARY_DIR = /home/hodyah/CLionProjects/flight-project/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/flight-project.dir/all
+all: CMakeFiles/flight_project.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
-clean: CMakeFiles/flight-project.dir/clean
+clean: CMakeFiles/flight_project.dir/clean
 
 .PHONY : clean
 
@@ -68,31 +68,31 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
-# Target rules for target CMakeFiles/flight-project.dir
+# Target rules for target CMakeFiles/flight_project.dir
 
 # All Build rule for target.
-CMakeFiles/flight-project.dir/all:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/depend
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target flight-project"
-.PHONY : CMakeFiles/flight-project.dir/all
+CMakeFiles/flight_project.dir/all:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/depend
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target flight_project"
+.PHONY : CMakeFiles/flight_project.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/flight-project.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles 9
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/flight-project.dir/all
+CMakeFiles/flight_project.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles 14
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/flight_project.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hodyah/CLionProjects/flight-project/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/flight-project.dir/rule
+.PHONY : CMakeFiles/flight_project.dir/rule
 
 # Convenience name for target.
-flight-project: CMakeFiles/flight-project.dir/rule
+flight_project: CMakeFiles/flight_project.dir/rule
 
-.PHONY : flight-project
+.PHONY : flight_project
 
 # clean rule for target.
-CMakeFiles/flight-project.dir/clean:
-	$(MAKE) -f CMakeFiles/flight-project.dir/build.make CMakeFiles/flight-project.dir/clean
-.PHONY : CMakeFiles/flight-project.dir/clean
+CMakeFiles/flight_project.dir/clean:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/clean
+.PHONY : CMakeFiles/flight_project.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
