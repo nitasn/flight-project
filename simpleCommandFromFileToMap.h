@@ -19,7 +19,7 @@
 class connectControlClient: public command{
 public:
 //    connectControlClient(client clientPointer);
-    void execut(queue<string>* inputQueue);
+    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
 };
 
 /**
@@ -30,24 +30,26 @@ class openServerCommand: public command{
     server *serverPointer;
 public:
     openServerCommand(server *serverPointer);
-    void execut(queue<string>* inputQueue);
+    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
 };
 /**
  * printCommand print to the console the string
  * @param inputQueue the comman queue
  */
 class printCommand: public command {
+    //ToDo add map and check if print var from map
 public:
-    void execut(queue<string>* inputQueue);
+    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
 };
 /**
  * sleep the main thread acurdding the number in queue
  * @param inputQueue the command queue
  */
 class sleepCmmand: public command{
+    //ToDo add map and check if print var from map
 public:
     sleepCmmand();
-    void execut(queue<string>* inputQueue);
+    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
 };
 /**
  *
@@ -57,7 +59,7 @@ class varCommand: public command{
     unordered_map<string, Expression> *varMapUpdateServer;
 public:
     varCommand(unordered_map<string, Expression> *mapClient, unordered_map<string, Expression> *mapServer);
-    void execut(queue<string>* inputQueue);
+    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
 };
 
 #endif //FLIGHT_PROJECT_SIMPLECOMMANDFROMFILETOMAP_H

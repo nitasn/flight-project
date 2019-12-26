@@ -12,7 +12,7 @@ using namespace std;
  */
 class command{
 public:
-    virtual void execut(queue<string>* inputQueue) = 0;
+    virtual void execute(vector<string>* inputVector, vector<string>::iterator* it) = 0;
     virtual ~command(){};
 };
 #endif //FLIGHT_PROJECT_COMMAND_H

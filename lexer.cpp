@@ -11,7 +11,7 @@
  * @param fileName the file to read and split.
  */
 lexer::lexer(string fileName){
-    this->commandQueue = new queue<string>();
+    this->commandVactor = new vector<string>();
     this->insertFile.open(fileName, ios::in);
     if (insertFile.fail() || insertFile.bad()){
         throw "error. not have this page";
@@ -20,7 +20,7 @@ lexer::lexer(string fileName){
 /**.
  * splitFile methot split the file.
  */
-queue<string>* lexer::splitFile(){
+vector<string>* lexer::splitFile(){
     string line{};
     while(!insertFile.eof()){
         getline(insertFile, line);
@@ -32,27 +32,27 @@ queue<string>* lexer::splitFile(){
             } else if(line[i] == '='){
                 addCurrentStringToQueue();
                 if (line[i+1] != '='){
-                    this->commandQueue->push("=");
+                    this->commandVactor->push_back("=");
                     splitAcurddingSign(line, i+1, ' ');
                     break;
                 }
-                this->commandQueue->push("==");
+                this->commandVactor->push_back("==");
                 i++;
             } else if(line[i] == ' ' || (line[i] == '\t')){
                 addCurrentStringToQueue();
             } else if(line[i] == '{' || line[i] == '}'){
                 addCurrentStringToQueue();
                 string s;
-                this->commandQueue->push(s + line[i]);
+                this->commandVactor->push_back(s + line[i]);
             } else if ((line[i] == '-' && line[i+1] == '>')||(line[i] == '<' && line[i+1] == '-')
                 ||line[i]=='>' || line[i] == '<' || line[i] == '!'){
                 addCurrentStringToQueue();
                 string s;
                 if (line[i + 1] == '-' || line[i+1] == '>' || line[i+1] == '=' ){
-                    this->commandQueue->push(s + line[i] + line[i+1]);
+                    this->commandVactor->push_back(s + line[i] + line[i+1]);
                     i++;
                 }else{
-                    this->commandQueue->push(s + line[i]);
+                    this->commandVactor->push_back(s + line[i]);
                 }
             }else {
                 currentStringInLop = currentStringInLop + "" + line[i];
@@ -60,7 +60,7 @@ queue<string>* lexer::splitFile(){
         }
     }
     this->insertFile.close();
-    return this->commandQueue;
+    return this->commandVactor;
 }
 /**
  * splitAcurddingSign helping method. she put all the residue string
@@ -78,7 +78,7 @@ void lexer:: splitAcurddingSign(string line, int i, char sign){
             }
         }
         if(line[i] == ','){
-            this->commandQueue->push(this->currentStringInLop);
+            this->commandVactor->push_back(this->currentStringInLop);
             this->currentStringInLop.clear();
         } else if (((flagThisIsInString) && line[i] == ' ')|| (line[i] != ' ' && line[i] != '\t')){
             this->currentStringInLop = this->currentStringInLop + "" + line[i];
@@ -95,7 +95,7 @@ void lexer:: splitAcurddingSign(string line, int i, char sign){
  */
 void lexer:: addCurrentStringToQueue(){
     if(!currentStringInLop.empty()){
-        this->commandQueue->push(currentStringInLop);
+        this->commandVactor->push_back(currentStringInLop);
         currentStringInLop.clear();
     }
 }

@@ -11,10 +11,10 @@
 //connectControlClient:: connectControlClient(client *clientPointer): command(){
 //    this->clienPointer = clientPointer;
 //};
-void connectControlClient:: execut(queue<string>* inputQueue){
+void connectControlClient:: execute(vector<string>* inputVector, vector<string>::iterator* runOnVector){
     try{
 //        server serverOpen(atof((inputQueue->front().c_str())));
-        inputQueue->pop();
+        (*runOnVector)++;
     } catch (...) {
         return;
     }
@@ -27,10 +27,10 @@ void connectControlClient:: execut(queue<string>* inputQueue){
 openServerCommand:: openServerCommand(server *serverPointer): command(){
     this->serverPointer = serverPointer;
 };
-void openServerCommand:: execut(queue<string>* inputQueue){
+void openServerCommand:: execute(vector<string>* inputVector, vector<string>::iterator* runOnVector){
     try{
-        this->serverPointer->openTheServer(atof((inputQueue->front().c_str())));
-        inputQueue->pop();
+        this->serverPointer->openTheServer(atof(((*runOnVector)->c_str())));
+        (*runOnVector)++;
     } catch (...) {
         return;
     }
@@ -39,9 +39,9 @@ void openServerCommand:: execut(queue<string>* inputQueue){
  * printCommand print to the console the string
  * @param inputQueue the comman queue
  */
-void printCommand::execut(queue<string> *inputQueue) {
-    cout << inputQueue->front() << endl;
-    inputQueue->pop();
+void printCommand::execute(vector<string>* inputVector, vector<string>::iterator* runOnVector) {
+    cout << **runOnVector << endl;
+    (*runOnVector)++;
 }
 /**
  *
@@ -52,15 +52,15 @@ varCommand:: varCommand(unordered_map<string, Expression> *mapClient, unordered_
     this->varMapSendClient = mapClient;
     this->varMapUpdateServer = mapServer;
 }
-void varCommand::execut(queue<string> *inputQueue) {
+void varCommand::execute(vector<string>* inputVector, vector<string>::iterator* runOnVector)  {
     //TODO
-    string varName = inputQueue->front();
-    inputQueue->pop();
-    if(inputQueue->front() == "->"){
+    string varName = **runOnVector;
+    (*runOnVector)++;
+    if(**runOnVector == "->"){
 
-    } else if(inputQueue->front() == "<-"){
+    } else if(**runOnVector == "<-"){
 
-    } else if(inputQueue->front() == "="){
+    } else if(**runOnVector == "="){
 
     }
 }
@@ -68,7 +68,7 @@ void varCommand::execut(queue<string> *inputQueue) {
  * sleep the main thread acurdding the number in queue
  * @param inputQueue the command queue
  */
-void sleepCmmand::execut(queue<string> *inputQueue) {
-    this_thread::sleep_for(chrono::seconds(atoi(inputQueue->front().c_str())));
-    inputQueue->pop();
+void sleepCmmand::execute(vector<string>* inputVector, vector<string>::iterator* runOnVector)  {
+    this_thread::sleep_for(chrono::seconds(atoi(((*runOnVector)->c_str()))));
+    (*runOnVector)++;
 }

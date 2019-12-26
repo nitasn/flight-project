@@ -9,8 +9,6 @@ add_executable(flight_project
         client.cpp
         client.h
         command.h
-        controlFly.cpp
-        controlFly.h
         Expression.cpp
         Expression.h
         ifWhileCommandFromFileToMap.cpp
@@ -23,5 +21,4 @@ add_executable(flight_project
         simpleCommandFromFileToMap.cpp
         simpleCommandFromFileToMap.h
         stringsplit.cpp
-        xmlChunksIndices.cpp
-        xmlChunksIndices.h)
+        controlFly.cpp controlFly.h parser.cpp parser.h test.cpp)

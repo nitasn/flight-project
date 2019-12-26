@@ -285,6 +285,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+parser.o: parser.cpp.o
+
+.PHONY : parser.o
+
+# target to build an object file
+parser.cpp.o:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/parser.cpp.o
+.PHONY : parser.cpp.o
+
+parser.i: parser.cpp.i
+
+.PHONY : parser.i
+
+# target to preprocess a source file
+parser.cpp.i:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/parser.cpp.i
+.PHONY : parser.cpp.i
+
+parser.s: parser.cpp.s
+
+.PHONY : parser.s
+
+# target to generate assembly for a file
+parser.cpp.s:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/parser.cpp.s
+.PHONY : parser.cpp.s
+
 server.o: server.cpp.o
 
 .PHONY : server.o
@@ -366,32 +393,32 @@ stringsplit.cpp.s:
 	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/stringsplit.cpp.s
 .PHONY : stringsplit.cpp.s
 
-xmlChunksIndices.o: xmlChunksIndices.cpp.o
+test.o: test.cpp.o
 
-.PHONY : xmlChunksIndices.o
+.PHONY : test.o
 
 # target to build an object file
-xmlChunksIndices.cpp.o:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/xmlChunksIndices.cpp.o
-.PHONY : xmlChunksIndices.cpp.o
+test.cpp.o:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/test.cpp.o
+.PHONY : test.cpp.o
 
-xmlChunksIndices.i: xmlChunksIndices.cpp.i
+test.i: test.cpp.i
 
-.PHONY : xmlChunksIndices.i
+.PHONY : test.i
 
 # target to preprocess a source file
-xmlChunksIndices.cpp.i:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/xmlChunksIndices.cpp.i
-.PHONY : xmlChunksIndices.cpp.i
+test.cpp.i:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/test.cpp.i
+.PHONY : test.cpp.i
 
-xmlChunksIndices.s: xmlChunksIndices.cpp.s
+test.s: test.cpp.s
 
-.PHONY : xmlChunksIndices.s
+.PHONY : test.s
 
 # target to generate assembly for a file
-xmlChunksIndices.cpp.s:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/xmlChunksIndices.cpp.s
-.PHONY : xmlChunksIndices.cpp.s
+test.cpp.s:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/test.cpp.s
+.PHONY : test.cpp.s
 
 # Help Target
 help:
@@ -420,6 +447,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... parser.o"
+	@echo "... parser.i"
+	@echo "... parser.s"
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"
@@ -429,9 +459,9 @@ help:
 	@echo "... stringsplit.o"
 	@echo "... stringsplit.i"
 	@echo "... stringsplit.s"
-	@echo "... xmlChunksIndices.o"
-	@echo "... xmlChunksIndices.i"
-	@echo "... xmlChunksIndices.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 .PHONY : help
 
 

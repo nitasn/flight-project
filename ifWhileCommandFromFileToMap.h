@@ -1,20 +1,18 @@
 //
 // Created by hodyah on 25/12/2019.
 //
-
 #ifndef FLIGHT_PROJECT_IFWHILECOMMANDFROMFILETOMAP_H
 #define FLIGHT_PROJECT_IFWHILECOMMANDFROMFILETOMAP_H
-
 #include "controlFly.h"
 /**
  * ifCommand play the block command if the condition true.
  * @param controlFly the control fly object
  */
 class ifCommand: public command{
-    controlFly* controlFlyObject;
+    parser *parserFile;
 public:
-    ifCommand(class controlFly* controlFlyObject);
-    void execut(queue<string>* inputQueue);
+    ifCommand(parser *parserFile);
+    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
 };
 /**
  * struct to create condition information
@@ -29,7 +27,7 @@ struct {
  * @param inputQueue string queue with the condition
  * @return the condition strucr with two expression and string opertor
  */
-condition returnConditionFromString(queue<string>* inputQueue);
+condition returnConditionFromString(vector<string>* inputVector, vector<string>::iterator* runOnVector);
 /**
  * check the condition accurding the opertor string
  * @param ifCondition the condition information
@@ -42,9 +40,10 @@ bool checkCondition(condition ifCondition);
  * @param controlFly the control fly object
  */
 class whileCommand: public command{
-    controlFly* controlFlyObject;
+    parser *parserFile
 public:
-    whileCommand(class controlFly* ccontrolFlyObject);
-    void execut(queue<string>* inputQueue);
+    whileCommand(parser *parserFile);
+    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
 };
+//TODO run on while
 #endif //FLIGHT_PROJECT_IFWHILECOMMANDFROMFILETOMAP_H

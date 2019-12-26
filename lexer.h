@@ -17,11 +17,11 @@ using namespace std;
  * @param fileName the file to read and split.
  */
 class lexer{
-    queue<string> *commandQueue;
+    vector<string>* commandVactor;
     ifstream insertFile;
     string currentStringInLop;
 public:lexer(string fileName);
-    queue<string>* splitFile();
+    vector<string>* splitFile();
 private:
     void splitAcurddingSign(string line, int i, char sign);
     void addCurrentStringToQueue();
