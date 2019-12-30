@@ -7,7 +7,6 @@
 
 #include <unordered_map>
 #include "command.h"
-#include "server.h"
 #include "Expression.h"
 #include "controlFly.h"
 #include "thread"
@@ -16,50 +15,50 @@
  * connectControlClient connect to control client with the
  * current input and update thr queue
  */
-class connectControlClient: public command{
+class connectControlClient: public Command{
 public:
-//    connectControlClient(client clientPointer);
-    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector);
 };
 
 /**
  * create server with the current input
  * and update thr queue
  */
-class openServerCommand: public command{
-    server *serverPointer;
+class openServerCommand: public Command{
 public:
-    openServerCommand(server *serverPointer);
-    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector);
 };
 /**
  * printCommand print to the console the string
  * @param inputQueue the comman queue
  */
-class printCommand: public command {
-    //ToDo add map and check if print var from map
+class printCommand: public Command {
 public:
-    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector);
 };
 /**
  * sleep the main thread acurdding the number in queue
  * @param inputQueue the command queue
  */
-class sleepCmmand: public command{
-    //ToDo add map and check if print var from map
+class sleepCmmand: public Command{
 public:
-    sleepCmmand();
-    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector);
 };
 /**
  *
  */
-class varCommand: public command{
-    unordered_map<string, Expression> *varMapSendClient;
-    unordered_map<string, Expression> *varMapUpdateServer;
+class varCommand: public Command{
 public:
-    varCommand(unordered_map<string, Expression> *mapClient, unordered_map<string, Expression> *mapServer);
-    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector);
+};
+
+struct Var {
+    double data{};
+    string addressInSimulator;
+    bool toBeSentToSimulator = false;
+    explicit Var(string addressInSimulator, bool toBeSent = false) : addressInSimulator(move(addressInSimulator)),
+                                                                        toBeSentToSimulator(toBeSent) {}
+    Var() { addressInSimulator = nullptr; } // for local vars
 };
 
 #endif //FLIGHT_PROJECT_SIMPLECOMMANDFROMFILETOMAP_H

@@ -5,7 +5,6 @@ using namespace std;
 #include "string"
 #include "iostream"
 #include "command.h"
-#include "server.h"
 #include "Expression.h"
 #include <fstream>
 #include <unordered_map>
@@ -15,12 +14,10 @@ using namespace std;
 #ifndef FLIGHT_PROJECT_CONTROLFLY_H
 #define FLIGHT_PROJECT_CONTROLFLY_H
 class controlFly{
+    lexer lexerFile;
     vector<string>* commandVector;
-    unordered_map<string, command*> commandMap;
+    unordered_map<string, Command*> commandMap;
     unordered_map<string, Expression*>* varMap = new unordered_map<string, Expression*>();
-    server *serverObject;
-   // parser *parserFile;
-    // client clientObject;
 public:
     void playControlFly(string fileCommandName);
     void mapOfCommand();

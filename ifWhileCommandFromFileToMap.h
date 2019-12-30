@@ -8,11 +8,9 @@
  * ifCommand play the block command if the condition true.
  * @param controlFly the control fly object
  */
-class ifCommand: public command{
-    parser *parserFile;
+class ifCommand: public Command{
 public:
-    ifCommand(parser *parserFile);
-    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector);
 };
 /**
  * struct to create condition information
@@ -27,7 +25,7 @@ struct {
  * @param inputQueue string queue with the condition
  * @return the condition strucr with two expression and string opertor
  */
-condition returnConditionFromString(vector<string>* inputVector, vector<string>::iterator* runOnVector);
+condition returnConditionFromString(vector<string>::iterator& runOnVector);
 /**
  * check the condition accurding the opertor string
  * @param ifCondition the condition information
@@ -39,11 +37,8 @@ bool checkCondition(condition ifCondition);
  * and play all black while until the condition not true
  * @param controlFly the control fly object
  */
-class whileCommand: public command{
-    parser *parserFile
+class whileCommand: public Command{
 public:
-    whileCommand(parser *parserFile);
-    void execute(vector<string>* inputVector, vector<string>::iterator* runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector);
 };
-//TODO run on while
 #endif //FLIGHT_PROJECT_IFWHILECOMMANDFROMFILETOMAP_H

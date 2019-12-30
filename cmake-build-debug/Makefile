@@ -150,33 +150,6 @@ Expression.cpp.s:
 	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/Expression.cpp.s
 .PHONY : Expression.cpp.s
 
-client.o: client.cpp.o
-
-.PHONY : client.o
-
-# target to build an object file
-client.cpp.o:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/client.cpp.o
-.PHONY : client.cpp.o
-
-client.i: client.cpp.i
-
-.PHONY : client.i
-
-# target to preprocess a source file
-client.cpp.i:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/client.cpp.i
-.PHONY : client.cpp.i
-
-client.s: client.cpp.s
-
-.PHONY : client.s
-
-# target to generate assembly for a file
-client.cpp.s:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/client.cpp.s
-.PHONY : client.cpp.s
-
 controlFly.o: controlFly.cpp.o
 
 .PHONY : controlFly.o
@@ -312,33 +285,6 @@ parser.cpp.s:
 	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/parser.cpp.s
 .PHONY : parser.cpp.s
 
-server.o: server.cpp.o
-
-.PHONY : server.o
-
-# target to build an object file
-server.cpp.o:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/server.cpp.o
-.PHONY : server.cpp.o
-
-server.i: server.cpp.i
-
-.PHONY : server.i
-
-# target to preprocess a source file
-server.cpp.i:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/server.cpp.i
-.PHONY : server.cpp.i
-
-server.s: server.cpp.s
-
-.PHONY : server.s
-
-# target to generate assembly for a file
-server.cpp.s:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/server.cpp.s
-.PHONY : server.cpp.s
-
 simpleCommandFromFileToMap.o: simpleCommandFromFileToMap.cpp.o
 
 .PHONY : simpleCommandFromFileToMap.o
@@ -432,9 +378,6 @@ help:
 	@echo "... Expression.o"
 	@echo "... Expression.i"
 	@echo "... Expression.s"
-	@echo "... client.o"
-	@echo "... client.i"
-	@echo "... client.s"
 	@echo "... controlFly.o"
 	@echo "... controlFly.i"
 	@echo "... controlFly.s"
@@ -450,9 +393,6 @@ help:
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"
-	@echo "... server.o"
-	@echo "... server.i"
-	@echo "... server.s"
 	@echo "... simpleCommandFromFileToMap.o"
 	@echo "... simpleCommandFromFileToMap.i"
 	@echo "... simpleCommandFromFileToMap.s"

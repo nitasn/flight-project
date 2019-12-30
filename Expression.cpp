@@ -519,5 +519,6 @@ void Interpreter::checkTheVariableHaveValue(string stringToValue){
     if (this->variableMap->count(stringToValue) > 0){
         return;
     }
-    throw ("bad input");
+    throw 1;
 }
+

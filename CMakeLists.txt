@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(flight_project
-        client.cpp
-        client.h
         command.h
         Expression.cpp
         Expression.h
@@ -16,9 +14,7 @@ add_executable(flight_project
         lexer.cpp
         lexer.h
         main.cpp
-        server.cpp
-        server.h
         simpleCommandFromFileToMap.cpp
         simpleCommandFromFileToMap.h
         stringsplit.cpp
-        controlFly.cpp controlFly.h parser.cpp parser.h test.cpp)
+        controlFly.cpp controlFly.h parser.cpp parser.h test.cpp singlton.h singltonGlobals.h)

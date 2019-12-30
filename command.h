@@ -1,19 +1,15 @@
 //
-// Created by hodyah on 19/12/2019.
+// Created by Nitsan BenHanoch on 28/12/2019.
 //
 
-#ifndef FLIGHT_PROJECT_COMMAND_H
-#define FLIGHT_PROJECT_COMMAND_H
-using namespace std;
+#ifndef TESTION_COMMAND_H
+#define TESTION_COMMAND_H
+#include <vector>
 #include <string>
-#include "queue"
-/**.
- * Command Pattern to pholemorfizm to use all command like one
- */
-class command{
-public:
-    virtual void execute(vector<string>* inputVector, vector<string>::iterator* it) = 0;
-    virtual ~command(){};
+using namespace std;
+struct Command
+{
+    virtual vector<string>::iterator execute(vector<string>::iterator iter) = 0;
+    virtual ~Command() = default;
 };
-#endif //FLIGHT_PROJECT_COMMAND_H
-
+#endif //TESTION_COMMAND_H

@@ -1,20 +1,17 @@
 //
-// Created by hodyah on 26/12/2019.
+// Created by Nitsan BenHanoch on 28/12/2019.
 //
 
-#ifndef FLIGHT_PROJECT_PARSER_H
-#define FLIGHT_PROJECT_PARSER_H
+#ifndef TESTION_PARSER_H
+#define TESTION_PARSER_H
 
-#include "simpleCommandFromFileToMap.h"
-#include "ifWhileCommandFromFileToMap.h"
+#include <iostream>
+#include <map>
+#include "command.h"
+#include "CommandFactory.h"
 
-class parser {
-    vector<string>* commandVector;
-    unordered_map<string, command*> commandMap;
-public:
-    parser(unordered_map<string, command *> commandMap);
-    void playParser(vector<string>::iterator* runOnVector);
-};
-
-
-#endif //FLIGHT_PROJECT_PARSER_H
+using namespace std;
+class VarAssigningNotLegal : std::exception {};
+void parse(vector<string>::iterator iter, vector<string>::iterator end);
+double evaluateExpression(string& exp_str);
+#endif //TESTION_PARSER_H

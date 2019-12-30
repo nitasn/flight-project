@@ -4,6 +4,7 @@
 #include <string>
 #include <queue>
 #include <fstream>
+#include <unordered_map>
 #include "iostream"
 
 using namespace std;
@@ -20,11 +21,20 @@ class lexer{
     vector<string>* commandVactor;
     ifstream insertFile;
     string currentStringInLop;
-public:lexer(string fileName);
+    unordered_map<vector<string>::iterator*, vector<string>::iterator*> mapCloseBracketsIt;
+    queue<vector<string>::iterator> itToBeginBracket;
+public:
+    lexer(string fileName);
     vector<string>* splitFile();
+    void splitTheLine(string& line);
+    vector<string>::iterator getMatchingParen(vector<string>::iterator paren);
+    vector<string> *getVectorLexer();
 private:
     void splitAcurddingSign(string line, int i, char sign);
     void addCurrentStringToQueue();
+    void addItartorToMap(char bracket);
 };
 
+class NotHaveThisItartorInMapBrackets: public exception{};
+class NotCurrentBracketInFile: public exception{};
 #endif //UNTITLED7_LEXER_H
