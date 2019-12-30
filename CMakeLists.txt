@@ -17,4 +17,4 @@ add_executable(flight_project
         simpleCommandFromFileToMap.cpp
         simpleCommandFromFileToMap.h
         stringsplit.cpp
-        controlFly.cpp controlFly.h parser.cpp parser.h test.cpp singlton.h singltonGlobals.h)
+        controlFly.cpp controlFly.h parser.cpp parser.h test.cpp singlton.h singltonGlobals.h lexerFile.cpp lexerFile.h)

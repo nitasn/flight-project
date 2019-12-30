@@ -231,6 +231,33 @@ lexer.cpp.s:
 	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/lexer.cpp.s
 .PHONY : lexer.cpp.s
 
+lexerFile.o: lexerFile.cpp.o
+
+.PHONY : lexerFile.o
+
+# target to build an object file
+lexerFile.cpp.o:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/lexerFile.cpp.o
+.PHONY : lexerFile.cpp.o
+
+lexerFile.i: lexerFile.cpp.i
+
+.PHONY : lexerFile.i
+
+# target to preprocess a source file
+lexerFile.cpp.i:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/lexerFile.cpp.i
+.PHONY : lexerFile.cpp.i
+
+lexerFile.s: lexerFile.cpp.s
+
+.PHONY : lexerFile.s
+
+# target to generate assembly for a file
+lexerFile.cpp.s:
+	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/lexerFile.cpp.s
+.PHONY : lexerFile.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -387,6 +414,9 @@ help:
 	@echo "... lexer.o"
 	@echo "... lexer.i"
 	@echo "... lexer.s"
+	@echo "... lexerFile.o"
+	@echo "... lexerFile.i"
+	@echo "... lexerFile.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

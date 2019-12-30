@@ -2,33 +2,6 @@
 // Created by hodyah on 15/12/2019.
 //
 #include "lexer.h"
-/**.
- * lexer - split file string to short string.
- * lexer split accurding (), =, ->, <-,command space and tab.
- * lexer save the split string in queue on heap.
- * lexer puse =, ->, <- on the queue and not () for function (yes for mat' action),command space and tab.
- * @param fileName the file to read and split.
- */
-lexer::lexer(string fileName){
-    this->commandVactor = new vector<string>();
-    this->insertFile.open(fileName, ios::in);
-    if (this->insertFile.fail() || this->insertFile.bad()){
-        throw "error. not have this page";
-    }
-};
-/**.
- * splitFile methot split the file.
- */
-vector<string>* lexer::splitFile(){
-    string line{};
-    while(!insertFile.eof()){
-        getline(insertFile, line);
-        splitTheLine(line);
-    }
-    this->insertFile.close();
-    this->splitFile()->push_back("}");
-    return this->commandVactor;
-}
 /**
  * splitAcurddingSign helping method. she put all the residue string
  * to one string and put him to the queue. if have , she split string ther.
@@ -137,10 +110,6 @@ void lexer:: addItartorToMap(char bracket){
             this->itToBeginBracket.pop();
         }catch (...){throw NotCurrentBracketInFile();}
     }
-}
-
-vector<string>*lexer:: returnTheVectorLine(){
-    return this->commandVactor;
 }
 
 

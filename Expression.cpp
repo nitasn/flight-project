@@ -331,6 +331,7 @@ void Interpreter::ifUnurySign(int i) {
  */
 void Interpreter::upDateMapValue(string nameString, double valueString) {
     if (this->variableMap->find(nameString) != this->variableMap->end()) {
+        // todo is there a memory leak - cause we are not deleting the old var!
         this->variableMap->erase(nameString);
     }
     (this->variableMap)->emplace(nameString, *(new Variable(nameString, valueString)));
