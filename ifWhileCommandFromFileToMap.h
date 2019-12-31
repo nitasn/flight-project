@@ -10,22 +10,29 @@
  */
 class ifCommand: public Command{
 public:
-    vector<string>::iterator execute(vector<string>::iterator runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
 };
 /**
  * struct to create condition information
  */
-struct {
-    Expression* firstExpresion;
-    string conditionOpertor;
-    Expression* secondExpression;
-} typedef condition;
+struct condition {
+    Expression* left_exp;
+    string _operator;
+    Expression* right_exp;
+
+    class InvalidConditionOperator : exception {};
+
+    bool check();
+
+private:
+    static Interpreter interpreter;
+};
 /**
  * function to create condition from three first in queue
  * @param inputQueue string queue with the condition
  * @return the condition strucr with two expression and string opertor
  */
-condition returnConditionFromString(vector<string>::iterator& runOnVector);
+condition* returnConditionFromString(vector<string>::iterator runOnVector);
 /**
  * check the condition accurding the opertor string
  * @param ifCondition the condition information
@@ -39,6 +46,6 @@ bool checkCondition(condition ifCondition);
  */
 class whileCommand: public Command{
 public:
-    vector<string>::iterator execute(vector<string>::iterator runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
 };
 #endif //FLIGHT_PROJECT_IFWHILECOMMANDFROMFILETOMAP_H

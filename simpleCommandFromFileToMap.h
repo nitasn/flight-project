@@ -11,13 +11,17 @@
 #include "controlFly.h"
 #include "thread"
 #include "chrono"
+
+class VarDeclarationNotLegal : exception {};
+
+
 /**.
  * connectControlClient connect to control client with the
  * current input and update thr queue
  */
 class connectControlClient: public Command{
 public:
-    vector<string>::iterator execute(vector<string>::iterator runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
 };
 
 /**
@@ -26,7 +30,7 @@ public:
  */
 class openServerCommand: public Command{
 public:
-    vector<string>::iterator execute(vector<string>::iterator runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
 };
 /**
  * printCommand print to the console the string
@@ -34,7 +38,7 @@ public:
  */
 class printCommand: public Command {
 public:
-    vector<string>::iterator execute(vector<string>::iterator runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
 };
 /**
  * sleep the main thread acurdding the number in queue
@@ -42,22 +46,31 @@ public:
  */
 class sleepCmmand: public Command{
 public:
-    vector<string>::iterator execute(vector<string>::iterator runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
 };
-/**
- *
- */
-class varCommand: public Command{
+
+
+class updateVarCommand: public Command {
 public:
-    vector<string>::iterator execute(vector<string>::iterator runOnVector);
+    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
+};
+
+class createVarCommand: public updateVarCommand{
+public:
+    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
 };
 
 struct Var {
+
+    enum kind { toBeSentToSimulator, notToBeSent};
+
     double data{};
     string addressInSimulator;
-    bool toBeSentToSimulator = false;
-    explicit Var(string addressInSimulator, bool toBeSent = false) : addressInSimulator(move(addressInSimulator)),
-                                                                        toBeSentToSimulator(toBeSent) {}
+    kind kind = notToBeSent;
+
+    explicit Var(string addressInSimulator, enum kind kind = notToBeSent) :
+            addressInSimulator(move(addressInSimulator)), kind(kind) {}
+
     Var() { addressInSimulator = nullptr; } // for local vars
 };
 

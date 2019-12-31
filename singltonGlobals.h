@@ -25,5 +25,17 @@ class VarsMap
 public: // todo לכתוב ספציפית מי החברים
     static Singleton<map<string, Var *>> mapSingleton;
     static Singleton<mutex> mutexSingleton;
+
+    // במקום להסתבך עם המנעול בכל שימוש במפה אפשר לשלוח קטע קוד לפונקציה הזאת...
+    template <typename Func> static void do_synchronously(Func f)
+    {
+        VarsMap::mutexSingleton.it->lock();
+
+        f();
+
+        VarsMap::mutexSingleton.it->unlock();
+    }
 };
 #endif //FLIGHT_PROJECT_SINGLTONGLOBALS_H
+
+

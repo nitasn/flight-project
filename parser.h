@@ -12,6 +12,7 @@
 
 using namespace std;
 class VarAssigningNotLegal : std::exception {};
+class AssigningInvalidExpression : std::exception {};
 void parse(vector<string>::iterator iter, vector<string>::iterator end);
 double evaluateExpression(string& exp_str);
 #endif //TESTION_PARSER_H
