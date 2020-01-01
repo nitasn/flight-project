@@ -1,5 +1,5 @@
-#ifndef TESTION_TELNETSERVER_H
-#define TESTION_TELNETSERVER_H
+#ifndef FLIGHT_PROJECT_TELNETSERVER_H
+#define FLIGHT_PROJECT_TELNETSERVER_H
 
 #include <thread>
 #include <map>
@@ -32,4 +32,4 @@ public:
 };
 
 
-#endif //TESTION_TELNETSERVER_H
+#endif FLIGHT_PROJECT_TELNETSERVER_H

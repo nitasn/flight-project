@@ -87,17 +87,8 @@ void lexer::splitTheLine(string& line){
 vector<string>* lexer:: getVectorLexer(){
     return this->commandVactor;
 }
-/**
- * @param paren itartor to place in vector that begin block
- * @return itartor to end block
- */
-vector<string>::iterator lexer:: getMatchingParen(vector<string>::iterator paren){
-    vector<string>::iterator anserItartor;
-    try{anserItartor = *this->mapCloseBracketsIt[&paren];}
-    catch (...){throw NotHaveThisItartorInMapBrackets();}
-    return anserItartor;
-}
-/**
+
+/**ToAeroplaneClientSingleton
  * add itartor to map bracket itartor
  * @param bracket char, can be { or }.
  */
@@ -106,7 +97,7 @@ void lexer:: addItartorToMap(char bracket){
         this->itToBeginBracket.push((--this->commandVactor->end()));
     } else{
         try{
-            this->mapCloseBracketsIt[&this->itToBeginBracket.front()] = &(--this->commandVactor->end());
+            this->mapCloseBracketsIt->at(&this->itToBeginBracket.front()) = &(--this->commandVactor->end());
             this->itToBeginBracket.pop();
         }catch (...){throw NotCurrentBracketInFile();}
     }

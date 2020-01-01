@@ -4,6 +4,8 @@
 #ifndef FLIGHT_PROJECT_IFWHILECOMMANDFROMFILETOMAP_H
 #define FLIGHT_PROJECT_IFWHILECOMMANDFROMFILETOMAP_H
 #include "controlFly.h"
+#include "Expression.h"
+#include "singltonGlobals.h"
 /**
  * ifCommand play the block command if the condition true.
  * @param controlFly the control fly object
@@ -16,14 +18,11 @@ public:
  * struct to create condition information
  */
 struct condition {
-    Expression* left_exp;
-    string _operator;
-    Expression* right_exp;
-
+    Expression* leftExp;
+    string opCondition;
+    Expression* rightExp;
     class InvalidConditionOperator : exception {};
-
     bool check();
-
 private:
     static Interpreter interpreter;
 };
@@ -48,4 +47,4 @@ class whileCommand: public Command{
 public:
     vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
 };
-#endif //FLIGHT_PROJECT_IFWHILECOMMANDFROMFILETOMAP_H
+#endif FLIGHT_PROJECT_IFWHILECOMMANDFROMFILETOMAP_H

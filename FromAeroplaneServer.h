@@ -2,8 +2,8 @@
 // Created by Nitsan BenHanoch on 28/12/2019.
 //
 
-#ifndef TESTION_FROMAEROPLANESERVER_H
-#define TESTION_FROMAEROPLANESERVER_H
+#ifndef FLIGHT_PROJECT_FROMAEROPLANESERVER_H
+#define FLIGHT_PROJECT_FROMAEROPLANESERVER_H
 
 #include <mutex>
 #include "iostream"
@@ -25,4 +25,4 @@ public:
     void keepThisVarUpdated(string varName);
 };
 
-#endif //TESTION_FROMAEROPLANESERVER_H
+#endif FLIGHT_PROJECT_FROMAEROPLANESERVER_H

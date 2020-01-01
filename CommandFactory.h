@@ -2,13 +2,15 @@
 // Created by Nitsan BenHanoch on 28/12/2019.
 //
 
-#ifndef TESTION_COMMANDFACTORY_H
-#define TESTION_COMMANDFACTORY_H
+#ifndef FLIGHT_PROJECT_COMMANDFACTORY_H
+#define FLIGHT_PROJECT_COMMANDFACTORY_H
 
-#include "command.h"
+#include "Command.h"
 #include <string>
 #include <functional>
 #include <map>
+#include "ifWhileCommandFromFileToMap.h"
+#include "simpleCommandFromFileToMap.h"
 
 using namespace std;
 
@@ -25,4 +27,4 @@ public:
 };
 
 
-#endif //TESTION_COMMANDFACTORY_H
+#endif FLIGHT_PROJECT_COMMANDFACTORY_H

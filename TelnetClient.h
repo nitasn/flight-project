@@ -1,5 +1,5 @@
-#ifndef TESTION_TELNETCLIENT_H
-#define TESTION_TELNETCLIENT_H
+#ifndef FLIGHT_PROJECT_TELNETCLIENT_H
+#define FLIGHT_PROJECT_TELNETCLIENT_H
 
 #include <sys/socket.h>
 #include <string>
@@ -24,4 +24,4 @@ public:
     ~TelnetClient() { close(client_socket); }
 };
 
-#endif //TESTION_TELNETCLIENT_H
+#endif FLIGHT_PROJECT_TELNETCLIENT_H

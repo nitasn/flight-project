@@ -1,7 +1,7 @@
+
 #include "controlFly.h"
 #include "lexer.h"
 #include "simpleCommandFromFileToMap.h"
-#include "ifWhileCommandFromFileToMap.h"
 #include "singltonGlobals.h"
 //
 // Created by hodyah on 20/12/2019.
@@ -38,19 +38,3 @@ void controlFly::playControlFly(string fileCommandName) {
 //    delete(*this->varMapUpdateServer, *this->varMapSendClient,
 //            *this->commandQueue, this->serverObject);
 }
-
-///**
-// *mapOfCommand input the map all the command with the current variable.
-// */
-//void controlFly::mapOfCommand() {
-//    //TODO check if can be sim alone
-//    //TODO check = or -> alone
-//    //TODO check if sim can be alone
-//    this->commandMap["openDataServer"] = new openServerCommand(this->serverObject);
-//    this->commandMap["connectControlClient"] = new connectControlClient();
-////    this->commandMap.insert(make_pair("var",));
-//    this->commandMap["Print"] = new printCommand();
-//    this->commandMap["Sleep"] = new sleepCmmand();
-//    this->commandMap["while"] = new whileCommand(this->parserFile);
-//    this->commandMap["if"] = new ifCommand(this->parserFile);
-//}

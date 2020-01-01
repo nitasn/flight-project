@@ -36,6 +36,32 @@ public: // todo לכתוב ספציפית מי החברים
         VarsMap::mutexSingleton.it->unlock();
     }
 };
-#endif //FLIGHT_PROJECT_SINGLTONGLOBALS_H
+
+class NotHaveThisItartorInMapBrackets: public exception{};
+
+class MapItToBeginBracketSingleton: public Singleton<unordered_map<
+        vector<string>::iterator*, vector<string>::iterator*>> {
+public:
+    /**
+    * @param paren itartor to place in vector that begin block
+    * @return itartor to end block
+    */
+    static vector<string>::iterator getMatchingParen(vector<string>::iterator paren){
+        vector<string>::iterator anserItartor;
+        try{anserItartor = *it->at(&paren);}
+        catch (...){throw NotHaveThisItartorInMapBrackets();}
+        return anserItartor;
+    }
+    friend class ifWhileCommandFileToMap;
+};
+
+//vector<string>::iterator getMatchingParen(vector<string>::iterator paren){
+//    vector<string>::iterator anserItartor;
+//    try{anserItartor = *this->mapCloseBracketsIt[&paren];}
+//    catch (...){throw NotHaveThisItartorInMapBrackets();}
+//    MapItToBeginBracketSingleton::it = this->mapCloseBracketsIt;
+//    return anserItartor;
+//}
+#endif FLIGHT_PROJECT_SINGLTONGLOBALS_H
 
 

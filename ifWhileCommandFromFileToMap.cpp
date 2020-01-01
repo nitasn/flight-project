@@ -9,23 +9,25 @@
 vector<string>::iterator ifCommand::execute(vector<string>::iterator runOnVector)
 {
     // if, x + 7, <=, y * 9 - 6, {, x, =, y + 4 - 2 * x, },
-
     condition* ifCondition = returnConditionFromString(runOnVector);
-
     // עשיתי פה בלאגן
     // יש סוגריים מסולסלים בפלט של הלקסר? נראה לי שיעזור לנו אם יהיו לפחות לצורך דיבוג
-
     runOnVector += 3;
-
     if(ifCondition->check())
     {
-        vector<string>::iterator& endOfIf = runOnVector;
-        parse(++runOnVector);
+        try{
+            auto endLoop = MapItToBeginBracketSingleton::getMatchingParen(runOnVector);
+            parse(runOnVector, endLoop);
+        }
+        catch(exception exp){throw exp;}
+//        vector<string>::iterator& endOfIf = runOnVector;
+//        parse(++runOnVector);
     } else{
-        while(*runOnVector != "}"){runOnVector++;}
+//        while(*runOnVector != "}"){runOnVector++;}
+        try{runOnVector = MapItToBeginBracketSingleton::getMatchingParen(runOnVector);}
+        catch(exception exp){throw exp;}
     }
     delete ifCondition;
-
     return runOnVector; //todo ++?
 }
 
@@ -36,14 +38,12 @@ vector<string>::iterator ifCommand::execute(vector<string>::iterator runOnVector
  */
 condition* returnConditionFromString(vector<string>::iterator runOnVector)
 {
-    auto* res_cond = new condition; // result condition
-
-    res_cond->left_exp = interpreter.interpret(*runOnVector++);
-
-    res_cond->_operator = *runOnVector++;
-
-    res_cond->right_exp = interpreter.interpret(*runOnVector++);
-
+    condition* res_cond = new condition; // result condition
+    Interpreter leftExpInter;
+    res_cond->leftExp = leftExpInter.interpret(*runOnVector++);
+    res_cond->opCondition= *runOnVector++;
+    Interpreter rightExpInter;
+    res_cond->rightExp = rightExpInter.interpret(*runOnVector++);
     return res_cond;
 }
 
@@ -52,31 +52,30 @@ condition* returnConditionFromString(vector<string>::iterator runOnVector)
  * @param ifCondition the condition information
  * @return true or false if the condition right or not.
  */
-bool condition::check()
-{
-    if(_operator == ">=")
+bool condition::check(){
+    if(opCondition == ">=")
     {
-        return left_exp->calculate() >= right_exp->calculate();
+        return leftExp->calculate() >= rightExp->calculate();
     }
-    if(_operator == "<=")
+    if(opCondition == "<=")
     {
-        return left_exp->calculate() <= right_exp->calculate();
+        return leftExp->calculate() <= rightExp->calculate();
     }
-    if(_operator == "==")
+    if(opCondition == "==")
     {
-        return left_exp->calculate() == right_exp->calculate();
+        return leftExp->calculate() == rightExp->calculate();
     }
-    if(_operator == ">")
+    if(opCondition == ">")
     {
-        return left_exp->calculate() > right_exp->calculate();
+        return leftExp->calculate() > rightExp->calculate();
     }
-    if(_operator == "<")
+    if(opCondition == "<")
     {
-        return left_exp->calculate() < right_exp->calculate();
+        return leftExp->calculate() < rightExp->calculate();
     }
-    if(_operator == "!=")
+    if(opCondition == "!=")
     {
-        return left_exp->calculate() != right_exp->calculate();
+        return leftExp->calculate() != rightExp->calculate();
     }
     throw InvalidConditionOperator();
 }
@@ -86,18 +85,27 @@ bool condition::check()
  * @param controlFly the control fly object
  */
 vector<string>::iterator whileCommand:: execute(vector<string>::iterator runOnVector){
-    condition whileCondition = returnConditionFromString(runOnVector);
-    vector<string>::iterator beginTheLoop = runOnVector;
+    condition whileCondition = *returnConditionFromString(runOnVector);
+//    vector<string>::iterator beginTheLoop = runOnVector;
+    runOnVector += 3;
+    //todo why we need flag?
     bool flagIWaseCheck = false;
     while(checkCondition(whileCondition)){
         flagIWaseCheck = true;
-        runOnVector = beginTheLoop;
-        parse(runOnVector);
+//        runOnVector = beginTheLoop;
+        try{
+            auto endLoop = MapItToBeginBracketSingleton::getMatchingParen(runOnVector);
+            parse(runOnVector, endLoop);
+        }
+        catch(exception exp){throw exp;}
     }
     if(!flagIWaseCheck){
-        while(*runOnVector != "}"){runOnVector++;}
+        //todo we have this in the map, we dont need run again
+//        while(*runOnVector != "}"){runOnVector++;}
+        try{runOnVector = MapItToBeginBracketSingleton::getMatchingParen(runOnVector);}
+        catch(exception exp){throw exp;}
     }
-    delete whileCondition.right_exp, whileCondition.left_exp;
-    delete(whileCondition.right_exp, whileCondition.left_exp);
+    delete whileCondition.rightExp, whileCondition.leftExp;
+    delete(whileCondition.rightExp, whileCondition.leftExp);
     return runOnVector; // todo ++?
 }

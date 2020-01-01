@@ -4,7 +4,7 @@
 #include "simpleCommandFromFileToMap.h"
 #include "TelnetClient.h"
 #include "TelnetServer.h"
-#include "command.h"
+#include "Command.h"
 #include "ToAeroplaneClient.h"
 #include "FromAeroplaneServer.h"
 #include "singltonGlobals.h"

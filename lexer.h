@@ -2,10 +2,9 @@
 // Created by hodyah on 15/12/2019.
 //
 
-
+#ifndef FLIGHT_PROJECT_LEXER_H
+#define FLIGHT_PROJECT_LEXER_H
 using namespace std;
-#ifndef UNTITLED7_LEXER_H
-#define UNTITLED7_LEXER_H
 #include <string>
 #include <queue>
 #include <fstream>
@@ -23,13 +22,13 @@ using namespace std;
 class lexer{
     vector<string>* commandVactor;
     string currentStringInLop;
-    unordered_map<vector<string>::iterator*, vector<string>::iterator*> mapCloseBracketsIt;
+    unordered_map<vector<string>::iterator*, vector<string>::iterator*> *mapCloseBracketsIt =
+            new unordered_map<vector<string>::iterator*, vector<string>::iterator*>();
     queue<vector<string>::iterator> itToBeginBracket;
 public:
     lexer();
 //    vector<string>* splitFile();
     void splitTheLine(string& line);
-    vector<string>::iterator getMatchingParen(vector<string>::iterator paren);
     vector<string>* getVectorLexer();
 private:
     void splitAcurddingSign(string line, int i, char sign);
@@ -37,6 +36,5 @@ private:
     void addItartorToMap(char bracket);
     friend class lexerFile;
 };
-class NotHaveThisItartorInMapBrackets: public exception{};
 class NotCurrentBracketInFile: public exception{};
-#endif //UNTITLED7_LEXER_H
+#endif FLIGHT_PROJECT_LEXER_H

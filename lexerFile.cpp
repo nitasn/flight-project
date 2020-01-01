@@ -2,6 +2,7 @@
 // Created by hodyah on 30/12/2019.
 //
 #include "lexerFile.h"
+#include "singltonGlobals.h"
 
 /**.
  * lexer - split file string to short string.
@@ -27,7 +28,7 @@ vector<string>* lexerFile::splitFile(){
         splitTheLine(line);
     }
     this->insertFile.close();
-    this->splitFile()->push_back("}");
+    MapItToBeginBracketSingleton::it = this->mapCloseBracketsIt;
     return this->commandVactor;
 }
 #include "lexerFile.h"

@@ -1,11 +1,8 @@
 
-#ifndef PROJECT_EXPRESSION_H
-#define PROJECT_EXPRESSION_H
+#ifndef FLIGHT_PROJECT_EXPRESSION_H
+#define FLIGHT_PROJECT_EXPRESSION_H
 
 using namespace std;
-
-#ifndef UNTITLED1_EX1_H
-#define UNTITLED1_EX1_H
 #include "string"
 #include <netdb.h>
 #include <stack>
@@ -113,7 +110,5 @@ private: void createNumQueue();
     void checkTheVariableHaveValue(string stringToValue);
     void checkOkParenthesisAndOpertor(string thisExpression);
 };
-#endif //UNTITLED1_EX1_H
 
-
-#endif //PROJECT_EXPRESSION_H
+#endif FLIGHT_PROJECT_EXPRESSION_H

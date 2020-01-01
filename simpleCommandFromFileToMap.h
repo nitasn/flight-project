@@ -6,7 +6,7 @@
 #define FLIGHT_PROJECT_SIMPLECOMMANDFROMFILETOMAP_H
 
 #include <unordered_map>
-#include "command.h"
+#include "Command.h"
 #include "Expression.h"
 #include "controlFly.h"
 #include "thread"
@@ -74,4 +74,4 @@ struct Var {
     Var() { addressInSimulator = nullptr; } // for local vars
 };
 
-#endif //FLIGHT_PROJECT_SIMPLECOMMANDFROMFILETOMAP_H
+#endif FLIGHT_PROJECT_SIMPLECOMMANDFROMFILETOMAP_H

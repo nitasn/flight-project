@@ -12,4 +12,4 @@ public:
     lexerFile(string fileName);
     vector<string>* splitFile();
 };
-#endif //FLIGHT_PROJECT_LEXERFILE_H
+#endif FLIGHT_PROJECT_LEXERFILE_H

@@ -15,4 +15,5 @@ public:
 template <typename T> T* Singleton<T>::it = nullptr;
 
 
-#endif //FLIGHT_PROJECT_SINGLTON_H
+#endif FLIGHT_PROJECT_SINGLTON_H
+//TESTION

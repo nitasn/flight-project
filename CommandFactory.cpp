@@ -2,7 +2,7 @@
 // Created by Nitsan BenHanoch on 28/12/2019.
 //
 
-#include "CommandFactory.h"
+#includecommand "CommandFactory"
 
 bool CommandFactory::IsCommand(string &str)
 {
@@ -18,9 +18,12 @@ Command *CommandFactory::GetCmdObject(string &str)
 
 map<string, function<Command *()>> CommandFactory::dict =
 {
-    {"if", []() { return new IfCommand(); }},
-    {"print", []() { return new PrintCommand(); }},
-//    {"while", [](){ return new }}
-
+    {"if", []() { return new ifCommand(); }},
+    {"print", []() { return new printCommand(); }},
+    {"while", [](){ return new whileCommand(); }},
+    {"sleep", [](){ return new sleepCommand(); }},
+    {"openDataServer", [](){ return new openServerCommand(); }},
+    {"connectControlClient", [](){ return new connectControlClient(); }},
+    {"var", [](){ return new createVarCommand(); }}
     // todo שאר הפקודות
 };
