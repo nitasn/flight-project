@@ -26,7 +26,6 @@ class lexer{
             new unordered_map<vector<string>::iterator*, vector<string>::iterator*>();
     queue<vector<string>::iterator> itToBeginBracket;
 public:
-    lexer();
 //    vector<string>* splitFile();
     void splitTheLine(string& line);
     vector<string>* getVectorLexer();
@@ -36,5 +35,5 @@ private:
     void addItartorToMap(char bracket);
     friend class lexerFile;
 };
-class NotCurrentBracketInFile: public exception{};
+class NotCurrentBracketInFile: exception{};
 #endif FLIGHT_PROJECT_LEXER_H

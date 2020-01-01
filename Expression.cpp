@@ -324,10 +324,9 @@ void Interpreter::ifUnurySign(int i) {
         numStack->push("0");
     }
 }
-/**.
- * check if this variable in map, chnge her value if yes and add to map if no
- * @param nameString name of the variable
- * @param valueString value of the variable
+ /** check if this variable in map, chnge her value if yes and add to map if no
+ /* @param nameString name of the variable
+ /* @param valueString value of the variable
  */
 void Interpreter::upDateMapValue(string nameString, double valueString) {
     if (this->variableMap->find(nameString) != this->variableMap->end()) {
@@ -388,7 +387,7 @@ void Interpreter::adToMapOpertor() {
  * creat the new expression accorsing the opretor
  * @param anserStack stack with the expression that crete from the queqe
  */
-void Interpreter::creatExpression(stack<Expression *> *anserStack) {
+void Interpreter::creatExpression(stack<Expression*> *anserStack) {
     Expression *rightExpression = ((anserStack->top()));
     anserStack->pop();
     Expression *leftExpression = (anserStack->top());
@@ -522,4 +521,3 @@ void Interpreter::checkTheVariableHaveValue(string stringToValue){
     }
     throw 1;
 }
-

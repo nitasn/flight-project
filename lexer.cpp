@@ -97,7 +97,8 @@ void lexer:: addItartorToMap(char bracket){
         this->itToBeginBracket.push((--this->commandVactor->end()));
     } else{
         try{
-            this->mapCloseBracketsIt->at(&this->itToBeginBracket.front()) = &(--this->commandVactor->end());
+            this->mapCloseBracketsIt->insert(make_pair(&this->itToBeginBracket.front(),
+                                                         &(--this->commandVactor->end())));
             this->itToBeginBracket.pop();
         }catch (...){throw NotCurrentBracketInFile();}
     }
