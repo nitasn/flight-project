@@ -3,15 +3,17 @@
 //
 
 #include "FromAeroplaneServer.h"
-#include "singltonGlobals.h"
+#include "globals_singleton.h"
 
 void FromAeroplaneServer::process_data(const char *buffer, int buffer_size)
 {
     double numbers_received[num_measurements];
-    try
-    {
+
+    try {
         const std::string csv(buffer, buffer_size);
+
 //        std::cout << "server received data and is now processing it" << std::endl;
+
         const char comma = ',';
         int next_comma, prev_comma = 0, i = 0; // i == index of the double we are parsing now
         while ((next_comma = csv.find(comma, prev_comma)) != std::string::npos) // while next comma exists
@@ -21,23 +23,25 @@ void FromAeroplaneServer::process_data(const char *buffer, int buffer_size)
         }
         numbers_received[i] = stod(csv.substr(prev_comma)); // the value that's after the last comma
     }
-    catch (...)
-    {
+    catch (...) {
         std::cerr << "server: error parsing data from aeroplane. msg from aeroplane ignored." << std::endl;
         return;
     }
+
     mutex_dealing_with_the_set.lock();
-    for (const std::string& name : toKeepUpdated)
+    app::globals->do_with_vars_map([&]() // lock main vars dict
     {
-        var
-        Var* var = refAllVars.at(name); // todo add mutex "dealing with vars dict" ?
-        int index = measurements_indices.at(var->addressInSimulator);
-        var->data = numbers_received[index];
-    }
+        for (const std::string &name : toKeepUpdated)
+        {
+            Var *var = app::globals->varsMap->at(name);
+            int index = measurements_indices.at(var->addressInSimulator);
+            var->data = numbers_received[index];
+        }
+    });
     mutex_dealing_with_the_set.unlock();
 }
 
-void FromAeroplaneServer::keepThisVarUpdated(std::string varName)
+void FromAeroplaneServer::keepThisVarUpdated(std::string &varName)
 {
     mutex_dealing_with_the_set.lock();
     toKeepUpdated.insert(varName);

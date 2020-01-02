@@ -2,7 +2,7 @@
 // Created by Nitsan BenHanoch on 28/12/2019.
 //
 
-#includecommand "CommandFactory"
+#include "CommandFactory.h"
 
 bool CommandFactory::IsCommand(string &str)
 {
@@ -25,5 +25,4 @@ map<string, function<Command *()>> CommandFactory::dict =
     {"openDataServer", [](){ return new openServerCommand(); }},
     {"connectControlClient", [](){ return new connectControlClient(); }},
     {"var", [](){ return new createVarCommand(); }}
-    // todo שאר הפקודות
 };

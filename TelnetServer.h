@@ -28,8 +28,8 @@ public:
     void kill() { is_alive = false; } // todo i dont think kill works while server waits for client
     bool isAlive() { return is_alive; }
 
-    class serverNetworkError : exception {};
+    class serverNetworkError : std::exception {};
 };
 
 
-#endif FLIGHT_PROJECT_TELNETSERVER_H
+#endif // FLIGHT_PROJECT_TELNETSERVER_H

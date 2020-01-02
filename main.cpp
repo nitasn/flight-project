@@ -2,24 +2,32 @@
 // Created by Nitsan BenHanoch on 15/12/2019.
 //
 
-#include "lexer.h"
-//#include "controlFly.h"
-//#include "server.h"
 
-using namespace std;
+#include "globals_singleton.h"
+#include "lexerFile.h"
+#include "parser.h"
+
+app *app::globals;
 
 int main(int argc, char *argv[])
 {
-//    {// בדיקה והדגמה איך הלאקסר מפרק את הקובץ
-//        lexer a("/home/hodyah/CLionProjects/flight-project/fly.txt");
-//        vactor <string> *b =         a.splitFile();
-//        while (!b->empty()) {
-//            cout << b->front() << endl;
-//        }
-//    }// סוף בדיקת לאקסר
-//    controlFly control;
-//    control.playControlFly(arg[1]);
-//    server s;
-//    s.openTheServer(5400);
-    cout << "543" << endl;
+    app::globals = new app;
+
+    string code_filename = "~/CLionProjects/flight-project/fly.txt";
+
+    vector<string> *tokens = nullptr;
+
+    try
+    {
+        lexerFile lex(code_filename);
+        tokens = lex.splitFile();
+        parse(tokens->begin(), tokens->end());
+    }
+    catch (char const* e)
+    {
+        cout << e << endl;
+    }
+
+    delete tokens;
+    delete app::globals;
 }

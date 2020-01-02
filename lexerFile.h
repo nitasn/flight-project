@@ -9,7 +9,7 @@
 class lexerFile: public lexer {
     ifstream insertFile;
 public:
-    lexerFile(string fileName);
+    explicit lexerFile(string& fileName);
     vector<string>* splitFile();
 };
-#endif FLIGHT_PROJECT_LEXERFILE_H
+#endif // FLIGHT_PROJECT_LEXERFILE_H

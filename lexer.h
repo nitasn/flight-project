@@ -4,13 +4,14 @@
 
 #ifndef FLIGHT_PROJECT_LEXER_H
 #define FLIGHT_PROJECT_LEXER_H
-using namespace std;
 #include <string>
 #include <queue>
 #include <fstream>
-#include <unordered_map>
+#include <map>
 #include "iostream"
+#include "globals_singleton.h"
 //#include "lexerFile.h"
+using namespace std;
 
 /**.
  * lexer - split file string to short string.
@@ -20,11 +21,10 @@ using namespace std;
  * @param fileName the file to read and split.
  */
 class lexer{
-    vector<string>* commandVactor;
+    vector<string>* commandVector;
     string currentStringInLop;
-    unordered_map<vector<string>::iterator*, vector<string>::iterator*> *mapCloseBracketsIt =
-            new unordered_map<vector<string>::iterator*, vector<string>::iterator*>();
-    queue<vector<string>::iterator> itToBeginBracket;
+    map<iter*, iter*> *mapCloseBracketsIt = new map<iter*, iter*>();
+    queue<iter> itToBeginBracket; // todo doesn't it have to be a stack?
 public:
 //    vector<string>* splitFile();
     void splitTheLine(string& line);
@@ -36,4 +36,4 @@ private:
     friend class lexerFile;
 };
 class NotCurrentBracketInFile: exception{};
-#endif FLIGHT_PROJECT_LEXER_H
+#endif // FLIGHT_PROJECT_LEXER_H

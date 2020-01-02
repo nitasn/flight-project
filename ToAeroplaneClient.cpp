@@ -1,18 +1,19 @@
 #include "ToAeroplaneClient.h"
-#include "singltonGlobals.h"
+#include "globals_singleton.h"
 #include <sstream>
 
 void ToAeroplaneClient::send_var_to_aeroplane(std::string &varName)
 {
-    VarsMap::mutexSingleton.it->lock();
+    string s;
 
-    map<string, Var *> &vars = VarsMap::mapSingleton::it;
+    app::globals->do_with_vars_map([&]()
+    {
+        map<string, Var *> &vars = *app::globals->varsMap;
 
-    stringstream ss;
-    ss << "set " << vars[varName]->addressInSimulator << " " << vars[varName]->data << "\r\n";
-    string s = ss.str();
-
-    VarsMap::mutexSingleton.it->unlock();
+        stringstream ss;
+        ss << "set " << vars[varName]->addressInSimulator << " " << vars[varName]->data << "\r\n";
+        s = ss.str();
+    });
 
     TelnetClient::send_message(s.c_str(), s.size());
 }

@@ -9,8 +9,6 @@
 #include <string>
 #include <functional>
 #include <map>
-#include "ifWhileCommandFromFileToMap.h"
-#include "simpleCommandFromFileToMap.h"
 
 using namespace std;
 
@@ -27,4 +25,4 @@ public:
 };
 
 
-#endif FLIGHT_PROJECT_COMMANDFACTORY_H
+#endif // FLIGHT_PROJECT_COMMANDFACTORY_H

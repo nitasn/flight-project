@@ -14,5 +14,6 @@ using namespace std;
 class VarAssigningNotLegal : std::exception {};
 class AssigningInvalidExpression : std::exception {};
 void parse(vector<string>::iterator iter, vector<string>::iterator end);
-double evaluateExpression(string& exp_str);
-#endif FLIGHT_PROJECT_PARSER_H
+double evaluateExpressionStr(string& exp_str);
+
+#endif // FLIGHT_PROJECT_PARSER_H

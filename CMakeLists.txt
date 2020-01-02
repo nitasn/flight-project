@@ -5,15 +5,36 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(flight_project
+add_executable(
+        flight_project
+        Command.cpp
         Command.h
+        CommandFactory.cpp
+        CommandFactory.h
         Expression.cpp
         Expression.h
-        ifWhileCommandFromFileToMap.cpp
-        ifWhileCommandFromFileToMap.h
+        ExpressionInterpreter.cpp
+        ExpressionInterpreter.h
+        FromAeroplaneServer.cpp
+        FromAeroplaneServer.h
+        TelnetClient.cpp
+        TelnetClient.h
+        TelnetServer.cpp
+        TelnetServer.h
+        ToAeroplaneClient.cpp
+        ToAeroplaneClient.h
+        controlFly.cpp
+        controlFly.h
+        globals_singleton.h
         lexer.cpp
         lexer.h
+        lexerFile.cpp
+        lexerFile.h
         main.cpp
+        parser.cpp
+        parser.h
         simpleCommandFromFileToMap.cpp
         simpleCommandFromFileToMap.h
-        controlFly.cpp controlFly.h parser.cpp parser.h test.cpp singlton.h singltonGlobals.h lexerFile.cpp lexerFile.h)
+        singlton.h
+        var.h
+)

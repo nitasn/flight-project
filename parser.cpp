@@ -1,43 +1,19 @@
 #include "parser.h"
 #include "Expression.h"
-#include "lexer.h"
-#include "singltonGlobals.h"
+#include "globals_singleton.h"
 
-double evaluateExpression(string& exp_str)
+double evaluateExpressionStr(string& exp_str)
 {
-    lexer lexerSplit;
-    lexerSplit.splitTheLine(exp_str);
-    vector<string>* exp_tokens = lexerSplit.getVectorLexer();
-    Interpreter interpreter;
+    auto exp = Interpreter::interpret(exp_str);
+    exp->update_values();
+    double result = exp->expression->calculate();
+    delete exp;
 
-    VarsMap::do_synchronously([&]() { // מפעיל ומבטל את הלוק של המפה בעצמו
-
-        map<string, Var *> * vars = VarsMap::mapSingleton.it;
-
-        for (string& token : *exp_tokens)
-            if (vars->find(token) != vars->end())
-                interpreter.upDateMapValue(token, vars->at(token)->data);
-
-    });
-
-    Expression *expression = nullptr;
-    try { expression = interpreter.interpret(exp_str); }
-    catch (...) {
-        delete expression;
-        delete exp_tokens;
-        throw AssigningInvalidExpression();
-    }
-    double result = expression->calculate();
-    delete expression;
-    delete exp_tokens;
     return result;
 }
 
-// אפשר לקרוא לה גם מתוך פקודת איף וגם מתוך ה-מיין עבור כל הקוד...
 void parse(vector<string>::iterator iter, vector<string>::iterator end)
 {
-    cout << "here yay" << endl;
-
     Command* cmd;
 
     while (iter != end)

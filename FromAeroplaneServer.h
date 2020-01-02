@@ -22,7 +22,7 @@ class FromAeroplaneServer : public TelnetServer
 
 public:
     explicit FromAeroplaneServer(int portNum) : TelnetServer(portNum) {}
-    void keepThisVarUpdated(string varName);
+    void keepThisVarUpdated(string& varName);
 };
 
-#endif FLIGHT_PROJECT_FROMAEROPLANESERVER_H
+#endif // FLIGHT_PROJECT_FROMAEROPLANESERVER_H

@@ -24,4 +24,4 @@ public:
     ~TelnetClient() { close(client_socket); }
 };
 
-#endif FLIGHT_PROJECT_TELNETCLIENT_H
+#endif // FLIGHT_PROJECT_TELNETCLIENT_H

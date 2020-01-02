@@ -18,7 +18,7 @@ void lexer:: splitAcurddingSign(string line, int i, char sign){
             }
         }
         if(line[i] == ','){
-            this->commandVactor->push_back(this->currentStringInLop);
+            this->commandVector->push_back(this->currentStringInLop);
             this->currentStringInLop.clear();
         } else if (((flagThisIsInString) && line[i] == ' ')|| (line[i] != ' ' && line[i] != '\t')){
             this->currentStringInLop = this->currentStringInLop + "" + line[i];
@@ -35,7 +35,7 @@ void lexer:: splitAcurddingSign(string line, int i, char sign){
  */
 void lexer:: addCurrentStringToQueue(){
     if(!currentStringInLop.empty()){
-        this->commandVactor->push_back(currentStringInLop);
+        this->commandVector->push_back(currentStringInLop);
         currentStringInLop.clear();
     }
 }
@@ -53,28 +53,28 @@ void lexer::splitTheLine(string& line){
         } else if(line[i] == '='){
             addCurrentStringToQueue();
             if (line[i+1] != '='){
-                this->commandVactor->push_back("=");
+                this->commandVector->push_back("=");
                 splitAcurddingSign(line, i+1, ' ');
                 break;
             }
-            this->commandVactor->push_back("==");
+            this->commandVector->push_back("==");
             i++;
         } else if(line[i] == ' ' || (line[i] == '\t')){
             addCurrentStringToQueue();
         } else if(line[i] == '{' || line[i] == '}'){
             addCurrentStringToQueue();
             string s;
-            this->commandVactor->push_back(s + line[i]);
+            this->commandVector->push_back(s + line[i]);
             addItartorToMap(line[i]);
         } else if ((line[i] == '-' && line[i+1] == '>')||(line[i] == '<' && line[i+1] == '-')
                    ||line[i]=='>' || line[i] == '<' || line[i] == '!'){
             addCurrentStringToQueue();
             string s;
             if (line[i + 1] == '-' || line[i+1] == '>' || line[i+1] == '=' ){
-                this->commandVactor->push_back(s + line[i] + line[i+1]);
+                this->commandVector->push_back(s + line[i] + line[i + 1]);
                 i++;
             }else{
-                this->commandVactor->push_back(s + line[i]);
+                this->commandVector->push_back(s + line[i]);
             }
         }else {
             currentStringInLop = currentStringInLop + "" + line[i];
@@ -85,7 +85,7 @@ void lexer::splitTheLine(string& line){
  * @return vector of split input
  */
 vector<string>* lexer:: getVectorLexer(){
-    return this->commandVactor;
+    return this->commandVector;
 }
 
 /**ToAeroplaneClientSingleton
@@ -94,11 +94,11 @@ vector<string>* lexer:: getVectorLexer(){
  */
 void lexer:: addItartorToMap(char bracket){
     if(bracket == '{'){
-        this->itToBeginBracket.push((--this->commandVactor->end()));
+        this->itToBeginBracket.push((--this->commandVector->end()));
     } else{
         try{
             this->mapCloseBracketsIt->insert(make_pair(&this->itToBeginBracket.front(),
-                                                         &(--this->commandVactor->end())));
+                                                         &(--this->commandVector->end())));
             this->itToBeginBracket.pop();
         }catch (...){throw NotCurrentBracketInFile();}
     }
