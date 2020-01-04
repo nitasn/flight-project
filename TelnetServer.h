@@ -13,22 +13,35 @@
 
 class TelnetServer
 {
-
     virtual void process_data(const char *buffer, int buffer_size) = 0; // to separate data-reading and data-processing
+
     int port;
     int socket_fd{};
     int client_socket{}; // expecting one client only
-    bool is_alive;
+
     /// call 'process_data' whenever new data is received
     static void mainloop(TelnetServer *self);
-public:
-    void run() { std::thread(mainloop, this).detach(); }
-    explicit TelnetServer(int portNum) : port(portNum) { is_alive = false; }
-    virtual ~TelnetServer() { kill(); }
-    void kill() { is_alive = false; } // todo i dont think kill works while server waits for client
-    bool isAlive() { return is_alive; }
 
-    class serverNetworkError : std::exception {};
+    /// if changed to true, mainloop_thread will terminate
+    bool should_terminate = false;
+
+    std::thread *mainloop_thread = nullptr;
+
+public:
+    void run();
+
+    explicit TelnetServer(int portNum) : port(portNum){}
+
+    virtual ~TelnetServer();
+
+
+    class ServerError_AcceptingClientFailed  : std::exception{};
+
+    class ServerError_CouldNotBindSocketToIP : std::exception{};
+
+    class ServerError_CouldNotCreateSocket   : std::exception{};
+
+    class ServerError_CouldNotStartListening : std::exception{};
 };
 
 

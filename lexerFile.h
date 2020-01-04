@@ -6,10 +6,15 @@
 #define FLIGHT_PROJECT_LEXERFILE_H
 
 #include "lexer.h"
-class lexerFile: public lexer {
-    ifstream insertFile;
+
+class lexerFile : public lexer
+{
+    std::ifstream insertFile;
+
 public:
-    explicit lexerFile(string& fileName);
-    vector<string>* splitFile();
+    explicit lexerFile(std::string &fileName);
+
+    std::vector<std::string> *splitFile();
 };
+
 #endif // FLIGHT_PROJECT_LEXERFILE_H

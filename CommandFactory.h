@@ -10,18 +10,17 @@
 #include <functional>
 #include <map>
 
-using namespace std;
 
-class CommandNotFound : exception {};
+class CommandNotFound : std::exception {};
 
 class CommandFactory
 {
-    static map<string, function<Command *()>> dict; // cmd_name -> lambda that returns a cmd object
+    static std::map<std::string, std::function<Command *()>> dict; // cmd_name -> lambda, that returns a cmd object
 
 public:
-    static Command *GetCmdObject(string &str);
+    static Command *GetCmdObject(std::string &str);
 
-    static bool IsCommand(string &str);
+    static bool IsCommand(std::string &str);
 };
 
 

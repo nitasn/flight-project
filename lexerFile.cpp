@@ -4,6 +4,8 @@
 #include "lexerFile.h"
 #include "globals_singleton.h"
 
+using namespace std;
+
 /**.
  * lexer - split file string to short string.
  * lexer split accurding (), =, ->, <-,command space and tab.

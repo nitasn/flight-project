@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 project(flight_project)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS -pthread)
 
 include_directories(.)
 
@@ -11,8 +12,6 @@ add_executable(
         Command.h
         CommandFactory.cpp
         CommandFactory.h
-        Expression.cpp
-        Expression.h
         ExpressionInterpreter.cpp
         ExpressionInterpreter.h
         FromAeroplaneServer.cpp
@@ -23,8 +22,6 @@ add_executable(
         TelnetServer.h
         ToAeroplaneClient.cpp
         ToAeroplaneClient.h
-        controlFly.cpp
-        controlFly.h
         globals_singleton.h
         lexer.cpp
         lexer.h
@@ -33,8 +30,5 @@ add_executable(
         main.cpp
         parser.cpp
         parser.h
-        simpleCommandFromFileToMap.cpp
-        simpleCommandFromFileToMap.h
-        singlton.h
         var.h
 )

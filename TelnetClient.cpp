@@ -3,15 +3,20 @@
 //
 
 #include "TelnetClient.h"
+#include "globals_singleton.h"
 
 void TelnetClient::send_message(const char *buffer, int buffer_size)
 {
     if (send(client_socket, buffer, buffer_size, 0) == -1)
     {
-        std::cerr << "Error sending message" << std::endl;
+        std::cerr << "client error - could not send: " << std::string(buffer, buffer_size) << std::endl;
         return;
     }
-    std::cout << "successfully sent: " << std::string(buffer, buffer_size) << std::endl;
+
+    if (app::globals->verbose)
+    {
+        std::cout << "client successfully sent: " << std::string(buffer, buffer_size) << std::endl;
+    }
 }
 
 bool TelnetClient::connect_to_server(int port)
@@ -37,6 +42,9 @@ bool TelnetClient::connect_to_server(int port)
         std::cerr << "Could not connect to host server" << std::endl;
         return false;
     }
-    std::cout << "Client is now connected to server" << std::endl;
+    if (app::globals->verbose)
+    {
+        std::cout << "Client is now connected to server" << std::endl;
+    }
     return true;
 }

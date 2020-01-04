@@ -1,4 +1,4 @@
-/home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/hodyah/CLionProjects/flight-project-old
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/nitsan/CLionProjects/flight-project
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/hodyah/CLionProjects/flight-project-old/cmake-build-debug
+-- Build files have been written to: /Users/nitsan/CLionProjects/flight-project/cmake-build-debug

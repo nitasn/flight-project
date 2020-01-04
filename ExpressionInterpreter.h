@@ -7,7 +7,6 @@
 
 
 #include <iostream>
-#include "Expression.h"
 #include "globals_singleton.h"
 #include <map>
 #include <set>
@@ -16,7 +15,6 @@
 #include <utility>
 #include <cmath>
 
-using namespace std;
 
 /**
  * Expression Interface
@@ -43,16 +41,15 @@ public:
     { return value; }
 };
 
-struct Variable : public Expression
+struct ExpVar : public Expression
 {
     double value;
 
-    const string name;
+    const std::string name;
 
-    Variable(string nam, double val) : name(std::move(nam)), value(val)
-    {}
+    ExpVar(std::string nam, double val) : name(std::move(nam)), value(val) {}
 
-    explicit Variable(string nam) : name(std::move(nam))
+    explicit ExpVar(std::string nam) : name(std::move(nam))
     { value = NAN; }
 
     double calculate() override
@@ -84,7 +81,7 @@ public:
     }
 
 protected:
-    Expression *expression;
+    Expression *expression{};
 };
 
 class Plus : public BinaryOperator
@@ -136,7 +133,7 @@ public:
         this->right = rig;
     }
 
-    class DivisionByZero : exception
+    class DivisionByZero : std::exception
     {
     };
 
@@ -177,7 +174,7 @@ public:
 struct ExpressionWrapper
 {
     Expression *expression;
-    vector<Variable *> *pToVars;
+    std::vector<ExpVar *> *pToVars;
 
     ~ExpressionWrapper()
     {
@@ -185,17 +182,18 @@ struct ExpressionWrapper
         delete expression;
     }
 
-    /**
-     * does apply VarsMap::do_synchronously
-     */
+    /// מציב את ערכם הנוכחי של המשתנים באקספרשן מתוך מפת המשתנים הגלובלית
+    /// must be called when varsMap's mutex is unlocked
     void update_values()
     {
         app::globals->do_with_vars_map([&]() // מפעיל את הלוק של המפה, מריץ את הבלוק, ועושה אנלוק למפה
         {
-            map<string, Var *> *vars = app::globals->varsMap;
+            std::map<std::string, Var *> *vars = app::globals->varsMap;
 
-            for (Variable *exp_var : *this->pToVars) {
-                if (vars->find(exp_var->name) != vars->end()) {
+            for (ExpVar *exp_var : *this->pToVars)
+            {
+                if (vars->find(exp_var->name) != vars->end())
+                {
                     exp_var->value = vars->at(exp_var->name)->data;
                 }
             }
@@ -205,14 +203,14 @@ struct ExpressionWrapper
 
 class Interpreter
 {
-    static string clear_whitespaces(const string &str);
+    static std::string clear_whitespaces(const std::string &str);
 
-    static queue<string> *from_infix_string(const string &str);
+    static std::queue<std::string> *from_infix_string(const std::string &str);
 
-    static ExpressionWrapper *from_postfix_strings_queue(queue<string> *queue);
+    static ExpressionWrapper *from_postfix_strings_queue(std::queue<std::string> *queue);
 
 public:
-    static ExpressionWrapper *interpret(const string &str);
+    static ExpressionWrapper *interpret(const std::string &str);
 };
 
 

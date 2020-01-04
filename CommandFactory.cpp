@@ -3,17 +3,33 @@
 //
 
 #include "CommandFactory.h"
+#include <sstream>
+
+using namespace std;
+
+
+string to_lower(string& str) // לאותיות קטנות
+{
+    stringstream ss;
+
+    for(auto c : str)
+    {
+        ss << (char) std::tolower(c);
+    }
+
+    return ss.str();
+}
 
 bool CommandFactory::IsCommand(string &str)
 {
-    return dict.find(str) != dict.end();
+    return dict.find(to_lower(str)) != dict.end();
 }
 
 Command *CommandFactory::GetCmdObject(string &str)
 {
     if (!IsCommand(str)) throw CommandNotFound();
 
-    return dict[str]();
+    return dict[to_lower(str)]();
 }
 
 map<string, function<Command *()>> CommandFactory::dict =
@@ -22,7 +38,7 @@ map<string, function<Command *()>> CommandFactory::dict =
     {"print", []() { return new printCommand(); }},
     {"while", [](){ return new whileCommand(); }},
     {"sleep", [](){ return new sleepCommand(); }},
-    {"openDataServer", [](){ return new openServerCommand(); }},
-    {"connectControlClient", [](){ return new connectControlClient(); }},
+    {"opendataserver", [](){ return new openDataServerCommand(); }},
+    {"connectcontrolclient", [](){ return new connectControlClientCommand(); }},
     {"var", [](){ return new createVarCommand(); }}
 };

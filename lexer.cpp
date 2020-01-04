@@ -2,6 +2,9 @@
 // Created by hodyah on 15/12/2019.
 //
 #include "lexer.h"
+
+using namespace std;
+
 /**
  * splitAcurddingSign helping method. she put all the residue string
  * to one string and put him to the queue. if have , she split string ther.

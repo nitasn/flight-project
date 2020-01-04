@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hodyah/CLionProjects/flight-project-old
+CMAKE_SOURCE_DIR = /Users/nitsan/CLionProjects/flight-project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hodyah/CLionProjects/flight-project-old/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/nitsan/CLionProjects/flight-project/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/hodyah/CLionProjects/flight-project-old/cmake-build-deb
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hodyah/CLionProjects/flight-project-old/cmake-build-debug/CMakeFiles /home/hodyah/CLionProjects/flight-project-old/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles /Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hodyah/CLionProjects/flight-project-old/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nitsan/CLionProjects/flight-project/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -176,33 +176,6 @@ CommandFactory.s: CommandFactory.cpp.s
 CommandFactory.cpp.s:
 	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/CommandFactory.cpp.s
 .PHONY : CommandFactory.cpp.s
-
-Expression.o: Expression.cpp.o
-
-.PHONY : Expression.o
-
-# target to build an object file
-Expression.cpp.o:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/Expression.cpp.o
-.PHONY : Expression.cpp.o
-
-Expression.i: Expression.cpp.i
-
-.PHONY : Expression.i
-
-# target to preprocess a source file
-Expression.cpp.i:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/Expression.cpp.i
-.PHONY : Expression.cpp.i
-
-Expression.s: Expression.cpp.s
-
-.PHONY : Expression.s
-
-# target to generate assembly for a file
-Expression.cpp.s:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/Expression.cpp.s
-.PHONY : Expression.cpp.s
 
 ExpressionInterpreter.o: ExpressionInterpreter.cpp.o
 
@@ -339,33 +312,6 @@ ToAeroplaneClient.cpp.s:
 	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/ToAeroplaneClient.cpp.s
 .PHONY : ToAeroplaneClient.cpp.s
 
-controlFly.o: controlFly.cpp.o
-
-.PHONY : controlFly.o
-
-# target to build an object file
-controlFly.cpp.o:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/controlFly.cpp.o
-.PHONY : controlFly.cpp.o
-
-controlFly.i: controlFly.cpp.i
-
-.PHONY : controlFly.i
-
-# target to preprocess a source file
-controlFly.cpp.i:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/controlFly.cpp.i
-.PHONY : controlFly.cpp.i
-
-controlFly.s: controlFly.cpp.s
-
-.PHONY : controlFly.s
-
-# target to generate assembly for a file
-controlFly.cpp.s:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/controlFly.cpp.s
-.PHONY : controlFly.cpp.s
-
 lexer.o: lexer.cpp.o
 
 .PHONY : lexer.o
@@ -474,33 +420,6 @@ parser.cpp.s:
 	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/parser.cpp.s
 .PHONY : parser.cpp.s
 
-simpleCommandFromFileToMap.o: simpleCommandFromFileToMap.cpp.o
-
-.PHONY : simpleCommandFromFileToMap.o
-
-# target to build an object file
-simpleCommandFromFileToMap.cpp.o:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/simpleCommandFromFileToMap.cpp.o
-.PHONY : simpleCommandFromFileToMap.cpp.o
-
-simpleCommandFromFileToMap.i: simpleCommandFromFileToMap.cpp.i
-
-.PHONY : simpleCommandFromFileToMap.i
-
-# target to preprocess a source file
-simpleCommandFromFileToMap.cpp.i:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/simpleCommandFromFileToMap.cpp.i
-.PHONY : simpleCommandFromFileToMap.cpp.i
-
-simpleCommandFromFileToMap.s: simpleCommandFromFileToMap.cpp.s
-
-.PHONY : simpleCommandFromFileToMap.s
-
-# target to generate assembly for a file
-simpleCommandFromFileToMap.cpp.s:
-	$(MAKE) -f CMakeFiles/flight_project.dir/build.make CMakeFiles/flight_project.dir/simpleCommandFromFileToMap.cpp.s
-.PHONY : simpleCommandFromFileToMap.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -508,17 +427,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... flight_project"
 	@echo "... edit_cache"
+	@echo "... flight_project"
 	@echo "... Command.o"
 	@echo "... Command.i"
 	@echo "... Command.s"
 	@echo "... CommandFactory.o"
 	@echo "... CommandFactory.i"
 	@echo "... CommandFactory.s"
-	@echo "... Expression.o"
-	@echo "... Expression.i"
-	@echo "... Expression.s"
 	@echo "... ExpressionInterpreter.o"
 	@echo "... ExpressionInterpreter.i"
 	@echo "... ExpressionInterpreter.s"
@@ -534,9 +450,6 @@ help:
 	@echo "... ToAeroplaneClient.o"
 	@echo "... ToAeroplaneClient.i"
 	@echo "... ToAeroplaneClient.s"
-	@echo "... controlFly.o"
-	@echo "... controlFly.i"
-	@echo "... controlFly.s"
 	@echo "... lexer.o"
 	@echo "... lexer.i"
 	@echo "... lexer.s"
@@ -549,9 +462,6 @@ help:
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"
-	@echo "... simpleCommandFromFileToMap.o"
-	@echo "... simpleCommandFromFileToMap.i"
-	@echo "... simpleCommandFromFileToMap.s"
 .PHONY : help
 
 

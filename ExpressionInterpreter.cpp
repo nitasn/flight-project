@@ -32,7 +32,12 @@ double UMinus::calculate() { return -expression->calculate(); }
 
 
 
+
 //** interpreter goes here
+
+
+using namespace std;
+
 
 
 bool is_number(const string &s)
@@ -158,7 +163,7 @@ queue<string> *Interpreter::from_infix_string(const string &str)
 ExpressionWrapper *Interpreter::from_postfix_strings_queue(queue<string> *queue)
 {
     stack<Expression *> stack;
-    auto pToVars = new vector<Variable *>;
+    auto pToVars = new vector<ExpVar *>;
 
     auto pop_stack = [&stack]() {
         if (stack.empty())
@@ -214,7 +219,7 @@ ExpressionWrapper *Interpreter::from_postfix_strings_queue(queue<string> *queue)
             }
             else  // then it's a variable
             {
-                auto *newVar = new Variable(token);
+                auto *newVar = new ExpVar(token);
                 stack.push(newVar);
                 pToVars->push_back(newVar);
             }

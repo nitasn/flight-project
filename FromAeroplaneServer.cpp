@@ -5,14 +5,15 @@
 #include "FromAeroplaneServer.h"
 #include "globals_singleton.h"
 
+using namespace std;
+
+
 void FromAeroplaneServer::process_data(const char *buffer, int buffer_size)
 {
     double numbers_received[num_measurements];
 
     try {
-        const std::string csv(buffer, buffer_size);
-
-//        std::cout << "server received data and is now processing it" << std::endl;
+        const string csv(buffer, buffer_size);
 
         const char comma = ',';
         int next_comma, prev_comma = 0, i = 0; // i == index of the double we are parsing now
@@ -23,37 +24,50 @@ void FromAeroplaneServer::process_data(const char *buffer, int buffer_size)
         }
         numbers_received[i] = stod(csv.substr(prev_comma)); // the value that's after the last comma
     }
-    catch (...) {
-        std::cerr << "server: error parsing data from aeroplane. msg from aeroplane ignored." << std::endl;
+    catch (...)
+    {
+        cerr << "server: error parsing data from aeroplane. data:" << endl
+             << string(buffer, buffer_size) << endl
+             << "was invalid and hence ignored." << endl;
+
         return;
     }
 
     mutex_dealing_with_the_set.lock();
-    app::globals->do_with_vars_map([&]() // lock main vars dict
+
+    // no need to wrap with app::globals->do_with_vars_map([&]() { ... });
+    // since we bypass varsMap and access our vars directly
+
+    for (Var *var : toKeepUpdated)
     {
-        for (const std::string &name : toKeepUpdated)
+        try
         {
-            Var *var = app::globals->varsMap->at(name);
             int index = measurements_indices.at(var->addressInSimulator);
             var->data = numbers_received[index];
         }
-    });
+        catch (out_of_range& err)
+        {
+            cerr << "server: error while attempting to update a var whose address," << endl
+                 << var->addressInSimulator << ", is not in the measurements_indices map" << endl;
+        }
+    }
+
     mutex_dealing_with_the_set.unlock();
 }
 
-void FromAeroplaneServer::keepThisVarUpdated(std::string &varName)
+void FromAeroplaneServer::keepThisVarUpdated(Var *var)
 {
     mutex_dealing_with_the_set.lock();
-    toKeepUpdated.insert(varName);
+    toKeepUpdated.insert(var);
     mutex_dealing_with_the_set.unlock();
 }
 
-const std::map<const std::string, int> FromAeroplaneServer::measurements_indices =
+const std::map<std::string, int> FromAeroplaneServer::measurements_indices =
 {
         {"/instrumentation/airspeed-indicator/indicated-speed-kt",        0},
         {"/sim/time/warp",                                                1},
         {"/controls/switches/magnetos",                                   2},
-        {"//instrumentation/heading-indicator/offset-deg",                3},
+        {"/instrumentation/heading-indicator/offset-deg",                 3},
         {"/instrumentation/altimeter/indicated-altitude-ft",              4},
         {"/instrumentation/altimeter/pressure-alt-ft",                    5},
         {"/instrumentation/attitude-indicator/indicated-pitch-deg",       6},

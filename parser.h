@@ -10,10 +10,12 @@
 #include "Command.h"
 #include "CommandFactory.h"
 
-using namespace std;
-class VarAssigningNotLegal : std::exception {};
-class AssigningInvalidExpression : std::exception {};
-void parse(vector<string>::iterator iter, vector<string>::iterator end);
-double evaluateExpressionStr(string& exp_str);
+class VarAssigningNotLegal : std::exception{};
+
+class UnknownCommand : std::exception{};
+
+void parse(std::vector<std::string>::iterator iter, std::vector<std::string>::iterator end);
+
+double evaluateExpressionStr(std::string &exp_str);
 
 #endif // FLIGHT_PROJECT_PARSER_H

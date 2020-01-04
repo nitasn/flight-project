@@ -4,6 +4,7 @@
 
 #ifndef FLIGHT_PROJECT_LEXER_H
 #define FLIGHT_PROJECT_LEXER_H
+
 #include <string>
 #include <queue>
 #include <fstream>
@@ -11,7 +12,6 @@
 #include "iostream"
 #include "globals_singleton.h"
 //#include "lexerFile.h"
-using namespace std;
 
 /**.
  * lexer - split file string to short string.
@@ -20,20 +20,28 @@ using namespace std;
  * lexer puse =, ->, <- on the queue and not () for function (yes for mat' action),command space and tab.
  * @param fileName the file to read and split.
  */
-class lexer{
-    vector<string>* commandVector;
-    string currentStringInLop;
-    map<iter*, iter*> *mapCloseBracketsIt = new map<iter*, iter*>();
-    queue<iter> itToBeginBracket; // todo doesn't it have to be a stack?
+class lexer
+{
+    std::vector<std::string> *commandVector;
+    std::string currentStringInLop;
+    std::map<iter *, iter *> *mapCloseBracketsIt = new std::map<iter *, iter *>();
+    std::queue<iter> itToBeginBracket; // todo לא עדיף מחסנית?
 public:
 //    vector<string>* splitFile();
-    void splitTheLine(string& line);
-    vector<string>* getVectorLexer();
+    void splitTheLine(std::string &line);
+
+    std::vector<std::string> *getVectorLexer();
+
 private:
-    void splitAcurddingSign(string line, int i, char sign);
+    void splitAcurddingSign(std::string line, int i, char sign);
+
     void addCurrentStringToQueue();
+
     void addItartorToMap(char bracket);
+
     friend class lexerFile;
 };
-class NotCurrentBracketInFile: exception{};
+
+class NotCurrentBracketInFile : std::exception {};
+
 #endif // FLIGHT_PROJECT_LEXER_H

@@ -5,14 +5,17 @@ struct Var
 {
     enum kind { toBeSentToSimulator, notToBeSent};
 
-    double data{};
-    std::string addressInSimulator;
+    double data = 0;
     kind kind = notToBeSent;
+    std::string addressInSimulator;
 
-    explicit Var(std::string addressInSimulator, enum kind kind = notToBeSent) :
-            addressInSimulator(move(addressInSimulator)), kind(kind) {}
+    explicit Var(std::string& addressInSimulator, enum kind kind = notToBeSent) // for in/out vars
+    {
+        this->addressInSimulator = addressInSimulator;
+        this->kind = kind;
+    }
 
-    Var() { addressInSimulator = nullptr; } // for local vars
+    Var() = default; // for local vars
 };
 
 #endif

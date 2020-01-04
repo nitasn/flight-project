@@ -13,9 +13,9 @@
 
 #include <cmath>
 
-class StrIsNotBetweenQuotes : exception
-{
-};
+using namespace std;
+
+class StrIsNotBetweenQuotes : exception{};
 
 bool is_quoted(const string &str) // האם הוא בין מרכאות
 {
@@ -34,8 +34,11 @@ string strip_quotes(const string &str) // מפשיט ממרכאות את ״בל�
  * current input and update thr queue
  * @param inputQueue the comman queue
  */
-vector<string>::iterator connectControlClient::execute(vector<string>::iterator iter)
+vector<string>::iterator connectControlClientCommand::execute(vector<string>::iterator iter)
 {
+//    cout << "at connectControlClient. iter is at ";
+//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
+
     try
     {
         string ip_address = strip_quotes(*iter++);
@@ -61,15 +64,18 @@ vector<string>::iterator connectControlClient::execute(vector<string>::iterator 
  * and update thr queue
  * @param inputQueue the comman queue
  */
-vector<string>::iterator openServerCommand::execute(vector<string>::iterator iter)
+vector<string>::iterator openDataServerCommand::execute(vector<string>::iterator iter)
 {
+//    cout << "at openServerCommand. iter is at ";
+//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
+
     try
     {
         int port = stoi(*iter);
         app::globals->server = new FromAeroplaneServer(port);
         app::globals->server->run();
     }
-    catch (TelnetServer::serverNetworkError &err)
+    catch (TelnetServer::ServerError_AcceptingClientFailed &err)
     {
         cerr << "open client command failed: network error" << endl;
         throw err;
@@ -88,6 +94,9 @@ vector<string>::iterator openServerCommand::execute(vector<string>::iterator ite
  */
 vector<string>::iterator printCommand::execute(vector<string>::iterator iter)
 {
+//    cout << "at printCommand. iter is at ";
+//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
+
     if (is_quoted(*iter))
     {
         cout << strip_quotes(*iter) << endl;
@@ -114,6 +123,9 @@ vector<string>::iterator printCommand::execute(vector<string>::iterator iter)
  */
 vector<string>::iterator sleepCommand::execute(vector<string>::iterator iter)
 {
+//    cout << "at sleepCommand. iter is at ";
+//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
+
     long millisToSleep = (long) evaluateExpressionStr(*iter);
 
     this_thread::sleep_for(chrono::milliseconds((millisToSleep)));
@@ -123,13 +135,18 @@ vector<string>::iterator sleepCommand::execute(vector<string>::iterator iter)
 
 vector<string>::iterator createVarCommand::execute(vector<string>::iterator iter)
 {
+//    cout << "at createVarCommand. iter is at ";
+//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
+
     string name = *iter++;
 
     if (*iter == "->")
     {
         if (*++iter != "sim") throw VarDeclarationNotLegal();
 
-        string address = strip_quotes(*++iter++);
+        iter++;
+
+        string address = strip_quotes(*iter++);
 
         app::globals->do_with_vars_map([&]()
         {
@@ -140,20 +157,21 @@ vector<string>::iterator createVarCommand::execute(vector<string>::iterator iter
     {
         if (*++iter != "sim") throw VarDeclarationNotLegal();
 
-        string address = strip_quotes(*++iter++);
+        iter++;
+
+        string address = strip_quotes(*iter++);
 
         app::globals->do_with_vars_map([&]()
         {
             app::globals->varsMap->operator[](name) = new Var(address);
+            app::globals->server->keepThisVarUpdated(app::globals->varsMap->at(name));
         });
-
-        app::globals->server->keepThisVarUpdated(name);
     }
     else if (*iter == "=")
     {
         app::globals->do_with_vars_map([&]()
         {
-            app::globals->varsMap->operator[](name) = new Var(*++iter);
+            app::globals->varsMap->operator[](name) = new Var; // a local var. not to be sent, nor received.
         });
 
         iter = updateVarCommand::execute(iter - 1);
@@ -167,6 +185,9 @@ vector<string>::iterator updateVarCommand::execute(vector<string>::iterator iter
 {
     // "rudder", "=", "(h0 - heading)/80"
 
+//    cout << "at updateVarCommand. iter is at ";
+//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
+
     string name = *iter++;
     if (*iter++ != "=") throw VarAssigningNotLegal();
     string expression_str = *iter++;
@@ -176,9 +197,13 @@ vector<string>::iterator updateVarCommand::execute(vector<string>::iterator iter
 
     app::globals->do_with_vars_map([&]()
     {
-        app::globals->varsMap->operator[](name)->data = value;
-        if (app::globals->varsMap->at(name)->kind == Var::toBeSentToSimulator) {
-            app::globals->client->send_var_to_aeroplane(name);
+        Var* var = app::globals->varsMap->at(name);
+
+        var->data = value;
+
+        if (var->kind == Var::toBeSentToSimulator)
+        {
+            app::globals->client->send_var_to_aeroplane(*var);
         }
     });
 
@@ -198,24 +223,39 @@ vector<string>::iterator updateVarCommand::execute(vector<string>::iterator iter
 
 
 
-
 /**
  * ifCommand play the block command if the condition true.
  * @param controlFly the control fly object
  */
 vector<string>::iterator ifCommand::execute(vector<string>::iterator iter)
 {
-    // if, x + 7, <=, y * 9 - 6, {, x, =, y + 4 - 2 * x, },
-    auto *cond = new condition(iter);
-    bool condition_holds = cond->check();
-    delete cond;
+//    cout << "at ifCommand. iter is at ";
+//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
 
-    iter += 3; // now we are at the '{'
+    //    iter
+    //     |
+    //     V
+    // if, x + 7 * y, >=, y * 9 - 6, {, x, =, y + 4 - 2 * x, },
+    condition cond
+    {
+            Interpreter::interpret(*iter++),
+            *iter++,
+            Interpreter::interpret(*iter++)
+    };
 
-    // todo next line should always work. no try/catch needed. if missing paren then lexer would've thrown exception
+
+    // עכשיו איטר בדיוק על הפותח המסולסל
+
+    /* todo
     auto endLoop = app::globals->matching_curly_brackets->at(iter);
+     אבל כיוון שהמילון הזה לא מעודכן בינתיים:
+     */
+    auto endLoop = iter;
+    while (*++endLoop != "}");
+    // עכשיו אנדלופ בדיוק על הסוגר המסולסל
 
-    if (condition_holds) {
+    if (cond.check())
+    {
         parse(iter + 1, endLoop);
     }
     return endLoop + 1;
@@ -228,8 +268,8 @@ vector<string>::iterator ifCommand::execute(vector<string>::iterator iter)
  */
 bool condition::check()
 {
-    _left->update_values(); // מציבים את
-    _right->update_values(); // המשתנים שבביטויים
+    _left->update_values(); // ,מציב את ערכם הנוכחי של המשתנים שבשני האגפים
+    _right->update_values(); // מתוך מפת המשתנים הגלובלית
 
     auto left = _left->expression->calculate();
     auto right = _right->expression->calculate();
@@ -251,17 +291,6 @@ bool condition::check()
     throw InvalidConditionOperator();
 }
 
-condition::condition(vector<string>::iterator iter)
-{
-    // todo does sending an iter by value copy the entire vector? i hope not
-
-    _left = Interpreter::interpret(*iter); // מחזיר גם ביטוי וגם את המשתנים שבו
-
-    _operator = *(iter + 1);
-
-    _right = Interpreter::interpret(*(iter + 2));
-}
-
 /**
  * while command remove the condition string to condition
  * and play all black while until the condition not true
@@ -269,17 +298,29 @@ condition::condition(vector<string>::iterator iter)
  */
 vector<string>::iterator whileCommand::execute(vector<string>::iterator iter)
 {
-    // while, x + 7, <=, y * 9 - 6, {, x, =, y + 4 - 2 * x, },
-    auto *cond = new condition(iter);
+//    cout << "at whileCommand. iter is at ";
+//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
 
-    iter += 3; // now we are at the '{'
+    condition cond
+    {
+            Interpreter::interpret(*iter++),
+            *iter++,
+            Interpreter::interpret(*iter++)
+    };
 
-    auto endLoop = app::globals->matching_curly_brackets->at(iter++);
+    // עכשיו איטר בדיוק על הפותח המסולסל
 
-    while (cond->check()) {
-        parse(iter, endLoop);
+    /* todo
+    auto endLoop = app::globals->matching_curly_brackets->at(iter);
+     אבל כיוון שהמילון הזה לא מעודכן בינתיים:
+     */
+    auto endLoop = iter;
+    while (*++endLoop != "}");
+    // עכשיו אנדלופ בדיוק על הסוגר המסולסל
+
+    while (cond.check())
+    {
+        parse(iter + 1, endLoop);
     }
-
-    delete cond;
     return endLoop + 1;
 }

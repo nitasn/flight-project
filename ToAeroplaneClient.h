@@ -15,7 +15,7 @@ public:
     /// may throw TelnetClient::CouldNotConnectToServer
     explicit ToAeroplaneClient(int port) : TelnetClient(port) { }
 
-    void send_var_to_aeroplane(std::string& varName);
+    void send_var_to_aeroplane(Var& var);
 };
 
 

@@ -8,33 +8,32 @@
 #include <vector>
 #include "ExpressionInterpreter.h"
 
-using namespace std;
 
 struct Command {
-    virtual vector<string>::iterator execute(vector<string>::iterator iter) = 0;
+    virtual std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) = 0;
 
     virtual ~Command() = default;
 };
 
-class VarDeclarationNotLegal : exception {};
+class VarDeclarationNotLegal : std::exception {};
 
 
 /**.
  * connectControlClient connect to control client with the
  * current input and update thr queue
  */
-class connectControlClient : public Command {
+class connectControlClientCommand : public Command {
 public:
-    vector<string>::iterator execute(vector<string>::iterator iter) override;
+    std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) override;
 };
 
 /**
  * create server with the current input
  * and update thr queue
  */
-class openServerCommand : public Command {
+class openDataServerCommand : public Command {
 public:
-    vector<string>::iterator execute(vector<string>::iterator iter) override;
+    std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) override;
 };
 
 /**
@@ -43,7 +42,7 @@ public:
  */
 class printCommand : public Command {
 public:
-    vector<string>::iterator execute(vector<string>::iterator iter) override;
+    std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) override;
 };
 
 /**
@@ -52,18 +51,18 @@ public:
  */
 class sleepCommand : public Command {
 public:
-    vector<string>::iterator execute(vector<string>::iterator iter) override;
+    std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) override;
 };
 
 
 class updateVarCommand : public Command {
 public:
-    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
+    std::vector<std::string>::iterator execute(std::vector<std::string>::iterator runOnVector) override;
 };
 
 class createVarCommand : public updateVarCommand {
 public:
-    vector<string>::iterator execute(vector<string>::iterator runOnVector) override;
+    std::vector<std::string>::iterator execute(std::vector<std::string>::iterator runOnVector) override;
 };
 
 
@@ -76,13 +75,14 @@ public:
 
 
 
+
 /**
  * ifCommand play the block command if the condition true.
  * @param controlFly the control fly object
  */
-class ifCommand : public Command {
+class ifCommand : public Command { // todo ...להשתמש בירושה כלשהי כי הקוד של איף ושל ווייל די דומה
 public:
-    vector<string>::iterator execute(vector<string>::iterator iter) override;
+    std::vector<std::string>::iterator execute(std::vector<std::string>::iterator runOnVector) override;
 };
 
 /**
@@ -92,34 +92,29 @@ public:
  */
 class whileCommand : public Command {
 public:
-    vector<string>::iterator execute(vector<string>::iterator iter) override;
+    std::vector<std::string>::iterator execute(std::vector<std::string>::iterator runOnVector) override;
 };
 
 /**
  * struct to create condition information: exp, operator, exp
  */
 struct condition {
-    ExpressionWrapper *_left;
-    string _operator;
-    ExpressionWrapper *_right;
+
+    ExpressionWrapper *_left = nullptr;
+    std::string _operator;
+    ExpressionWrapper *_right = nullptr;
 
     bool check();
-
-    class InvalidConditionOperator : exception {};
-
-    class ExpressionCouldNotBeCalculated : exception {};
-
-    /**
-     * constructor receives vector<str>::iter, and takes the top three tokens to be
-     * the left exp, the operator, and the right exp.
-     */
-    explicit condition(vector<string>::iterator iter);
 
     ~condition()
     {
         delete _left;
         delete _right;
     }
+
+    class InvalidConditionOperator : std::exception {};
+
+    class ExpressionCouldNotBeCalculated : std::exception {};
 };
 
 #endif // FLIGHT_PROJECT_COMMAND_H

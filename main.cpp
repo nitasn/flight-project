@@ -7,13 +7,20 @@
 #include "lexerFile.h"
 #include "parser.h"
 
+
+using namespace std;
+
+
 app *app::globals;
+
 
 int main(int argc, char *argv[])
 {
     app::globals = new app;
 
-    string code_filename = "~/CLionProjects/flight-project/fly.txt";
+    app::globals->verbose = false; // אם זה טרו, הקוד מוסיף כל מיני הדפסות כדי לספר לנו על דברים שקורים ברקע
+
+    string code_filename = "/Users/nitsan/Downloads/flight_simulator/fly.txt";
 
     vector<string> *tokens = nullptr;
 
@@ -21,12 +28,17 @@ int main(int argc, char *argv[])
     {
         lexerFile lex(code_filename);
         tokens = lex.splitFile();
+
+//        for (auto &token : *tokens)
+//            cout << token << endl;
+
         parse(tokens->begin(), tokens->end());
     }
     catch (char const* e)
     {
-        cout << e << endl;
+        cerr << e << endl;
     }
+
 
     delete tokens;
     delete app::globals;
