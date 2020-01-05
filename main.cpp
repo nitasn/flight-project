@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
         lexerFile lex(code_filename);
         tokens = lex.splitFile();
 
-//        for (auto &token : *tokens)
-//            cout << token << endl;
+        for (auto &token : *tokens)
+            cout << token << endl;
 
         parse(tokens->begin(), tokens->end());
     }

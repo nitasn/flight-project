@@ -31,7 +31,7 @@ public:
 //    std::vector<std::string> *getVectorLexer();
 
 private:
-    void splitAcurddingSign(std::string line, int i, char sign);
+    void splitAcurddingSign(std::string line, int& i, char sign);
 
     void addCurrentStringToQueue();
 
