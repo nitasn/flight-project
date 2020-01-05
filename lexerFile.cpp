@@ -6,13 +6,11 @@
 
 using namespace std;
 
-/**.
- * lexer - split file string to short string.
- * lexer split accurding (), =, ->, <-,command space and tab.
- * lexer save the split string in queue on heap.
- * lexer puse =, ->, <- on the queue and not () for function (yes for mat' action),command space and tab.
- * @param fileName the file to read and split.
- */
+ /**
+  * lexerFile open the file accurding input string
+  * trhow error if not have file
+  * @param fileName name of file
+  */
 lexerFile::lexerFile(string& fileName){
     this->commandVector = new vector<string>();
     this->insertFile.open(fileName, ios::in);
@@ -21,7 +19,9 @@ lexerFile::lexerFile(string& fileName){
     }
 }
 /**.
- * splitFile methot split the file.
+ * splitFile method split the file with lexer method
+ * run on file and send all line to lexer split
+ * @return vector with all command
  */
 vector<string>* lexerFile::splitFile(){
     string line{};
@@ -33,4 +33,3 @@ vector<string>* lexerFile::splitFile(){
 //    environment->matching_curly_brackets = this->mapCloseBracketsIt; // todo this line
     return this->commandVector;
 }
-#include "lexerFile.h"

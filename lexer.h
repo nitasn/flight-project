@@ -6,7 +6,7 @@
 #define FLIGHT_PROJECT_LEXER_H
 
 #include <string>
-#include <queue>
+#include <stack>
 #include <fstream>
 #include <map>
 #include "iostream"
@@ -24,13 +24,11 @@ class lexer
 {
     std::vector<std::string> *commandVector;
     std::string currentStringInLop;
-    std::map<iter *, iter *> *mapCloseBracketsIt = new std::map<iter *, iter *>();
-    std::queue<iter> itToBeginBracket; // todo לא עדיף מחסנית?
+    std::stack<iter> itToBeginBracket;
 public:
-//    vector<string>* splitFile();
     void splitTheLine(std::string &line);
 
-    std::vector<std::string> *getVectorLexer();
+//    std::vector<std::string> *getVectorLexer();
 
 private:
     void splitAcurddingSign(std::string line, int i, char sign);
@@ -41,7 +39,9 @@ private:
 
     friend class lexerFile;
 };
-
+/**
+ * error if the bracket not current
+ */
 class NotCurrentBracketInFile : std::exception {};
 
 #endif // FLIGHT_PROJECT_LEXER_H

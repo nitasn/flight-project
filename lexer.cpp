@@ -49,50 +49,50 @@ void lexer:: addCurrentStringToQueue(){
  */
 void lexer::splitTheLine(string& line){
     for(int i = 0; i != line.size(); i++) {
-        if (line[i] == '('){
+        if (line[i] == '('){ //if this is string between braect, split him and break
             addCurrentStringToQueue();
             splitAcurddingSign(line, i+1, ')');
             break;
-        } else if(line[i] == '='){
+        } else if(line[i] == '='){ // if = this is name = somthing, not need split him like hir
             addCurrentStringToQueue();
             if (line[i+1] != '='){
                 this->commandVector->push_back("=");
                 splitAcurddingSign(line, i+1, ' ');
                 break;
             }
-            this->commandVector->push_back("==");
+            this->commandVector->push_back("=="); // if this is condition, cuntinue split
             i++;
-        } else if(line[i] == ' ' || (line[i] == '\t')){
+        } else if(line[i] == ' ' || (line[i] == '\t')){ // ignor space and tab
             addCurrentStringToQueue();
-        } else if(line[i] == '{' || line[i] == '}'){
+        } else if(line[i] == '{' || line[i] == '}'){ //if this block
             addCurrentStringToQueue();
             string s;
             this->commandVector->push_back(s + line[i]);
             addItartorToMap(line[i]);
         } else if ((line[i] == '-' && line[i+1] == '>')||(line[i] == '<' && line[i+1] == '-')
-                   ||line[i]=='>' || line[i] == '<' || line[i] == '!'){
+                   ||line[i]=='>' || line[i] == '<' || line[i] == '!'){ //condition or new var
             addCurrentStringToQueue();
             string s;
-            if (line[i + 1] == '-' || line[i+1] == '>' || line[i+1] == '=' ){
+            if (line[i + 1] == '-' || line[i+1] == '>' || line[i+1] == '=' ){ //condition
                 this->commandVector->push_back(s + line[i] + line[i + 1]);
                 i++;
-            }else{
+            }else{ // this var
                 this->commandVector->push_back(s + line[i]);
             }
-        }else {
+        }else { // add the char to string
             currentStringInLop = currentStringInLop + "" + line[i];
         }
     }
 }
-/**
- * @return vector of split input
- */
-vector<string>* lexer:: getVectorLexer(){
-    return this->commandVector;
-}
+///**
+// * @return vector of split input
+// */
+//vector<string>* lexer:: getVectorLexer(){
+//    return this->commandVector;
+//}
 
-/**ToAeroplaneClientSingleton
- * add itartor to map bracket itartor
+/**
+ * ToAeroplaneClientSingleton add itartor to map bracket itartor
  * @param bracket char, can be { or }.
  */
 void lexer:: addItartorToMap(char bracket){
@@ -100,8 +100,8 @@ void lexer:: addItartorToMap(char bracket){
         this->itToBeginBracket.push((--this->commandVector->end()));
     } else{
         try{
-            this->mapCloseBracketsIt->insert(make_pair(&this->itToBeginBracket.front(),
-                                                         &(--this->commandVector->end())));
+            app::globals->matching_curly_brackets->insert(make_pair(this->itToBeginBracket.top(),
+                                                         (--this->commandVector->end())));
             this->itToBeginBracket.pop();
         }catch (...){throw NotCurrentBracketInFile();}
     }

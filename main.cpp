@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     app::globals->verbose = false; // אם זה טרו, הקוד מוסיף כל מיני הדפסות כדי לספר לנו על דברים שקורים ברקע
 
-    string code_filename = "/Users/nitsan/Downloads/flight_simulator/fly.txt";
+    string code_filename = "/home/hodyah/CLionProjects/flight-project/fly.txt";
 
     vector<string> *tokens = nullptr;
 

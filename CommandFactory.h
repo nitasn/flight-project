@@ -22,6 +22,12 @@ public:
 
     static bool IsCommand(std::string &str);
 };
+/**
+ * to_lower change all word to lettle sign
+ * @param str string accurding input
+ * @return string of lettle sign
+ */
+std::string to_lower(std::string& str);
 
 
 #endif // FLIGHT_PROJECT_COMMANDFACTORY_H
