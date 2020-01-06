@@ -62,19 +62,16 @@ void lexer:: addCurrentStringToQueue(){
  */
 void lexer::splitTheLine(string& line){
     for(int i = 0; i != line.size(); i++) {
+        if (checkIfThisCondition(line)){return;}
         if (line[i] == '('){ //if this is string between braect, split him and break
             addCurrentStringToQueue();
             splitAcurddingSign(line, ++i, ')');
             break;
         } else if(line[i] == '='){ // if = this is name = somthing, not need split him like hir
             addCurrentStringToQueue();
-            if (line[i+1] != '='){
-                this->commandVector->push_back("=");
-                splitAcurddingSign(line, ++i, ' ');
-                break;
-            }
-            this->commandVector->push_back("=="); // if this is condition, cuntinue split
-            i++;
+            this->commandVector->push_back("=");
+            splitAcurddingSign(line, ++i, ' ');
+            break;
         } else if(line[i] == ' ' || (line[i] == '\t')){ // ignor space and tab
             addCurrentStringToQueue();
         } else if(line[i] == '{' || line[i] == '}'){ //if this block
@@ -82,38 +79,50 @@ void lexer::splitTheLine(string& line){
             string s;
             this->commandVector->push_back(s + line[i]);
             addItartorToMap(line[i]);
-        } else if ((line[i] == '-' && line[i+1] == '>')||(line[i] == '<' && line[i+1] == '-')
-                   ||line[i]=='>' || line[i] == '<' || line[i] == '!'){ //condition or new var
+        } else if ((line[i] == '-' && line[i+1] == '>')||(line[i] == '<' && line[i+1] == '-')){ //new var
             addCurrentStringToQueue();
             string s;
-            if(line[i+1] == '='){ //if this condition opertor, need take all condition
-                this->commandVector->push_back(s + line[i] + line[i + 1]);
-                i++;
-                splitAcurddingSign(line, ++i, ' ');
-                break;
-            } else if ((line[i] == '<' && line[i+1] != '-')
-                       || line[i] == '>'){
-                this->commandVector->push_back(s + line[i]);
-                splitAcurddingSign(line,++i , ' ');
-                break;
-            }
-            if (line[i + 1] == '-' || line[i+1] == '>' || line[i+1] == '=' ){ //condition
-                this->commandVector->push_back(s + line[i] + line[i + 1]);
-                i++;
-            }else{ // this var
-                this->commandVector->push_back(s + line[i]);
-            }
+            this->commandVector->push_back(s + line[i] + line[i + 1]);
+            i++;
         }else { // add the char to string
             currentStringInLop = currentStringInLop + "" + line[i];
         }
     }
 }
-///**
-// * @return vector of split input
-// */
-//vector<string>* lexer:: getVectorLexer(){
-//    return this->commandVector;
-//}
+/**
+ * checkIfThisCondition check if the line is condition. if true, split to four part:
+ * the condition command, the condition left expression, the opertor condition and
+ * the right condition expression. return true if  this condition, or false else.
+ * @param line the string to check
+ * @return true if  this condition, or false else
+ */
+bool lexer::checkIfThisCondition(string& line){
+    if(line.find("while") == string::npos && line.find("While") == string::npos &&
+            line.find("if") == string::npos && line.find("If") == string::npos){ //this not condition
+        return false;
+    }
+    int i = 0;
+    while(line[i] != ' ' || this->currentStringInLop.empty()){ // take the condition cocmmand
+        if (line[i] != '\t' && line[i] != ' '){
+            this->currentStringInLop += line[i]; }
+        i++;
+    }
+    addCurrentStringToQueue();
+    while (line[i] != '=' && line[i] != '>' && line[i] != '<' && line[i] != '!'){
+        if (line[i] != ' ' && line[i] != '\t'){ this->currentStringInLop += line[i];} // left expression
+        i++;
+    }
+    addCurrentStringToQueue();
+    string s;
+    if(line[i + 1] == '='){
+        this->commandVector->push_back(s + line[i] + line[i+1]);
+        i++;
+    } else{
+        this->commandVector->push_back(s + line[i]);
+    }
+    splitAcurddingSign(line, ++i, ' '); // right condition
+    return true;
+}
 
 /**
  * ToAeroplaneClientSingleton add itartor to map bracket itartor

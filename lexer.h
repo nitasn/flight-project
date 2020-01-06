@@ -36,6 +36,7 @@ private:
     void addCurrentStringToQueue();
 
     void addItartorToMap(char bracket);
+    bool checkIfThisCondition(std::string& line);
 
     friend class lexerFile;
 };
