@@ -10,13 +10,21 @@
 #include <stack>
 #include <queue>
 #include <sstream>
-
+/**
+ * @return left expression plus right expression
+ */
 double Plus::calculate() { return left->calculate() + right->calculate(); }
-
+/**
+ * @return left expression minus right expression
+ */
 double Minus::calculate() { return left->calculate() - right->calculate(); }
-
+/**
+ * @return left expression mul right expression
+ */
 double Mul::calculate() { return left->calculate() * right->calculate(); }
-
+/**
+ * @return left expression div right expression
+ */
 double Div::calculate()
 {
     double temp = right->calculate();
@@ -25,12 +33,14 @@ double Div::calculate()
 
     return left->calculate() / temp;
 }
-
+/**
+ * @return positive expression
+ */
 double UPlus::calculate() { return +expression->calculate();}
-
+/**
+ * @return negitive expression
+ */
 double UMinus::calculate() { return -expression->calculate(); }
-
-
 
 
 //** interpreter goes here
@@ -39,7 +49,11 @@ double UMinus::calculate() { return -expression->calculate(); }
 using namespace std;
 
 
-
+/**
+ * is_number
+ * @param s string to num
+ * @return true if string is name, false else
+ */
 bool is_number(const string &s)
 {
     try {
@@ -50,7 +64,10 @@ bool is_number(const string &s)
         return false;
     }
 }
-
+/**
+ * print the string in stack
+ * @param s stack
+ */
 void print(stack<char> s) {
     cout << "stack contains: ";
     while (!s.empty()) {
@@ -62,7 +79,10 @@ void print(stack<char> s) {
     }
     cout << endl;
 }
-
+/**
+ * print string in queue
+ * @param s the queue
+ */
 void print(queue<string> s) {
     cout << "queue contains: ";
     while (!s.empty()) {
@@ -74,7 +94,12 @@ void print(queue<string> s) {
     }
     cout << endl;
 }
-
+/**
+ * interpret create new Expression wrapper that have Expression and vector
+ * of variables that can update
+ * @param str string expression
+ * @return ExpressionWrapper with the expression
+ */
 ExpressionWrapper *Interpreter::interpret(const string &str)
 {
     string clean_str = clear_whitespaces(str); // no whitespaces...
@@ -87,7 +112,11 @@ ExpressionWrapper *Interpreter::interpret(const string &str)
 
     return result;
 }
-
+/**
+ * from_infix_string create queue of string with the expression divister
+ * @param str expression string
+ * @return queue with string from expression
+ */
 queue<string> *Interpreter::from_infix_string(const string &str)
 {
     stack<char> stack; // helper stack: contains only operands, and therefore the type is chars
@@ -159,7 +188,11 @@ queue<string> *Interpreter::from_infix_string(const string &str)
 
     return queue; // postfix str-tokens queue
 }
-
+/**
+ * from_postfix_strings_queue
+ * @param queue with the string part expression
+ * @return ExpressionWrapper with the expression and variable
+ */
 ExpressionWrapper *Interpreter::from_postfix_strings_queue(queue<string> *queue)
 {
     stack<Expression *> stack;
@@ -232,7 +265,11 @@ ExpressionWrapper *Interpreter::from_postfix_strings_queue(queue<string> *queue)
 
     return new ExpressionWrapper{result, pToVars};
 }
-
+/**
+ * clear_whitespaces
+ * @param str to clean
+ * @return sreing without space
+ */
 string Interpreter::clear_whitespaces(const string &str)
 {
     stringstream result;

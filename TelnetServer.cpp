@@ -5,7 +5,11 @@
 #include "TelnetServer.h"
 #include "globals_singleton.h"
 
-
+/**
+ * mainloop accept to client (simulatur) and update in thread all 10 second
+ * the information in him buffer accurding what the simulatur send
+ * @param self the server
+ */
 void TelnetServer::mainloop(TelnetServer *self) // creating a method out of a static function in the pythonic way
 {
     char buffer[1024] = {0};
@@ -22,7 +26,9 @@ void TelnetServer::mainloop(TelnetServer *self) // creating a method out of a st
         else break;
     }
 }
-
+/**
+ * run open the server and try to connect to the simulatur. in block until connected
+ */
 void TelnetServer::run()
 {
     socket_fd = socket(AF_INET, SOCK_STREAM, 0); //create socket
@@ -63,7 +69,9 @@ void TelnetServer::run()
 
     mainloop_thread = new std::thread(mainloop, this);
 }
-
+/**
+ * close the socket, stop the thread and delete what need
+ */
 TelnetServer::~TelnetServer()
 {
     should_terminate = true;

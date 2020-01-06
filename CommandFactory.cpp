@@ -12,7 +12,7 @@ using namespace std;
  * @param str string accurding input
  * @return string of lettle sign
  */
-string to_lower(string& str) // לאותיות קטנות
+string to_lower(string& str) // lettle sign
 {
     stringstream ss;
 

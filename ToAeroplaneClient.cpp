@@ -2,7 +2,10 @@
 #include <sstream>
 
 using namespace std;
-
+/**
+ * send_var_to_aeroplane send the variable frm pregeram to the simulatur
+ * @param var to send
+ */
 void ToAeroplaneClient::send_var_to_aeroplane(Var &var)
 {
     stringstream ss;

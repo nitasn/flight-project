@@ -227,9 +227,6 @@ vector<string>::iterator ifCommand::execute(vector<string>::iterator iter)
             Interpreter::interpret(*iter++)
     };
 
-
-    // עכשיו איטר בדיוק על הפותח המסולסל
-
     auto endLoop = app::globals->matching_curly_brackets->at(iter); // location of closing "}"
 
     if (cond.check())//if condition true, play parse with him block

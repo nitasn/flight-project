@@ -21,7 +21,7 @@ public:
 
     static app * globals;
 
-    /** אם זה טרו, פונקציות שרואות לנכון מוסיפות הדפסות כדי לספר על דברים מעניינים שקורים */
+    /**if this true, print information on what happend in code*/
     bool verbose = false;
 
     ToAeroplaneClient * client = nullptr;
@@ -30,12 +30,11 @@ public:
 
     std::map<std::string, Var *> * varsMap = new std::map<std::string, Var *>;
 
-    /** מפת הסוגרים המסולסלים */
+    /** map bracket block in the vector text*/
     std::map<iter, iter> * matching_curly_brackets = new std::map<iter, iter>;
 
-    /**
-     דואג להפעיל את המנעול של מפת המשתנים לפני הבלוק ולשחרר אותו אחרי
-     */
+
+     /** play mutex on var map befor function and unlock him after she finised*/
     template <typename Func> void do_with_vars_map(Func f)
     {
         varsMapMutex.lock();
@@ -45,13 +44,13 @@ public:
         varsMapMutex.unlock();
     }
 
-    friend int main(int, char**); // כדי שמיין תקרא לקונסטרקטור ולדיסטרקטור
+    friend int main(int, char**); // main need create discractor and undiscractor
 
 private:
 
-    app() = default; // קונסטרקטור שלא עושה כלום, אבל הוא פרטי כדי שרק מיין יוכל לקרוא לו
+    app() = default; // dont do nothing, just main can call him
 
-    ~app() // גם פרטי - רק מיין יכול לקרוא לו
+    ~app() //private, just main can call him
     {
         delete client;
         delete server;

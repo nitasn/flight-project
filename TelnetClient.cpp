@@ -4,7 +4,11 @@
 
 #include "TelnetClient.h"
 #include "globals_singleton.h"
-
+/**
+ * send_message tell about what happend to client massege
+ * @param buffer on information
+ * @param buffer_size
+ */
 void TelnetClient::send_message(const char *buffer, int buffer_size)
 {
     if (send(client_socket, buffer, buffer_size, 0) == -1)
@@ -18,7 +22,11 @@ void TelnetClient::send_message(const char *buffer, int buffer_size)
         std::cout << "client successfully sent: " << std::string(buffer, buffer_size) << std::endl;
     }
 }
-
+/**
+ * connect_to_server try connect the server accurding the port server
+ * @param port of server
+ * @return true if seccsed, false alse
+ */
 bool TelnetClient::connect_to_server(int port)
 {
     client_socket = socket(AF_INET, SOCK_STREAM, 0);

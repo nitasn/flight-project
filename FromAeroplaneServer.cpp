@@ -6,7 +6,12 @@
 
 using namespace std;
 
-
+/**
+ * process_data save the data that the simulatur send in the map in progream
+ * split the data accurding him place
+ * @param buffer with the information from simulatur
+ * @param buffer_size size buffer
+ */
 void FromAeroplaneServer::process_data(const char *buffer, int buffer_size)
 {
     try
@@ -53,14 +58,21 @@ void FromAeroplaneServer::process_data(const char *buffer, int buffer_size)
 
     mutex_dealing_with_the_set.unlock();
 }
-
+/**
+ * keepThisVarUpdated save that the value of variablis in map be update all the time
+ * change the variable in map accurding the input
+ * @param var to update
+ */
 void FromAeroplaneServer::keepThisVarUpdated(Var *var)
 {
     mutex_dealing_with_the_set.lock();
     toKeepUpdated.insert(var);
     mutex_dealing_with_the_set.unlock();
 }
-
+/**
+ * :measurements_indices map with the index for all variable the semultur send
+ * accurding them address
+ */
 const std::map<std::string, int> FromAeroplaneServer::measurements_indices =
 {
         {"/instrumentation/airspeed-indicator/indicated-speed-kt",        0},
