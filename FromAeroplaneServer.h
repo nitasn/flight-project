@@ -16,13 +16,20 @@ class FromAeroplaneServer : public TelnetServer
     static const std::map<std::string, int> measurements_indices;
     static const int num_measurements; // the size of 'measurements_indices'
 
+    double * numbers_received;
+
     void process_data(const char *buffer, int buffer_size) override;
 
     std::set<Var *> toKeepUpdated;
     std::mutex mutex_dealing_with_the_set; // so we do not add items to the set while iterating over it
 
 public:
-    explicit FromAeroplaneServer(int portNum) : TelnetServer(portNum){}
+    explicit FromAeroplaneServer(int portNum) : TelnetServer(portNum)
+    {
+        numbers_received = new double[num_measurements];
+    }
+
+    ~FromAeroplaneServer() override { delete[] numbers_received; }
 
     void keepThisVarUpdated(Var *var);
 };

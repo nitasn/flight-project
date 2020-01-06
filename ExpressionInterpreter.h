@@ -43,11 +43,11 @@ public:
 
 struct ExpVar : public Expression
 {
-    double value;
-
     const std::string name;
 
-    ExpVar(std::string nam, double val) : name(std::move(nam)), value(val) {}
+    double value;
+
+    ExpVar(std::string& nam, double val) : name(nam), value(val) {}
 
     explicit ExpVar(std::string nam) : name(std::move(nam))
     { value = NAN; }

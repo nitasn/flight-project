@@ -236,6 +236,7 @@ ExpressionWrapper *Interpreter::from_postfix_strings_queue(queue<string> *queue)
 string Interpreter::clear_whitespaces(const string &str)
 {
     stringstream result;
+
     for (auto c : str)
     {
         if (!isspace(c))

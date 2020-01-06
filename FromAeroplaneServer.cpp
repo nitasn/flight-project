@@ -3,21 +3,20 @@
 //
 
 #include "FromAeroplaneServer.h"
-#include "globals_singleton.h"
 
 using namespace std;
 
 
 void FromAeroplaneServer::process_data(const char *buffer, int buffer_size)
 {
-    double numbers_received[num_measurements];
-
-    try {
+    try
+    {
         const string csv(buffer, buffer_size);
 
         const char comma = ',';
-        int next_comma, prev_comma = 0, i = 0; // i == index of the double we are parsing now
-        while ((next_comma = csv.find(comma, prev_comma)) != std::string::npos) // while next comma exists
+        size_t next_comma, prev_comma = 0, i = 0; // i == index of the double we are parsing now
+
+        while ((next_comma = csv.find(comma, prev_comma)) != string::npos) // while next comma exists
         {
             numbers_received[i++] = stod(csv.substr(prev_comma, next_comma - prev_comma));
             prev_comma = next_comma + 1; // do not include this comma in the next substr

@@ -21,6 +21,7 @@ public:
 
     static app * globals;
 
+    /** אם זה טרו, פונקציות שרואות לנכון מוסיפות הדפסות כדי לספר על דברים מעניינים שקורים */
     bool verbose = false;
 
     ToAeroplaneClient * client = nullptr;

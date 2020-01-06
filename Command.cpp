@@ -22,9 +22,7 @@ bool is_quoted(const string &str) // האם הוא בין מרכאות
     return str[0] == '"' && str[str.length() - 1] == '"';
 }
 /**
- * strip_quote return string that between quotes without quotes
- * @param str string with quotes
- * @return string without quotes
+ * strip_quote return the string between the quotes
  */
 string strip_quotes(const string &str) // מפשיט ממרכאות את ״בלה5״ להיות בלה5
 {
@@ -33,20 +31,21 @@ string strip_quotes(const string &str) // מפשיט ממרכאות את ״בל�
     return str.substr(1, str.length() - 2);
 }
 /**.
- * connectControlClient try connect to control client with port that in input
- * throw error if not seccsed connect to server or if not have appropriate argument
- * @param iter to place in vector for the port
- * @return iter to next command in vector
+ * connectControlClient connect to simulator with our client.
+ * throws if fails
+ * @param iter is expected to be at our args
+ * @return iter exactly after our args
  */
 vector<string>::iterator connectControlClientCommand::execute(vector<string>::iterator iter)
 {
-//    cout << "at connectControlClient. iter is at ";
-//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
-
-    try // try open the client
+    try // open the client
     {
         string ip_address = strip_quotes(*iter++);
-        int port = stoi(*iter++);
+
+        string expression_str = *iter++;
+        // evaluateExpression must be called when the mutex is unlocked
+        int port = (int)evaluateExpressionStr(expression_str);
+
         app::globals->client = new ToAeroplaneClient(port);
     }
     catch (TelnetClient::CouldNotConnectToServer &err)
@@ -64,19 +63,20 @@ vector<string>::iterator connectControlClientCommand::execute(vector<string>::it
 }
 
 /**
- * openServerCommand  try open to server with port that in input
- * throw error if not seccsed connect to client or if not have appropriate argument
- * @param iter to place in vector for the port
- * @return iter to next command in vector
+ * openServerCommand open server (in thread) to update vars from simulator
+ * throws if fails
+ * @param iter is expected to be at our args
+ * @return iter exactly after our args
  */
 vector<string>::iterator openDataServerCommand::execute(vector<string>::iterator iter)
 {
-//    cout << "at openServerCommand. iter is at ";
-//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
-
     try
     {
-        int port = stoi(*iter);
+        string expression_str = *iter++;
+
+        // evaluateExpression must be called when the mutex is unlocked
+        int port = (int)evaluateExpressionStr(expression_str);
+
         app::globals->server = new FromAeroplaneServer(port);
         app::globals->server->run();
     }
@@ -90,19 +90,16 @@ vector<string>::iterator openDataServerCommand::execute(vector<string>::iterator
         cerr << "open client command failed: invalid port" << endl;
         throw err;
     }
-    return iter + 1;
+    return iter;
 }
 
 /**
- * printCommand print to the console the string in vector
- * @param iter to place in vector for the string
- * @return iter to next command in vector
+ * printCommand prints to standard stream one argument
+ * @param iter is expected to be at our args
+ * @return iter exactly after our args
  */
 vector<string>::iterator printCommand::execute(vector<string>::iterator iter)
 {
-//    cout << "at printCommand. iter is at ";
-//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
-
     if (is_quoted(*iter)) // if have quoted in string, this is string, print him
     {
         cout << strip_quotes(*iter) << endl;
@@ -115,16 +112,12 @@ vector<string>::iterator printCommand::execute(vector<string>::iterator iter)
     return iter + 1;
 }
 /**
- * sleep the main thread acurdding the number in vector
- * if this is variable or expresion find him value and sleep for him
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * force main thread to sleep # milliseconds
+ * @param iter is expected to be at our args
+ * @return iter exactly after our args
  */
 vector<string>::iterator sleepCommand::execute(vector<string>::iterator iter)
 {
-//    cout << "at sleepCommand. iter is at ";
-//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
-
     long millisToSleep = (long) evaluateExpressionStr(*iter);
 
     this_thread::sleep_for(chrono::milliseconds((millisToSleep)));
@@ -132,18 +125,15 @@ vector<string>::iterator sleepCommand::execute(vector<string>::iterator iter)
     return iter + 1;
 }
 /**
- * createVarCommand create new var according the input. two kind var:
- * var update according the var that simulator send to program <-
- * var that send to simulator and update him on value ->
- * local var. not to be sent, nor received. =
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * createVarCommand declare a variable. may be of one of three kinds, distinguished by the operator:
+ * "="  a local regular var
+ * "->" has to be sent to simulator via our client every time value changes
+ * "<-" updated constantly by a dedicated thread (our server) with values sent from simulator
+ * @param iter is expected to be at our args
+ * @return iter exactly after our args
  */
 vector<string>::iterator createVarCommand::execute(vector<string>::iterator iter)
 {
-//    cout << "at createVarCommand. iter is at ";
-//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
-
     string name = *iter++;
 
     if (*iter == "->") // var that need send to simulator
@@ -187,16 +177,15 @@ vector<string>::iterator createVarCommand::execute(vector<string>::iterator iter
     return iter;
 }
 /**
- * updateVarCommand update var in map
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * updateVarCommand update var in map (also send to simulator if bounded "->")
+ * @param iter is expected to be at our args
+ * @return iter exactly after our args
  */
 vector<string>::iterator updateVarCommand::execute(vector<string>::iterator iter)
 {
-    // "rudder", "=", "(h0 - heading)/80"
-
-//    cout << "at updateVarCommand. iter is at ";
-//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
+    // iter: |
+    //       V
+    //       rudder  =  (h0 - heading)/80
 
     string name = *iter++;
     if (*iter++ != "=") throw VarAssigningNotLegal();
@@ -220,16 +209,12 @@ vector<string>::iterator updateVarCommand::execute(vector<string>::iterator iter
     return iter;
 }
 /**
- * ifCommand play the block command if the condition true.
- * if the condition true, send block to perser
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * ifCommand evaluates condition and, if true, parses (a process that also runs) inner block
+ * @param iter is expected to be at our args
+ * @return iter exactly after our args
  */
 vector<string>::iterator ifCommand::execute(vector<string>::iterator iter)
 {
-//    cout << "at ifCommand. iter is at ";
-//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
-
     //    iter
     //     |
     //     V
@@ -245,14 +230,8 @@ vector<string>::iterator ifCommand::execute(vector<string>::iterator iter)
 
     // עכשיו איטר בדיוק על הפותח המסולסל
 
-    /* todo
-    auto endLoop = app::globals->matching_curly_brackets->at(iter);
-     אבל כיוון שהמילון הזה לא מעודכן בינתיים:
-     */
-//    auto endLoop = iter;
-//    while (*++endLoop != "}");
-    // עכשיו אנדלופ בדיוק על הסוגר המסולסk
-    auto endLoop = app::globals->matching_curly_brackets->at(iter); // iter to end block
+    auto endLoop = app::globals->matching_curly_brackets->at(iter); // location of closing "}"
+
     if (cond.check())//if condition true, play parse with him block
     {
         parse(iter + 1, endLoop);
@@ -261,8 +240,7 @@ vector<string>::iterator ifCommand::execute(vector<string>::iterator iter)
 }
 
 /**
- * check the condition accurding the opertor string
- * @return true or false if the condition right or not.
+ * plugs current vars' values into expressions, evaluates them, and return whether condition holds now or not
  */
 bool condition::check()
 {
@@ -289,16 +267,16 @@ bool condition::check()
     throw InvalidConditionOperator();
 }
 /**
- * while command remove the condition string to condition
- * and play all black while until the condition not true
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * while condition (from iter) evaluates to true, parse (a process that also runs: ) inner block
+ * @param iter is expected to be at our args
+ * @return iter exactly after our args
  */
 vector<string>::iterator whileCommand::execute(vector<string>::iterator iter)
 {
-//    cout << "at whileCommand. iter is at ";
-//    cout << *iter << " $ " << *(iter + 1) << " $ " << *(iter + 2) << " $ " << *(iter + 3) << endl;
-
+    //       iter
+    //        |
+    //        V
+    // while, x + 7 * y, >=, y * 9 - 6, {, x, =, y + 4 - 2 * x, },
     condition cond //information of condition
     {
             Interpreter::interpret(*iter++),
@@ -306,7 +284,7 @@ vector<string>::iterator whileCommand::execute(vector<string>::iterator iter)
             Interpreter::interpret(*iter++)
     };
 
-    auto endLoop = app::globals->matching_curly_brackets->at(iter);// iter to end block
+    auto endLoop = app::globals->matching_curly_brackets->at(iter); // location of closing "}"
 
     while (cond.check()) //while condition true, play parse with him block
     {

@@ -8,15 +8,17 @@
 #include <vector>
 #include "ExpressionInterpreter.h"
 
-/**
- * exception trhow if String Is Not Between Quotes
- */
 class StrIsNotBetweenQuotes : std::exception{};
+
 /**
- * abstarct command to play all kind command
- * have execute method and desconstructor
+ * handle args from iter, and do specific job with them
  */
 struct Command {
+
+    /**
+     * @param iter is expected to be at our args
+     * @return iter exactly after our args
+     */
     virtual std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) = 0;
 
     virtual ~Command() = default;
@@ -25,81 +27,57 @@ struct Command {
 class VarDeclarationNotLegal : std::exception {};
 
 /**.
- * connectControlClient try connect to control client with port that in input
- * throw error if not seccsed connect to server or if not have appropriate argument
- * @param iter to place in vector for the port
- * @return iter to next command in vector
+ * open client, connect to simulator, get ready to send data
  */
 class connectControlClientCommand : public Command {
 public:
     std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) override;
 };
 /**
- * openServerCommand  try open to server with port that in input
- * throw error if not seccsed connect to client or if not have appropriate argument
- * @param iter to place in vector for the port
- * @return iter to next command in vector
+ * open server, wait on main thread for simulator to respond, then continue running in a different thread
  */
 class openDataServerCommand : public Command {
 public:
     std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) override;
 };
 /**
- * printCommand print to the console the string in vector
- * @param iter to place in vector for the string
- * @return iter to next command in vector
+ * sends whatever is on iter to std::cout. if it's an expression, evaluates it first
  */
 class printCommand : public Command {
 public:
     std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) override;
 };
 /**
- * sleep the main thread acurdding the number in vector
- * if this is variable or expresion find him value and sleep for him
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * sleep # milliseconds on main thread. if arg is an expression, evaluate it first
  */
 class sleepCommand : public Command {
 public:
     std::vector<std::string>::iterator execute(std::vector<std::string>::iterator iter) override;
 };
 /**
- * updateVarCommand update var in map
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * update varsMap, and if var's kind is "->", tell client to send new value to simulator
  */
 class updateVarCommand : public Command {
 public:
     std::vector<std::string>::iterator execute(std::vector<std::string>::iterator runOnVector) override;
 };
 /**
- * createVarCommand create new var according the input. two kind var:
- * var update according the var that simulator send to program <-
- * var that send to simulator and update him on value ->
- * local var. not to be sent, nor received. =
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * create a new var in varsMap, bound to "->", "<-", or "=" if local
  */
 class createVarCommand : public updateVarCommand {
 public:
     std::vector<std::string>::iterator execute(std::vector<std::string>::iterator runOnVector) override;
 };
 /**
- * ifCommand play the block command if the condition true.
- * if the condition true, send block to perser
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * evaluates condition, and if true, runs inner block from iter
  */
-class ifCommand : public Command { // todo ...להשתמש בירושה כלשהי כי הקוד של איף ושל ווייל די דומה
+class ifCommand : public Command {
 public:
     std::vector<std::string>::iterator execute(std::vector<std::string>::iterator runOnVector) override;
 };
 
 /**
- * while command remove the condition string to condition
- * and play all black while until the condition not true
- * @param iter the place input in vector
- * @return iter to next command in vector
+ * while evaluates to true, runs inner block from iter
  */
 class whileCommand : public Command {
 public:
@@ -107,17 +85,15 @@ public:
 };
 
 /**
- * struct to create condition information: exp, operator, exp
+ * holds condition information: exp, operator, exp
  */
 struct condition {
 
     ExpressionWrapper *_left = nullptr;
     std::string _operator;
     ExpressionWrapper *_right = nullptr;
-    /**
-    * check the condition accurding the opertor string
-    * @return true or false if the condition right or not.
-     */
+
+    /** plugs current vars' values into expressions, evaluates them, and return whether condition holds now or not */
     bool check();
 
     ~condition()

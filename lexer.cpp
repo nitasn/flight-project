@@ -6,13 +6,13 @@
 using namespace std;
 
 /**
- * splitAcurddingSign helping method. she put all the residue string
+ * splitAccordingToSign helping method. she put all the residue string
  * to one string and put him to the queue. if have , she split string ther.
  * @param line the string of line
  * @param i index beginning residue string
  * @param sign if need to  stop befor end line.
  */
-void lexer:: splitAcurddingSign(string line, int& i, char sign){
+void lexer:: splitAccordingToSign(string line, size_t& i, char sign){
     bool flagThisIsInString = false;
     while(true){
         if(((line.size() == i + 1) || line.size() == i) || ((sign == ')') && (line[i] == ')'))){
@@ -28,7 +28,6 @@ void lexer:: splitAcurddingSign(string line, int& i, char sign){
             string s;
             this->commandVector->push_back(s + line[i]);
             addItartorToMap(line[i]);
-            //todo ++ or not?
             i++;
             return;
         }
@@ -61,16 +60,16 @@ void lexer:: addCurrentStringToQueue(){
  * @param line to split
  */
 void lexer::splitTheLine(string& line){
-    for(int i = 0; i != line.size(); i++) {
+    for(size_t i = 0; i != line.size(); i++) {
         if (checkIfThisCondition(line)){return;}
         if (line[i] == '('){ //if this is string between braect, split him and break
             addCurrentStringToQueue();
-            splitAcurddingSign(line, ++i, ')');
+            splitAccordingToSign(line, ++i, ')');
             break;
         } else if(line[i] == '='){ // if = this is name = somthing, not need split him like hir
             addCurrentStringToQueue();
             this->commandVector->push_back("=");
-            splitAcurddingSign(line, ++i, ' ');
+            splitAccordingToSign(line, ++i, ' ');
             break;
         } else if(line[i] == ' ' || (line[i] == '\t')){ // ignor space and tab
             addCurrentStringToQueue();
@@ -101,7 +100,7 @@ bool lexer::checkIfThisCondition(string& line){
             line.find("if") == string::npos && line.find("If") == string::npos){ //this not condition
         return false;
     }
-    int i = 0;
+    size_t i = 0;
     while(line[i] != ' ' || this->currentStringInLop.empty()){ // take the condition cocmmand
         if (line[i] != '\t' && line[i] != ' '){
             this->currentStringInLop += line[i]; }
@@ -120,7 +119,7 @@ bool lexer::checkIfThisCondition(string& line){
     } else{
         this->commandVector->push_back(s + line[i]);
     }
-    splitAcurddingSign(line, ++i, ' '); // right condition
+    splitAccordingToSign(line, ++i, ' '); // right condition
     return true;
 }
 
@@ -135,7 +134,6 @@ void lexer:: addItartorToMap(char bracket){
         try{
             app::globals->matching_curly_brackets->insert(make_pair(this->itToBeginBracket.top(),
                                                          (--this->commandVector->end())));
-            std::map<iter, iter> * a =  app::globals->matching_curly_brackets;
             this->itToBeginBracket.pop();
         }catch (...){throw NotCurrentBracketInFile();}
     }

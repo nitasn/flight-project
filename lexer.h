@@ -11,7 +11,6 @@
 #include <map>
 #include "iostream"
 #include "globals_singleton.h"
-//#include "lexerFile.h"
 
 /**.
  * lexer - split file string to short string.
@@ -31,7 +30,7 @@ public:
 //    std::vector<std::string> *getVectorLexer();
 
 private:
-    void splitAcurddingSign(std::string line, int& i, char sign);
+    void splitAccordingToSign(std::string line, size_t& i, char sign);
 
     void addCurrentStringToQueue();
 
