@@ -5,6 +5,8 @@
 
 It's a second-year CS project, by Nitsan and Hodaya, students at Bar-Ilan University.
 
+[Link to GitHub](https://github.com/nitasn/flight-project)
+
 ## Installation
 
 Compile our code:
