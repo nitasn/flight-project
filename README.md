@@ -5,6 +5,8 @@
 
 Behind the scenes, "Flight Project" operates both a web server and a client; but from the point of the user - their variables simply always match the aeroplane's steering wheels and its different measurements.
 
+Example code in the special language we're interpreting is found the ```./fly.txt``` file
+
 It's a second-year CS project, by Nitsan and Hodaya, students at Bar-Ilan University.
 
 
